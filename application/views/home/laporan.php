@@ -1,4 +1,3 @@
-
 <!-- Navigation panel -->
 <div class="nav-bar-compact clearfix">
 	<!-- Logo ( * your text or image into link tag *) -->
@@ -19,6 +18,18 @@
 			<li>
 				<a href="<?php print base_url('Home') ?>">Home</a>
 			</li>
+			<?php
+			if($session->userdata('id')){
+				?>
+				<li>
+					<a href="<?php print base_url('Logout') ?>">Sign Out</a>
+				</li>
+				<?php
+
+			}
+
+			?>
+
 
 		</ul>
 	</nav>
@@ -27,22 +38,17 @@
 
 <!-- Page Wrap -->
 <div class="page" id="top">
-
 	<!-- Home Section -->
 	<section class="home-section bg-dark parallax-3" data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
 		<div class="js-height-full" id="large-header">
-
 			<!-- Canvas Animation -->
 			<canvas id="demo-canvas"></canvas>
-
 			<!-- Home Page Content -->
 			<div class="ah-content">
 				<div class="home-content">
 					<div class="home-text animate-init" data-anim-type="fade-in-up-big" data-anim-delay="100">
 						<div class="container">
-
 							<!-- Headings -->
-
 							<h1 class="hs-line-8  mb-30 mb-xs-10">
 								Hello <span class="serif">&</span>
 								Welcome
@@ -51,101 +57,29 @@
 							<h2 class="hs-line-9 mb-40 mb-xs-20">
 								SISTEM PELAPORAN SAMPAH
 							</h2>
-
-							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">DAFTAR</a>
-								<span class="hidden-xs">&nbsp;</span>
-								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
-							</div>
-
 							<!-- End Headings -->
-
 						</div>
 					</div>
 				</div>
 			</div>
 			<!-- End Home Page Content -->
-
 			<!-- Scroll Down -->
 			<div class="local-scroll">
 				<a href="#about" class="scroll-down"><i class="scroll-down-icon"></i><span>Scroll Down</span></a>
 			</div>
 			<!-- End Scroll Down -->
-
 		</div>
 	</section>
 	<!-- End Home Section -->
 
 	<!-- Some Facts Section -->
-	<section class="page-section" id="counts">
-		<div class="container relative">
-
-			<!-- Counters -->
-			<div class="row">
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						160
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-briefcase"></i>
-						<span class="count-title">Jumlah Laporan</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						150
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-heart"></i>
-						<span class="count-title">Laporan Selesai</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						10
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-coffee"></i>
-						<span class="count-title">Laporan Proses</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						0
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-lightbulb-o"></i>
-						<span class="count-title">Laporan Palsu</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-			</div>
-			<!-- End Counters -->
-
-		</div>
-	</section>
-	<!-- End Some Facts Section -->
-
-	<!-- Some Facts Section -->
-	<section class="page-section padding-section " id="signin" style="padding-top: 40px;padding-bottom: 40px;">
+	<section class="page-section padding-section " id="laporan" style="padding-top: 40px;padding-bottom: 40px;">
 		<div class="container relative">
 			<!-- Section Headings -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 					<div class="section-title">
-						Sign In<span class="st-point">.</span>
+						Buat Laporan<span class="st-point">.</span>
 					</div>
 					<h2 class="section-heading">175 hours of working time</h2>
 					<div class="section-line mb-60 mb-xxs-30">
@@ -155,30 +89,21 @@
 			<!-- End Section Headings -->
 			<!-- Counters -->
 			<!-- Row -->
-
 			<div class="row">
-				<div class="col-sm-12 ">
-					<div class="alert error" role="alert" id="result" style="display:none;"></div>
-				</div>
-
-
-
 				<div class="col-sm-4 mb-40">
 				</div>
 				<div class="col-sm-4 mb-40">
-
+					<div class="alert alert-danger" role="alert" id="result" style="display:;"></div>
 					<!-- Form -->
-					<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form" class="form" >
+					<form method="post" action="#" id="form" role="form" class="form">
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100" required>
+							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100" required>
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100">
 						</div>
-						<center><button class="btn btn-mod btn-border btn-large" type="submit">Sign In</button></center>
-
 					</form>
 					<!-- End Form -->
 				</div>
@@ -187,7 +112,6 @@
 			</div>
 			<!-- End Row -->
 			<!-- End Counters -->
-
 		</div>
 	</section>
 	<!-- End Some Facts Section -->

@@ -97,7 +97,7 @@ class Amodel extends CI_Model
 		foreach ($where as $key => $value) {
 			$this->db->where($key, $value);
 		}
-		return $query = $this->db->get()->result();;
+		return $query = $this->db->get()->first_row();
 	}
 
 	function Checkdupicateedit($table, $username, $id)

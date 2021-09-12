@@ -52,3 +52,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
+
+
+$route['login/proses'] = 'Home/loginprocess';
+$route['register/proses'] = 'Home/registerprocess';
+$route['Logout'] = 'Home/logout';
+
+$route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';

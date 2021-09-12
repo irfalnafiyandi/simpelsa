@@ -28,7 +28,12 @@ class Home extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('Amodel');
+		$this->load->helper('string');
 		#SESSION DATA
+		$this->id = $this->session->userdata('id');
+		$this->nama = $this->session->userdata('nama');
+		$this->email = $this->session->userdata('email');
+		$this->checkpoint = $this->session->userdata('checkpoint');
 
 	}
 
@@ -36,356 +41,220 @@ class Home extends CI_Controller {
 	public function index()
     {
 
-		if(!empty($username_session) AND !empty($nama_session)  AND !empty($level_session) ){
-			redirect('Aview/home');
+
+		if(!empty($this->nama) AND !empty($this->email)  AND !empty($this->checkpoint) ){
+			header("location:" . base_url("Home/laporan#laporan"));
 		}
 
-
-
 		$data['title'] = "Home";
-
-
+		$data['session'] = $this->session;
 		#VIEW
-		$this->load->view("com-web/com-head",$data);
+		$this->load->view('webcom/com-head',$data);
 		$this->load->view('home/index',$data);
-		$this->load->view("com-web/com-footer",$data);
     }
 
-	public function home(){
-		$data['page'] = 1;
-		$data['parentpage'] = 1;
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-		$data['title'] = "Home";
-		$data['desc'] = "Halaman yang mengelola data admin";
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-
-		$data['session_gid'] = $session_gid = $this->session->userdata('level');
-
-		
-
-		$data['amodel'] = $this->Amodel;
-		$data['product'] = $this->Amodel->countdata("product", "");
-		$data['order'] = $this->Amodel->countdata("orders", "orderStatus='paid'");
-		$data['supplier'] = $this->Amodel->countdata("supplier", "");
-		$hasilbulan = $this->Amodel->getKeuntungan(date('n'),date('Y'));
-		$data['keuntuganbulan'] = $hasilbulan['profit'];
-		$data['totalbulan'] = $hasilbulan['total'];
+	public function register()
+	{
 
 
-		$hasilbulan = $this->Amodel->getKeuntungan(date('m'),date('Y'),date('d'));
-		$data['keuntuganhari'] = $hasilbulan['profit'];
-		$data['totalhari'] = $hasilbulan['total'];
+		$data['title'] = "Register";
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('home/register',$data);
 
 
-
-		$this->load->view('Admin/Home',$data);
-		$this->load->view("Com/Com-footer",$data);
 	}
-	public function admin(){
-		$data['page'] = 15;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
+
+	public function laporan()
+	{
+
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
 
 
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-		$data['title'] = "Admin";
-		$data['desc'] = "Halaman yang mengelola data admin";
-		#SESSION DATA
-		$nama_session = $this->session->userdata('nama');
-		$username_session = $this->session->userdata('username');
-		$level_session = $this->session->userdata('level');
+		$data['title'] = "Buat Laporan";
+		$data['session'] = $this->session;
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('home/laporan',$data);
 
-		if($this->input->post('keyword') != NULL ){
-			$keyword = $this->input->post('keyword');
-			$this->session->set_userdata(array("keyword"=>$keyword));
-			$data['keyword'] = $keyword;
-		}else{
-			if($this->session->userdata('keyword') != NULL){
-				$keyword = "";
-				$data['keyword'] = $keyword;
+
+	}
+
+	public function suksesregister()
+	{
+		$data['title'] = "Sukses Register";
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('home/suksesregister',$data);
+	}
+	public function sukseslapor()
+	{
+		$data['title'] = "Sukses Register";
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('home/sukseslaporkan',$data);
+	}
+
+	public function loginprocess()
+	{
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+		if (empty($email) OR empty($password)) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
+
+		$where = array(
+			'email_pelapor' => $email,
+			'statusemail_pelapor'=>'y',
+		);
+
+		$user = $this->Amodel->Detail_query($table, $where); // Panggil fungsi get yang ada di UserModel.php
+	
+		if (empty($user->email_pelapor)) {
+			$error = "Username atau Password tidak valid";
+		} else {
+			$passwordl = sha1($password . $this->config->item('CMS_SALT_STRING'));
+			if ($user->password_pelapor != $passwordl) {
+				$error = "Username atau Password tidak valid";
 			}
 		}
-		#PAGIANTION
-		$jumlah_data = $this->Amodel->jumlah_data($keyword,$level_session);
-		$this->load->library('pagination');
-		$config['reuse_query_string'] = TRUE;
-		$config['base_url'] = base_url().'Aview/admin/';
-		$config['total_rows'] = $jumlah_data;
-		$config['per_page'] = 20;
-		$config['query_string_segment'] = 'start';
-		$config['full_tag_open'] = '<nav><ul class="pagination" style="margin-top:0px">';
-		$config['full_tag_close'] = '</ul></nav>';
-		$config['first_link'] = 'First';
-		$config['first_tag_open'] = '<li>';
-		$config['first_tag_close'] = '</li>';
-		$config['last_link'] = 'Last';
-		$config['last_tag_open'] = '<li>';
-		$config['last_tag_close'] = '</li>';
-		$config['next_link'] = 'Next';
-		$config['next_tag_open'] = '<li>';
-		$config['next_tag_close'] = '</li>';
-		$config['prev_link'] = 'Prev';
-		$config['prev_tag_open'] = '<li>';
-		$config['prev_tag_close'] = '</li>';
-		$config['cur_tag_open'] = '<li class="active"><a>';
-		$config['cur_tag_close'] = '</a></li>';
-		$config['num_tag_open'] = '<li>';
-		$config['num_tag_close'] = '</li>';
 
-		$from = $this->uri->segment(3);
-		//$keyword = $this->uri->segment(4);
-		$this->pagination->initialize($config);
-		$data['query'] = $this->Amodel->data($config['per_page'],$from,$level_session,$keyword);
-		$data['rows'] = $jumlah_data;
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Admin',$data);
-		$this->load->view("Com/Com-footer",$data);
+		if (empty($error)) {
+			$now = time();
 
+			$session = array(
+				'authenticated' => true, // Buat session authenticated dengan value true
+				'id' => $user->id_pelapor ,  // Buat session username
+				'email' => $user->email_pelapor,  // Buat session username
+				'nama' => $user->nama_pelapor, // Buat session authenticated
+				'hp_pelapor' => $user->hp_pelapor, // Buat session authenticated
+				'checkpoint' => 'web', // Buat session authenticated
+			);
+			$this->session->set_userdata($session); // Buat session sesuai $session
+		} else {
+			print $error;
+		}
 	}
 
-	public function Addadmin()
+	public function registerprocess()
 	{
-		$data['page'] = 15;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
+		$now = time();
+		$table = "pelapor";
+		$error = "";
 
-		$data['title'] = "Tambah akun admin";
-		$data['desc'] = " ";
-		$level = 1;
-		$data['amodel'] = $this->Amodel;
-		$data['level'] = $level;
-		$data['query'] = $this->Amodel->dataquery("admin_group",$level);
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Addadmin',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function Editadmin()
-	{
-		$data['page'] = 15;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$id = $this->uri->segment(3);
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
 
-		$data['title'] = "Edit akun admin";
-		$data['desc'] = " ";
+		if (empty($name) OR empty($email) OR empty($password) OR empty($passwordconf) OR empty($hp)  ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
 
-
-		$level_session = $this->session->userdata('level');
 		$where = array(
-			'adminId' => $id,
+			'email_pelapor' => $email
 		);
-		$data['amodel'] = $this->Amodel;
+		$checkduplicate = $this->Amodel->jumlahdata_query($table, $where);
+
+		if ($checkduplicate > 0) {
+			$error = "Email telah digunakan";
+		}
+
+		if (strlen($password) < 8) {
+			$error = "Password minimal memiliki 8 karakter";
+		}
+		if ($password != $passwordconf) {
+			$error = "Konfirmasi password tidak valid atau tidak sama";
+		}
+
+		$dirpic = '';
+		$imgfilename = '';
 
 
-		$data['query'] = $this->Amodel->dataquery("admin_group",$level_session);
-		$data['query2'] = $this->Amodel->Detail_query("admin",$where);
+		if (empty($error)) {
 
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Editadmin',$data);
-		$this->load->view("Com/Com-footer",$data);
+		}
+
+		if (empty($error)) {
+			$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
+			$data = array(
+				'email_pelapor' => $email,
+				'nama_pelapor' => $name,
+				'hp_pelapor' => $hp,
+				'password_pelapor' => $password,
+				'password_pelapor' => $password,
+				'statusemail_pelapor' => 'n',
+				'emailcode_pelapor'=>random_string('alnum','32'),
+			);
+
+			$this->Amodel->input($data, $table);
+			print "ok";
+
+		} else {
+			print $error;
+		}
 	}
-
-	public function Admingroup()
+	public function updatepelapor($id,$code)
 	{
-		$data['page'] = 11;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Admin Group";
-		$data['desc'] = "Halaman yang mengelola data admin group";
-		$data['amodel'] = $this->Amodel;
-
-		$level = $this->session->userdata('level');
-
-		$jumlah_data = $this->Amodel->jumlah_dataquery("groupId","admin_group");
-		$data['query'] = $this->Amodel->dataquery("admin_group",$level);
-		$data['rows'] = $jumlah_data;
+		$now = time();
+		$table = "pelapor";
+		$error = "";
 
 
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Admingroup',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function Addadmingroup()
-	{
-		$data['page'] = 11;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
 
-		$data['title'] = "Tambah akun admin group";
-		$data['desc'] = " ";
-		$data['amodel'] = $this->Amodel;
+		if (empty($code)    ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
 
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Addadmingroup',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function Editadmingroup()
-	{
-		$data['page'] = 11;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$id = $this->uri->segment(3);
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Edit admin group";
-		$data['desc'] = " ";
 		$where = array(
-			'groupId' => $id,
+			'id_pelapor' => $id,
+			'emailcode_pelapor'=>$code,
 		);
-		$data['amodel'] = $this->Amodel;
-		$data['amodel'] = $this->Amodel;
-		$data['querycat'] = $this->Amodel->Detail_query("admin_group",$where);
+		$user = $this->Amodel->Detail_query($table, $where); // Panggil fungsi get yang ada di UserModel.php
 
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Editadmingroup',$data);
-		$this->load->view("Com/Com-footer",$data);
+		if (empty($user)) {
+			$error = "Code Tidak Valid";
+		}
+
+		if (empty($error)) {
+			$where = array(
+				'statusemail_pelapor' => 'y',
+			);
+			$data = array(
+				'statusemail_pelapor' => 'y',
+			);
+			$this->Amodel->Update($table, $data, $where);
+			$session = array(
+				'authenticated' => true, // Buat session authenticated dengan value true
+				'id' => $user->id_pelapor ,  // Buat session username
+				'email' => $user->email_pelapor,  // Buat session username
+				'nama' => $user->nama_pelapor, // Buat session authenticated
+				'hp_pelapor' => $user->hp_pelapor, // Buat session authenticated
+				'checkpoint' => 'web', // Buat session authenticated
+			);
+			$this->session->set_userdata($session); // Buat session sesuai $session
+			header("location:" . base_url("Home/laporan"));
+
+		} else {
+			print $error;
+		}
 	}
-	public function adminMenu()
+	public function logout()
 	{
-		$data['page'] = 10;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Menu Admin";
-		$data['desc'] = " ";
-		$level = 1;
-		$data['amodel'] = $this->Amodel;
-		$sql="SELECT * FROM admin_menu_cat ORDER BY catSort ASC";
-		$data['query'] = $this->db->query($sql)->result();
-
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/adminmenu',$data);
-		$this->load->view("Com/Com-footer",$data);
+		$this->session->sess_destroy(); // Hapus semua session
+		header("location:" . base_url("Home"));
 	}
-	public function AddadminMenucategory()
-	{
-		$data['page'] = 10;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Tambah Menu Admin Category";
-		$data['desc'] = " ";
-
-
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/addadminmenucategory',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function EditadminMenucategory()
-	{
-		$data['page'] = 10;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Edit Menu Admin Category";
-		$data['desc'] = " ";
-
-		$id = $this->uri->segment(3);
-		$where = array(
-			'catId' => $id,
-		);
-		$data['query2'] = $this->Amodel->Detail_query("admin_menu_cat",$where);
-
-
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Editadminmenucategory',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function AddadminMenu()
-	{
-		$data['page'] = 11;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Tambah Menu Admin";
-		$data['desc'] = " ";
-		$level = 1;
-		$data['amodel'] = $this->Amodel;
-		$sql="SELECT * FROM admin_menu_cat ORDER BY catSort ASC";
-		$data['query'] = $this->db->query($sql)->result();
-
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Addadminmenu',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-	public function EditadminMenu()
-	{
-		$data['page'] = 10;
-		$data['parentpage'] = $this->Amodel->getval("catId","admin_menu","menuId={$data['page']}");
-		#DATA DEFAULT
-		$keyword = $this->input->post('keyword');
-		$data['projectname'] = $this->config->item('SITENAME_TITLE');
-		$data['projectnamelitte'] = $this->config->item('SITENAME_TITLE_LITTLE');
-
-		$data['title'] = "Edit Menu Admin ";
-		$data['desc'] = " ";
-		$data['amodel'] = $this->Amodel;
-
-		$id = $this->uri->segment(3);
-		$where = array(
-			'menuId' => $id,
-		);
-		$data['query2'] = $this->Amodel->Detail_query("admin_menu",$where);
-
-
-		#VIEW
-		$this->load->view("Com/Com-headadmin",$data);
-		$this->load->view("Com/Com-menuadmin",$data);
-		$this->load->view('Admin/Editadminmenu',$data);
-		$this->load->view("Com/Com-footer",$data);
-	}
-
 
 
 
 }
+

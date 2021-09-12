@@ -55,7 +55,7 @@
 							<div class="local-scroll">
 								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">DAFTAR</a>
 								<span class="hidden-xs">&nbsp;</span>
-								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
+								<a href="<?php print base_url('Home') ?>#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
 							</div>
 
 							<!-- End Headings -->
@@ -76,78 +76,18 @@
 	</section>
 	<!-- End Home Section -->
 
-	<!-- Some Facts Section -->
-	<section class="page-section" id="counts">
-		<div class="container relative">
 
-			<!-- Counters -->
-			<div class="row">
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						160
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-briefcase"></i>
-						<span class="count-title">Jumlah Laporan</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						150
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-heart"></i>
-						<span class="count-title">Laporan Selesai</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						10
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-coffee"></i>
-						<span class="count-title">Laporan Proses</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						0
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-lightbulb-o"></i>
-						<span class="count-title">Laporan Palsu</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-			</div>
-			<!-- End Counters -->
-
-		</div>
-	</section>
-	<!-- End Some Facts Section -->
 
 	<!-- Some Facts Section -->
-	<section class="page-section padding-section " id="signin" style="padding-top: 40px;padding-bottom: 40px;">
+	<section class="page-section padding-section " id="register" style="padding-top: 40px;padding-bottom: 40px;">
 		<div class="container relative">
 			<!-- Section Headings -->
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 					<div class="section-title">
-						Sign In<span class="st-point">.</span>
+						Register<span class="st-point">.</span>
 					</div>
-					<h2 class="section-heading">175 hours of working time</h2>
+					<h2 class="section-heading">Setelah Melakukan Pendaftaran Harap untuk melakukan Verifikasi Email Anda</h2>
 					<div class="section-line mb-60 mb-xxs-30">
 					</div>
 				</div>
@@ -155,30 +95,37 @@
 			<!-- End Section Headings -->
 			<!-- Counters -->
 			<!-- Row -->
-
 			<div class="row">
 				<div class="col-sm-12 ">
 					<div class="alert error" role="alert" id="result" style="display:none;"></div>
 				</div>
 
-
-
 				<div class="col-sm-4 mb-40">
 				</div>
 				<div class="col-sm-4 mb-40">
-
 					<!-- Form -->
-					<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form" class="form" >
+					<form method="post" action="<?php echo base_url('register/proses'); ?>" id="form" role="form" class="form">
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100" required>
+							<input type="text" name="name" id="name" class="form-control" placeholder="Nama Pelapor" maxlength="100">
+						</div>
+						<div class="mb-20 mb-md-10">
+							<!-- Email -->
+							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100" required>
+							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100">
 						</div>
-						<center><button class="btn btn-mod btn-border btn-large" type="submit">Sign In</button></center>
-
+						<div class="mb-20 mb-md-10">
+							<!-- Password -->
+							<input type="password" name="passwordconf" id="passwordconf" class="form-control" placeholder="Confirmasi Password" maxlength="100">
+						</div>
+						<div class="mb-20 mb-md-10">
+							<!-- Email -->
+							<input type="text" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda" maxlength="100">
+						</div>
+						<center><button class="btn btn-mod btn-border btn-large" type="submit">Register</button></center>
 					</form>
 					<!-- End Form -->
 				</div>
@@ -191,8 +138,14 @@
 		</div>
 	</section>
 	<!-- End Some Facts Section -->
+
+
+
+
+
 </div>
 <!-- End Page Wrap -->
+
 
 <!-- Foter -->
 <footer class="small-section bg-dark footer">
@@ -266,7 +219,7 @@
 <script>
 	$(function() {
 		$('#result').hide();
-		validate('#result','#form','<?php echo base_url('Home/laporan#laporan'); ?>');
+		validate('#result','#form','<?php echo base_url('Home/suksesregister#success'); ?>');
 	});
 </script>
 
