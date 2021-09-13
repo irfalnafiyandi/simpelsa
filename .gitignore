@@ -33,5 +33,5 @@ user_guide_src/cilexer/pycilexer.egg-info/*
 
 
 assets/image
-application/config/
+application/config
 
