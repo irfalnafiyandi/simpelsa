@@ -282,5 +282,15 @@ class Amodel extends CI_Model
 
 	}
 
+	public function save($field){
+		$this->db->insert('pelapor', $field);
+		if($this->db->affected_rows() > 0){
+			$insert_id = $this->db->insert_id();
+			return $insert_id;
+		}else{
+			return false;
+		}
+	}
+
 
 }

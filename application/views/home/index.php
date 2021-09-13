@@ -1,29 +1,4 @@
 
-<!-- Navigation panel -->
-<div class="nav-bar-compact clearfix">
-	<!-- Logo ( * your text or image into link tag *) -->
-	<div class="nbc-logo-wrap local-scroll">
-		<a href="#top" class="nbc-logo">
-			SIMPELSA
-		</a>
-	</div>
-
-	<!-- Menu Button -->
-	<div class="nbc-menu-button">
-		<i class="nbc-menu-icon"></i>
-	</div>
-
-	<!-- Menu Links -->
-	<nav class="nbc-menu-wrap">
-		<ul class="nbc-menu-links local-scroll">
-			<li>
-				<a href="<?php print base_url('Home') ?>">Home</a>
-			</li>
-
-		</ul>
-	</nav>
-</div>
-<!-- End Navigation panel -->
 
 <!-- Page Wrap -->
 <div class="page" id="top">
@@ -49,11 +24,11 @@
 							</h1>
 
 							<h2 class="hs-line-9 mb-40 mb-xs-20">
-								SISTEM PELAPORAN SAMPAH
+								APLIKASI PELAPORAN SAMPAH
 							</h2>
 
 							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">DAFTAR</a>
+								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">REGISTER</a>
 								<span class="hidden-xs">&nbsp;</span>
 								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
 							</div>
@@ -201,7 +176,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy; SIMPELSA <span class="number">2021</span></a>
+				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
 			</div>
 			<!-- End Copyright -->
 			<div class="footer-made">

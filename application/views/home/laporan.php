@@ -1,120 +1,88 @@
-<!-- Navigation panel -->
-<div class="nav-bar-compact clearfix">
-	<!-- Logo ( * your text or image into link tag *) -->
-	<div class="nbc-logo-wrap local-scroll">
-		<a href="#top" class="nbc-logo">
-			SIMPELSA
-		</a>
-	</div>
-
-	<!-- Menu Button -->
-	<div class="nbc-menu-button">
-		<i class="nbc-menu-icon"></i>
-	</div>
-
-	<!-- Menu Links -->
-	<nav class="nbc-menu-wrap">
-		<ul class="nbc-menu-links local-scroll">
-			<li>
-				<a href="<?php print base_url('Home') ?>">Home</a>
-			</li>
-			<?php
-			if($session->userdata('id')){
-				?>
-				<li>
-					<a href="<?php print base_url('Logout') ?>">Sign Out</a>
-				</li>
-				<?php
-
-			}
-
-			?>
 
 
-		</ul>
-	</nav>
-</div>
-<!-- End Navigation panel -->
 
 <!-- Page Wrap -->
 <div class="page" id="top">
-	<!-- Home Section -->
-	<section class="home-section bg-dark parallax-3" data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
-		<div class="js-height-full" id="large-header">
-			<!-- Canvas Animation -->
-			<canvas id="demo-canvas"></canvas>
-			<!-- Home Page Content -->
-			<div class="ah-content">
-				<div class="home-content">
-					<div class="home-text animate-init" data-anim-type="fade-in-up-big" data-anim-delay="100">
-						<div class="container">
-							<!-- Headings -->
-							<h1 class="hs-line-8  mb-30 mb-xs-10">
-								Hello <span class="serif">&</span>
-								Welcome
-							</h1>
 
-							<h2 class="hs-line-9 mb-40 mb-xs-20">
-								SISTEM PELAPORAN SAMPAH
-							</h2>
-							<!-- End Headings -->
-						</div>
-					</div>
-				</div>
+
+	<!-- Home Section -->
+	<section class="page-section bg-dark-alfa-90" >
+		<div class="container relative">
+
+			<div class="align-center">
+
+
+
+				<h3 class="small-title white">
+
+					LAPORAN ANDA AKAN LANGSUNG KAMI PROSES PADA SAAT LAPORAN TELAH MASUK
+
+				</h3>
+
 			</div>
-			<!-- End Home Page Content -->
-			<!-- Scroll Down -->
-			<div class="local-scroll">
-				<a href="#about" class="scroll-down"><i class="scroll-down-icon"></i><span>Scroll Down</span></a>
-			</div>
-			<!-- End Scroll Down -->
+
 		</div>
 	</section>
 	<!-- End Home Section -->
 
-	<!-- Some Facts Section -->
-	<section class="page-section padding-section " id="laporan" style="padding-top: 40px;padding-bottom: 40px;">
+
+
+
+
+	<!-- Content Section -->
+	<section class="small-section">
 		<div class="container relative">
-			<!-- Section Headings -->
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-					<div class="section-title">
-						Buat Laporan<span class="st-point">.</span>
-					</div>
-					<h2 class="section-heading">175 hours of working time</h2>
-					<div class="section-line mb-60 mb-xxs-30">
-					</div>
+
+
+
+			<!-- Blog Posts Grid -->
+			<div class="row multi-columns-row">
+				<div class="col-sm-6 col-md-4 col-lg-4">
 				</div>
-			</div>
-			<!-- End Section Headings -->
-			<!-- Counters -->
-			<!-- Row -->
-			<div class="row">
-				<div class="col-sm-4 mb-40">
-				</div>
-				<div class="col-sm-4 mb-40">
-					<div class="alert alert-danger" role="alert" id="result" style="display:;"></div>
+				<div class="col-sm-6 col-md-4 col-lg-4">
+					<div class="col-sm-12 ">
+						<div class="alert error" role="alert" id="result" style="display:none;"></div>
+						<?php echo $this->session->flashdata('pesan'); ?>
+					</div>
 					<!-- Form -->
-					<form method="post" action="#" id="form" role="form" class="form">
+					<form method="post" action="<?php echo base_url('laporan/proses'); ?>" id="form" role="form" class="form">
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
+							<div id="image_preview" style="font-size: 100px;"><div id="previewing"><center><i class="fa fa-camera-retro " ></i></center></div></div>
+							<label>Foto Laporan Anda</label>
+							<input type="file" name="file" id="file" class="form-control"  accept="image/jpeg" capture="camera">
 						</div>
 						<div class="mb-20 mb-md-10">
-							<!-- Password -->
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100">
+							<!-- Email -->
+							<textarea name="note" id="note" class="form-control" placeholder="Deskripsi Laporan" rows="15" cols="15" style="text-transform: none !important;"></textarea>
+							<input type="hidden" name="latitude" id="Latitude">
+							<input type="hidden" name="longitude" id="Longitude">
 						</div>
+
+						<center><button class="btn btn-mod btn-border btn-large" type="submit">Buat Laporan</button></center>
 					</form>
 					<!-- End Form -->
 				</div>
-				<div class="col-sm-4 mb-40">
+				<div class="col-sm-6 col-md-4 col-lg-4">
 				</div>
+
+
+
+
 			</div>
-			<!-- End Row -->
-			<!-- End Counters -->
+			<!-- End Blog Posts Grid -->
+
+
+
 		</div>
 	</section>
-	<!-- End Some Facts Section -->
+	<!-- End Content Section -->
+
+
+
+
+
+
 </div>
 <!-- End Page Wrap -->
 
@@ -125,7 +93,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy; SIMPELSA <span class="number">2021</span></a>
+				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
 			</div>
 			<!-- End Copyright -->
 			<div class="footer-made">
@@ -151,6 +119,7 @@
 </div>
 <div class="body-masked">
 </div>
+<div id="map"></div>
 <!-- End Works Expander -->
 
 
@@ -185,12 +154,102 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/TweenLite.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/EasePack.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
-<script src="<?php print base_url(); ?>assets/web/js/animated-headers/demo-1.js"></script>
+
+<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+<!-- GOOGLE MAPS API -->
+
+<script>
+	// Note: This example requires that you consent to location sharing when
+	// prompted by your browser. If you see the error "The Geolocation service
+	// failed.", it means you probably did not give permission for the browser to
+	// locate you.
+	function initMap() {
+		var map = new google.maps.Map(document.getElementById('map'), {
+			center: {
+				lat: -34.397
+				, lng: 150.644
+			}
+			, zoom: 6
+		});
+		var infoWindow = new google.maps.InfoWindow({
+			map: map
+		});
+		// Try HTML5 geolocation.
+		if (navigator.geolocation) {
+			navigator.geolocation.getCurrentPosition(function (position) {
+				var pos = {
+					lat: position.coords.latitude
+					, lng: position.coords.longitude
+				};
+				infoWindow.setPosition(pos);
+				infoWindow.setContent('Location found.');
+				document.getElementById("Latitude").value = position.coords.latitude;
+				document.getElementById("Longitude").value = position.coords.longitude;
+				map.setCenter(pos);
+			}, function () {
+				handleLocationError(true, infoWindow, map.getCenter());
+			});
+		}
+		else {
+			// Browser doesn't support Geolocation
+			handleLocationError(false, infoWindow, map.getCenter());
+		}
+	}
+
+	function handleLocationError(browserHasGeolocation, infoWindow, pos) {
+		infoWindow.setPosition(pos);
+		infoWindow.setContent(browserHasGeolocation ? 'Error: The Geolocation service failed.' : 'Error: Your browser doesn\'t support geolocation.');
+	}
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHuH2XwfvBYOhZGqpC2wOjP4LjBCN7J60&callback=initMap">
+</script>
+
+
+<!-- jQuery -->
 
 <script>
 	$(function() {
 		$('#result').hide();
-		validate('#result','#form','<?php echo base_url('Home/laporan#laporan'); ?>');
+		validate('#result','#form','<?php echo base_url('Home/laporan'); ?>');
+	});
+
+
+
+	$(document).ready(function (e) {
+
+		// Function to preview image after validation
+		$(function() {
+			$("#file").change(function() {
+
+				$("#message").empty(); // To remove the previous error message
+				var file = this.files[0];
+				var imagefile = file.type;
+				var match= ["image/jpeg","image/png","image/jpg"];
+				if(!((imagefile==match[0]) || (imagefile==match[1]) || (imagefile==match[2])))
+				{
+					alert('123');
+					$('#previewing').attr('src','noimage.png');
+					$("#message").html("<p id='error'>Please Select A valid Image File</p>"+"<h4>Note</h4>"+"<span id='error_message'>Only jpeg, jpg and png Images type allowed</span>");
+					return false;
+
+				}
+				else
+				{
+
+					var reader = new FileReader();
+					reader.onload = imageIsLoaded;
+					reader.readAsDataURL(this.files[0]);
+				}
+			});
+		});
+		function imageIsLoaded(e) {
+
+
+			$('#image_preview').css("display", "block");
+			$('#previewing').attr('src', e.target.result);
+			$('#previewing').attr('width', '250px');
+			$('#previewing').attr('height', '230px');
+		};
 	});
 </script>
 

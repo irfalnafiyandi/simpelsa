@@ -4,7 +4,7 @@
 	<!-- Logo ( * your text or image into link tag *) -->
 	<div class="nbc-logo-wrap local-scroll">
 		<a href="#top" class="nbc-logo">
-			SIMPELSA
+			APPLESA
 		</a>
 	</div>
 
@@ -48,7 +48,7 @@
 							</h1>
 
 							<h2 class="hs-line-9 mb-40 mb-xs-20">
-								SISTEM PELAPORAN SAMPAH
+								APLIKASI PELAPORAN SAMPAH
 							</h2>
 
 							<div class="local-scroll">
@@ -106,7 +106,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy; SIMPELSA <span class="number">2021</span></a>
+				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
 			</div>
 			<!-- End Copyright -->
 			<div class="footer-made">
