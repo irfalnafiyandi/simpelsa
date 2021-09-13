@@ -225,7 +225,7 @@ class Home extends CI_Controller {
 
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
-			$mail->Host       = 'smtp.googlemail.com';
+			$mail->Host 		= "ssl://smtp.gmail.com";
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
 			$mail->Password   = '@admin123'; // ubah dengan password email Anda
