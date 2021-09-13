@@ -28,9 +28,9 @@
 							</h2>
 
 							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">REGISTER</a>
+								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 ">REGISTER</a>
 								<span class="hidden-xs">&nbsp;</span>
-								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
+								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 ">SIGN IN</a>
 							</div>
 
 							<!-- End Headings -->
