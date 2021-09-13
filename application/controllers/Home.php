@@ -94,6 +94,7 @@ class Home extends CI_Controller {
 	public function suksesregister()
 	{
 		$data['title'] = "Sukses Register";
+		$data['session'] = $this->session;
 		#VIEW
 		$this->load->view('webcom/com-head',$data);
 		$this->load->view('webcom/com-nav',$data);
@@ -223,7 +224,7 @@ class Home extends CI_Controller {
 
 			$mail = new PHPMailer(true);
 
-			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
 			$mail->Host 		= "ssl://smtp.gmail.com";
 			$mail->SMTPAuth   = true;
@@ -241,15 +242,18 @@ class Home extends CI_Controller {
 			$mail->Subject = $subject;
 			$mail->Body    = $message;
 			$mail->send();
-
-
-
-
-
-
-
-
 			print "ok";
+
+
+
+
+
+
+
+
+
+
+
 
 		}
 	}

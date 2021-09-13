@@ -50,7 +50,7 @@
 							<!-- Email -->
 							<div id="image_preview" style="font-size: 100px;"><div id="previewing"><center><i class="fa fa-camera-retro " ></i></center></div></div>
 							<label>Foto Laporan Anda</label>
-							<input type="file" name="file" id="file" class="form-control"  accept="image/jpeg" capture="camera">
+							<input type="file" name="file" id="file" class="form-control"  >
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
