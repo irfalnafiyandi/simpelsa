@@ -1,10 +1,9 @@
-
-
 <!-- Page Wrap -->
 <div class="page" id="top">
 
 	<!-- Home Section -->
-	<section class="home-section bg-dark parallax-3" data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
+	<section class="home-section bg-dark parallax-3"
+			 data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
 		<div class="js-height-full" id="large-header">
 
 			<!-- Canvas Animation -->
@@ -27,10 +26,24 @@
 								APLIKASI PELAPORAN SAMPAH
 							</h2>
 
+
 							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 ">REGISTER</a>
-								<span class="hidden-xs">&nbsp;</span>
-								<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 ">SIGN IN</a>
+								<?php
+								if ($session->userdata('id')) {
+
+
+								} else {
+									?>
+									<a href="<?php print base_url('Home/register') ?>#register"
+									   class="btn btn-mod btn-w btn-large mb-xxs-10 ">REGISTER</a>
+									<span class="hidden-xs">&nbsp;</span>
+									<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 ">SIGN IN</a>
+									<?php
+
+								}
+
+								?>
+
 							</div>
 
 							<!-- End Headings -->
@@ -117,16 +130,41 @@
 	<section class="page-section padding-section " id="signin" style="padding-top: 40px;padding-bottom: 40px;">
 		<div class="container relative">
 			<!-- Section Headings -->
-			<div class="row">
-				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-					<div class="section-title">
-						Sign In<span class="st-point">.</span>
-					</div>
-					<h2 class="section-heading">175 hours of working time</h2>
-					<div class="section-line mb-60 mb-xxs-30">
+
+			<?php
+
+			if (empty($session->userdata('id'))) {
+				?>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+						<div class="section-title">
+							Sign In<span class="st-point">.</span>
+						</div>
+						<h2 class="section-heading">175 hours of working time</h2>
+						<div class="section-line mb-60 mb-xxs-30">
+						</div>
 					</div>
 				</div>
-			</div>
+				<?php
+
+			}else{
+				?>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+						<div class="section-title">
+							Laporkan jika anda menemukan  penumpukan sampah<span class="st-point">.</span>
+						</div>
+						<h2 class="section-heading">175 hours of working time</h2>
+						<div class="section-line mb-60 mb-xxs-30">
+						</div>
+					</div>
+				</div>
+				<?php
+
+			}
+			?>
+
+
 			<!-- End Section Headings -->
 			<!-- Counters -->
 			<!-- Row -->
@@ -137,25 +175,43 @@
 				</div>
 
 
-
 				<div class="col-sm-4 mb-40">
 				</div>
 				<div class="col-sm-4 mb-40">
+					<?php
+					if ($session->userdata('id')) {
+						?>
+						<center>
+							<a href="<?php print base_url('laporan') ?>" class="btn btn-mod btn-border btn-large" >Lapor Sampah</a>
+						</center>
+						<?php
+					} else {
+						?>
+						<!-- Form -->
+						<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form"
+							  class="form">
+							<div class="mb-20 mb-md-10">
+								<!-- Email -->
+								<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+									   maxlength="100" required>
+							</div>
+							<div class="mb-20 mb-md-10">
+								<!-- Password -->
+								<input type="password" name="password" id="password" class="form-control"
+									   placeholder="Password" maxlength="100" required>
+							</div>
+							<center>
+								<button class="btn btn-mod btn-border btn-large" type="submit">Sign In</button>
+							</center>
 
-					<!-- Form -->
-					<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form" class="form" >
-						<div class="mb-20 mb-md-10">
-							<!-- Email -->
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100" required>
-						</div>
-						<div class="mb-20 mb-md-10">
-							<!-- Password -->
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100" required>
-						</div>
-						<center><button class="btn btn-mod btn-border btn-large" type="submit">Sign In</button></center>
+						</form>
+						<!-- End Form -->
+						<?php
+					}
 
-					</form>
-					<!-- End Form -->
+					?>
+
+
 				</div>
 				<div class="col-sm-4 mb-40">
 				</div>
@@ -239,9 +295,9 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/demo-1.js"></script>
 
 <script>
-	$(function() {
+	$(function () {
 		$('#result').hide();
-		validate('#result','#form','<?php echo base_url('Home/laporan#laporan'); ?>');
+		validate('#result', '#form', '<?php echo base_url('Home/laporan#laporan'); ?>');
 	});
 </script>
 

@@ -1,90 +1,37 @@
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/bootstrap/css/bootstrap.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
 
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/css/skins/_all-skins.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/plugins/bootstrap-datepicker2/css/datepicker3.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/css/AdminLTE.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/css/style-custom.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/chosen/chosen.css">
-<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/fancybox/jquery.fancybox.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
-<!--<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />-->
+<link rel="shortcut icon" href="<?php print base_url() ?>assets/admin/images/favicon.ico">
 
+<!--Morris Chart CSS -->
+<link rel="stylesheet" href="<?php print base_url() ?>assets/admin/plugins/morris/morris.css">
 
+<link href="<?php print base_url() ?>assets/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="<?php print base_url() ?>assets/admin/css/icons.css" rel="stylesheet" type="text/css">
+<link href="<?php print base_url() ?>assets/admin/css/style.css" rel="stylesheet" type="text/css">
 
+<!-- jQuery  -->
+<script src="<?php print base_url() ?>assets/admin/js/jquery.min.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/bootstrap.bundle.min.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/modernizr.min.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/detect.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/fastclick.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/jquery.slimscroll.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/jquery.blockUI.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/waves.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/jquery.nicescroll.js"></script>
+<script src="<?php print base_url() ?>assets/admin/js/jquery.scrollTo.min.js"></script>
 
-<!-- <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> -->
-<!-- Bootstrap 3.3.6 -->
-<script src="<?php print base_url(); ?>assets/plugins/jQuery/jquery-2.2.3.min.js"></script>
-<script src="<?php print base_url(); ?>assets/style/bootstrap/js/bootstrap.min.js"></script>
-<script src="<?php print base_url(); ?>assets/plugins/datatables/jquery.dataTables.js"></script>
-<script src="<?php print base_url(); ?>assets/plugins/datatables/dataTables.bootstrap.js"></script>
-<!-- FastClick -->
-<script src="<?php print base_url(); ?>assets/plugins/fastclick/fastclick.js"></script>
-<!-- AdminLTE App -->
-<script src="<?php print base_url(); ?>assets/style/js/app.min.js"></script>
-<!-- Sparkline -->
-<script src="<?php print base_url(); ?>assets/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="<?php print base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?php print base_url(); ?>assets/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- SlimScroll 1.3.0 -->
-<script src="<?php print base_url(); ?>assets/plugins/slimScroll/jquery.slimscroll.min.js"></script>
-<!-- ChartJS 1.0.1 -->
-<script src="<?php print base_url(); ?>assets/plugins/chartjs/Chart.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<!-- <script src="<?php print base_url(); ?>assets/style/js/pages/dashboard2.js"></script> -->
-<!-- AdminLTE for demo purposes -->
-<script src="<?php print base_url(); ?>assets/plugins/bootstrap-datepicker2/js/bootstrap-datepicker.js"></script>
-<script src="<?php print base_url(); ?>assets/style/js/demo.js"></script>
-<script src="<?php print base_url(); ?>assets/style/chosen/chosen.jquery.js"></script>
-<script src="<?php print base_url(); ?>assets/style/fancybox/jquery.fancybox.min.js"></script>
-<script src="<?php print base_url(); ?>assets/style/js/validate.js"></script>
+<!-- skycons -->
+<script src="<?php print base_url() ?>assets/admin/plugins/skycons/skycons.min.js"></script>
 
-<!--<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>-->
+<!-- skycons -->
+<script src="<?php print base_url() ?>assets/admin/plugins/peity/jquery.peity.min.js"></script>
 
+<!--Morris Chart-->
+<script src="<?php print base_url() ?>assets/admin/plugins/morris/morris.min.js"></script>
+<script src="<?php print base_url() ?>assets/admin/plugins/raphael/raphael-min.js"></script>
 
-<script type="text/javascript">
-	jQuery(document).ready(function($){
+<!-- dashboard -->
+<script src="<?php print base_url() ?>assets/admin/pages/dashboard.js"></script>
 
-
-		$(".datepickerdate").datepicker({
-			//startDate: '<?php echo date('d') ?>/<?php echo date('m') ?>/<?php echo date('Y') ?>',
-			format: 'dd/mm/yyyy',
-			todayHighlight: true,
-			toggleActive: true,
-			autoclose: true
-		});
-
-		$('#example1').DataTable();
-
-		var config = {
-			'.chosen-select'           : {},
-			'.chosen-select-deselect'  : { allow_single_deselect: true },
-			'.chosen-select-rtl'       : { rtl: true },
-			'.chosen-select-width'     : { width: '95%' }
-		}
-		for (var selector in config) {
-			$(selector).chosen(config[selector]);
-		}
-
-		$('[data-toggle="tooltip"]').tooltip();
-		// $('.chosen-select').select2();
-
-
-
-
-
-
-	});
-</script>
-<style>
-	.chosen-select {
-		width: 100% !important;
-	}
-	.chosen-container {
-		width: 100% !important;
-	}
-</style>
+<!-- App js -->
+<script src="<?php print base_url() ?>assets/admin/js/app.js"></script>

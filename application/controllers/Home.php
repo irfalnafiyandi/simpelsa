@@ -34,6 +34,7 @@ class Home extends CI_Controller {
 		parent::__construct();
 		$this->load->model('Amodel');
 		$this->load->helper('string');
+		$this->load->helper('menu_helper');
 		#SESSION DATA
 		$this->id = $this->session->userdata('id');
 		$this->nama = $this->session->userdata('nama');
@@ -47,9 +48,9 @@ class Home extends CI_Controller {
     {
 
 
-		if(!empty($this->nama) AND !empty($this->email)  AND !empty($this->checkpoint) ){
+		/*if(!empty($this->nama) AND !empty($this->email)  AND !empty($this->checkpoint) ){
 			header("location:" . base_url("Home/laporan#laporan"));
-		}
+		}*/
 
 		$data['title'] = "Home";
 		$data['session'] = $this->session;
@@ -87,6 +88,57 @@ class Home extends CI_Controller {
 		$this->load->view('webcom/com-head',$data);
 		$this->load->view('webcom/com-nav',$data);
 		$this->load->view('home/laporan',$data);
+
+
+	}
+
+	public function laporanlist()
+	{
+
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+
+
+		$data['title'] = "Laporan Anda";
+		$data['session'] = $this->session;
+		$sql="SELECT * FROM laporan_sampah WHERE id_member='$this->id' ORDER BY tanggal_laporan ASC";
+		$data['query'] = $this->db->query($sql)->result();
+
+
+
+
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/laporanlist',$data);
+
+
+	}
+	public function laporanget()
+	{
+		$id = "";
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+		foreach ($this->input->get() as $key => $value) {
+			$$key = $value;
+		}
+
+		if(empty($nolap)){
+			print "<div>Laporan Tidak Ditemukan</div>";
+		}else{
+			$where = array(
+				'id_laporan' => $nolap,
+			);
+			$laporan = $this->Amodel->Detail_query("laporan_sampah", $where); // Panggil fungsi get yang ada di UserModel.php
+			$this->load->view('home/getlaporan',$laporan);
+
+
+		}
+
+
 
 
 	}

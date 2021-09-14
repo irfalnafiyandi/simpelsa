@@ -19,16 +19,29 @@
 			<li>
 				<a href="<?php print base_url('Home') ?>">Home</a>
 			</li>
+			<li>
+				<a href="<?php print base_url('Home') ?>">Tentang Kami</a>
+			</li>
 			<?php
 			if($session->userdata('id')){
 				?>
 				<li>
-					<a href="<?php print base_url('Home') ?>">Buat Laporan</a>
+					<a href="<?php print base_url('laporan') ?>">Buat Laporan</a>
+				</li>
+				<li>
+					<a href="<?php print base_url('laporanlist') ?>">Laporan Anda</a>
 				</li>
 				<li>
 					<a href="<?php print base_url('logout') ?>">Keluar</a>
 				</li>
 				<?php
+			}else{
+				?>
+				<li>
+					<a href="<?php print base_url('register') ?>">Register</a>
+				</li>
+				<?php
+
 			}
 
 

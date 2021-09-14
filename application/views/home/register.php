@@ -89,6 +89,10 @@
 							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
+							<!-- Email -->
+							<input type="text" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda" maxlength="100">
+						</div>
+						<div class="mb-20 mb-md-10">
 							<!-- Password -->
 							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100">
 						</div>
@@ -96,10 +100,7 @@
 							<!-- Password -->
 							<input type="password" name="passwordconf" id="passwordconf" class="form-control" placeholder="Confirmasi Password" maxlength="100">
 						</div>
-						<div class="mb-20 mb-md-10">
-							<!-- Email -->
-							<input type="text" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda" maxlength="100">
-						</div>
+
 						<center><button class="btn btn-mod btn-border btn-large" type="submit">Register</button></center>
 					</form>
 					<!-- End Form -->

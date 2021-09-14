@@ -53,10 +53,16 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-
+$route['laporan'] = 'Home/laporan';
+$route['laporanlist'] = 'Home/laporanlist';
+$route['getlaporan'] = 'Home/laporanget';
 $route['login/proses'] = 'Home/loginprocess';
 $route['register/proses'] = 'Home/registerprocess';
 $route['laporan/proses'] = 'Home/laporanproses';
 $route['logout'] = 'Home/logout';
 
 $route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
+
+
+$route['admin'] = 'Admin';
+
