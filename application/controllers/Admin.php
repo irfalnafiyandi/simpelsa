@@ -333,7 +333,6 @@ class Admin extends CI_Controller
 
 		}
 	}
-
 	public function adminedit($id){
 		if(empty($this->id) OR empty($this->admin_username)){
 			header("location:" . base_url('adminlogout'));
@@ -444,7 +443,6 @@ class Admin extends CI_Controller
 
 		}
 	}
-
 	public function deleteadmin($id)
 	{
 		$now = time();
@@ -472,9 +470,11 @@ class Admin extends CI_Controller
 			header("location:" . base_url('adminlogout'));
 		}
 
-		$data['title'] = "Admin";
+		$data['title'] = "Laporan Sampah";
 		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
 		$data['query'] = $this->db->query($sql)->result();
+
+
 
 
 		#VIEW
@@ -488,7 +488,427 @@ class Admin extends CI_Controller
 
 
 	}
+	public function laporanverifikasi($id){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
 
+		$data['title'] = "Verifikasi Laporan";
+		$table= "laporan_sampah";
+
+
+
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$data['detail'] = $this->db->query($sql)->first_row();
+
+
+
+
+
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/laporanverifikasi',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function laporandetail($id){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+		$data['title'] = "Detail Laporan";
+		$table= "laporan_sampah";
+
+
+
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$data['detail'] = $this->db->query($sql)->first_row();
+
+
+
+
+
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/detaillaporan',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function laporanverifikasiupdate()
+	{
+		$now = time();
+		$table = "laporan_sampah";
+		$error = "";
+
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+
+		if (empty($id)  ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}else{
+
+
+
+			$where = array(
+				'id_laporan' => $id,
+
+			);
+			$checkduplicatehp = $this->Amodel->jumlahdata_query($table, $where);
+
+
+			if ($checkduplicatehp == 0) {
+				$error = "Laporan Tidak Ditemukan";
+			}
+
+		}
+
+
+
+		if ($error) {
+			echo "<span class='pl-4'>".$error."</span>";
+		} else {
+
+
+			$where = array(
+				'id_laporan' => $id,
+			);
+			$data = array(
+				'status_laporan' => 'p',
+			);
+
+			$id = $this->Adminmodel->Update($table, $data, $where);
+			print "ok";
+
+		}
+	}
+	public function laporanupdatestatus($id){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+		$data['title'] = "Update Laporan";
+		$table= "laporan_sampah";
+
+
+
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$data['detail'] = $this->db->query($sql)->first_row();
+
+
+
+
+
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/updatestatuslaporan',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function laporanupdatestatusupdate()
+	{
+		$now = time();
+		$table = "laporan_sampah";
+		$error = "";
+
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+
+		if (empty($id)  ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}else{
+
+
+
+			$where = array(
+				'id_laporan' => $id,
+
+			);
+			$checkduplicatehp = $this->Amodel->jumlahdata_query($table, $where);
+
+
+			if ($checkduplicatehp == 0) {
+				$error = "Laporan Tidak Ditemukan";
+			}
+
+		}
+
+
+
+		if ($error) {
+			echo "<span class='pl-4'>".$error."</span>";
+		} else {
+
+			if(isset($_FILES['file'])){
+				$this->load->library('upload');
+				$nmfile = "laporanupdate_" . time();
+				$config['upload_path'] = './assets/laporan/';
+				$config['allowed_types'] = 'gif|jpg|png|jpeg|bmp';
+				$config['max_size'] = '13072'; //maksimum besar file 3M
+				$config['max_width'] = '15000'; //lebar maksimum 5000 px
+				$config['max_height'] = '15000'; //tinggi maksimu 5000 px
+				$config['file_name'] = $nmfile; //nama yang terupload nantinya
+
+				$this->upload->initialize($config);
+
+				if ($_FILES['file']['name']) {
+					if ($this->upload->do_upload('file')) {
+						$gbr = $this->upload->data();
+						$namefile = $gbr['file_name'];
+					}
+				}
+			}
+
+
+			$where = array(
+				'id_laporan' => $id,
+			);
+			$data = array(
+				'status_laporan' => 'y',
+				'tanggal_verifikasi'=>date('Y-m-d H:i:s'),
+				'foto_verifikasi' => $namefile,
+			);
+
+			$id = $this->Adminmodel->Update($table, $data, $where);
+			print "ok";
+
+		}
+	}
+
+	public function cetaklaporan(){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+		$data['title'] = "Cetak Laporan";
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/cetaklaporan',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function cetaklaporanstore(){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+
+		$now = time();
+		$table = "laporan_sampah";
+		$error = "";
+
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+		$data['title'] = "Cetak Laporan";
+
+
+
+		$mulai = $tahun.'-'.$bulan.'-01';
+		$sampai = $tahun.'-'.$bulan.'-31';
+
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where tanggal_laporan between $mulai and $sampai ORDER BY id_laporan DESC";
+		$data['query'] = $this->db->query($sql)->result();
+
+
+
+
+
+
+		$this->load->library('pdf');
+		$this->pdf->setPaper('A4', 'potrait');
+
+		$this->pdf->filename = "laporan.pdf";
+
+
+
+		$this->pdf->load_view('admin/cetak',$data);
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+
+
+
+	}
+
+
+
+	public function pelapor(){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+		$data['title'] = "Pelapor";
+		$sql="SELECT * FROM pelapor  ORDER BY id_pelapor DESC";
+		$data['query'] = $this->db->query($sql)->result();
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/pelapor',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function pelaporedit($id){
+		if(empty($this->id) OR empty($this->admin_username)){
+			header("location:" . base_url('adminlogout'));
+		}
+
+		$data['title'] = "Edit Pelapor";
+		$table= "pelapor";
+
+		$where = array(
+			'id_pelapor' => $id,
+		);
+		$detail = $this->Adminmodel->Detail_query($table, $where); // Panggil fungsi get yang ada di UserModel.php
+		$data['detail'] = $detail;
+
+
+
+		#VIEW
+		#$this->load->view('com/com-head',$data);
+
+		$this->load->view('com/com-head',$data);
+		$this->load->view('com/com-menu',$data);
+		$this->load->view('com/com-nav',$data);
+		$this->load->view('admin/pelaporedit',$data);
+		$this->load->view('com/com-footer',$data);
+
+
+	}
+	public function pelaporupdate()
+	{
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+
+		if (empty($nama)  OR empty($hp)   OR empty($id)  ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}else{
+
+
+
+			$where = array(
+				'hp_pelapor' => $hp,
+				'id_pelapor !=' => $id,
+			);
+			$checkduplicatehp = $this->Amodel->jumlahdata_query($table, $where);
+
+			if ($checkduplicatehp > 0) {
+				$error = "No Hp telah digunakan";
+			}
+			if($password){
+				if (strlen($password) < 8) {
+					$error = "Password minimal memiliki 8 karakter";
+				}
+				if ($password != $passwordkonf) {
+					$error = "Konfirmasi password tidak valid atau tidak sama";
+				}
+			}
+		}
+
+
+
+		if ($error) {
+			echo "<span class='pl-4'>".$error."</span>";
+		} else {
+
+
+			$where = array(
+				'id_pelapor' => $id,
+			);
+			$data = array(
+
+				'nama_pelapor' => $nama,
+				'hp_pelapor' => $hp,
+
+			);
+			if ($password) {
+				$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
+				$data['password_pelapor'] = $password;
+			}
+			$id = $this->Adminmodel->Update($table, $data, $where);
+			print "ok";
+
+		}
+	}
+	public function pelapordelete($id)
+	{
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+
+		if (empty($id)) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
+		if (empty($error)) {
+
+			$where = array(
+				'id_pelapor' => $id,
+			);
+			$this->Amodel->delete($table, $where);
+			header("location:" . base_url("pelaporlist"));
+
+		} else {
+			print $error;
+		}
+	}
 
 	public function logout()
 	{

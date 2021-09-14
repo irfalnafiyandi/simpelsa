@@ -46,9 +46,21 @@
 									<tr>
 										<td width="5%">
 											<div class="btn-group btn-group-sm">
-												<a  href="<?php print base_url('adminedit/'.$value->id_laporan) ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Edit"><i class="mdi mdi-check"></i></a>
+												<?php
+												if($value->status_laporan=="b"){
+													?><a  href="<?php print base_url('laporanverifikasi/'.$value->id_laporan) ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Verifikasi Laporan" ><i class="mdi mdi-check"></i></a><?php
+
+												}elseif ($value->status_laporan=="p"){
+													?><a  href="<?php print base_url('laporanupdatestatus/'.$value->id_laporan) ?>" class="btn btn-primary text-white" data-toggle="tooltip" title="Update Status Laporan" ><i class="mdi mdi-check"></i></a><?php
+
+												}
+
+												?>
+
+
 												<a data-toggle="tooltip" title="Hapus" href="<?php echo base_url('laporandelete/'.$value->id_laporan ); ?>" class="btn btn-danger text-white" data-placement="top" onclick="return confirm('Apakah anda yakin ingin menghapus laporan ini ')"><i class="mdi mdi-delete "></i></a>
-												<a  href="<?php print base_url('adminedit/'.$value->id_laporan) ?>" class="btn btn-info text-white" data-toggle="tooltip" title="Edit"><i class="mdi mdi-view-list"></i></a>
+												<a  href="<?php print base_url('laporandetail/'.$value->id_laporan) ?>" class="btn btn-info text-white" data-toggle="tooltip" title="Detail"><i class="mdi mdi-view-list"></i></a>
+
 
 
 
@@ -58,7 +70,22 @@
 										<td><?php print $value->nama_pelapor ?></td>
 										<td><?php print TglIndo($value->tanggal_laporan);  ?></td>
 
-										<td><?php print $value->status_laporan ?></td>
+										<td><?php
+											if($value->status_laporan=="b"){
+												?><span class="badge badge-primary">Baru</span><?php
+
+											}elseif ($value->status_laporan=="p"){
+												?><span class="badge badge-warning">Proses</span><?php
+
+											}elseif ($value->status_laporan=="y"){
+												?><span class="badge badge-success">Selesai</span><?php
+
+											}elseif ($value->status_laporan=="n"){
+												?><span class="badge badge-danger">Palsu</span><?php
+
+											}
+
+											  ?></td>
 
 									</tr>
 									<?php
@@ -87,4 +114,6 @@
 </div> <!-- Page content Wrapper -->
 
 </div> <!-- content -->
+
+
 

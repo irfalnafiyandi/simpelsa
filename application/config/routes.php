@@ -74,10 +74,21 @@ $route['adminlist'] = 'Admin/adminlist';
 $route['adminadd'] = 'Admin/adminadd';
 $route['adminedit/(:any)'] = 'Admin/adminedit/$1';
 $route['admindelete/(:any)'] = 'Admin/deleteadmin/$1';
+$route['adminstore'] = 'Admin/adminstore';
+$route['adminupdate'] = 'Admin/adminupdate';
 
 
 $route['laporansampah'] = 'Admin/laporansampah';
+$route['laporandetail/(:any)'] = 'Admin/laporandetail/$1';
+$route['laporanverifikasi/(:any)'] = 'Admin/laporanverifikasi/$1';
+$route['laporanverifikasiupdate'] = 'Admin/laporanverifikasiupdate';
+$route['laporanupdatestatus/(:any)'] = 'Admin/laporanupdatestatus/$1';
+$route['laporanupdatestatusupdate'] = 'Admin/laporanupdatestatusupdate';
 
+$route['cetaklaporan'] = 'Admin/cetaklaporan';
+$route['cetaklaporanstore'] = 'Admin/cetaklaporanstore';
 
-$route['adminstore'] = 'Admin/adminstore';
-$route['adminupdate'] = 'Admin/adminupdate';
+$route['pelaporlist'] = 'Admin/pelapor';
+$route['pelaporlistedit/(:any)'] = 'Admin/pelaporedit/$1';
+$route['pelaporlistdelete/(:any)'] = 'Admin/pelaporedit/$1';
+$route['pelaporupdate'] = 'Admin/pelaporupdate';

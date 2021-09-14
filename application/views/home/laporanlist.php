@@ -36,6 +36,8 @@
 						$panelc = "panel-warning";
 					}elseif ($values->status_laporan=="y"){
 						$panelc = "panel-warning";
+					}elseif ($values->status_laporan=="b"){
+						$panelc = "panel-primary";
 					}else{
 						$panelc = "panel-danger";
 					}

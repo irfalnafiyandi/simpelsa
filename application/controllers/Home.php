@@ -359,7 +359,7 @@ class Home extends CI_Controller {
 				'longitude' => $longitude,
 				'komentar' => $note,
 				'foto' => $namefile,
-				'status_laporan' => 'p',
+				'status_laporan' => 'b',
 				'tanggal_verifikasi' => '',
 				'foto_verifikasi' => '',
 
