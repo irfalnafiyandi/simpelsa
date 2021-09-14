@@ -65,4 +65,19 @@ $route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
 
 
 $route['admin'] = 'Admin';
+$route['loginadmin'] = 'Admin/loginprocess';
+$route['adminlogout'] = 'Admin/logout';
+$route['adminchangepassword'] = 'Admin/adminchangepassword';
+$route['adminchangepasswordstore'] = 'Admin/adminchangepasswordstore';
 
+$route['adminlist'] = 'Admin/adminlist';
+$route['adminadd'] = 'Admin/adminadd';
+$route['adminedit/(:any)'] = 'Admin/adminedit/$1';
+$route['admindelete/(:any)'] = 'Admin/deleteadmin/$1';
+
+
+$route['laporansampah'] = 'Admin/laporansampah';
+
+
+$route['adminstore'] = 'Admin/adminstore';
+$route['adminupdate'] = 'Admin/adminupdate';

@@ -1,5 +1,5 @@
 <footer class="footer">
-	© 2018 - 2020 <b>Drixo</b> <span class="d-none d-sm-inline-block"> - Crafted with <i class="mdi mdi-heart text-danger"></i> by Themesdesign.</span>
+	© 2018 - 2020 <b>Appelsa</b>
 </footer>
 
 </div>
@@ -9,7 +9,12 @@
 
 
 <!-- jQuery  -->
+
 <script src="<?php print base_url() ?>assets/admin/js/jquery.min.js"></script>
+<script src="<?php print base_url() ?>assets/js/jquery.form.js"></script>
+<script src="<?php print base_url() ?>assets/js/jquery.validate.js"></script>
+<script src="<?php print base_url() ?>assets/js/validate.js"></script>
+
 <script src="<?php print base_url() ?>assets/admin/js/bootstrap.bundle.min.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/modernizr.min.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/detect.js"></script>
@@ -20,15 +25,32 @@
 <script src="<?php print base_url() ?>assets/admin/js/jquery.nicescroll.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/jquery.scrollTo.min.js"></script>
 
+
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+<!-- Buttons examples -->
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/dataTables.buttons.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/buttons.bootstrap4.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/jszip.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/pdfmake.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/vfs_fonts.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/buttons.html5.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/buttons.print.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/buttons.colVis.min.js"></script>
+<!-- Responsive examples -->
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/dataTables.responsive.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/plugins/datatables/responsive.bootstrap4.min.js"></script>
+<script src="<?php print base_url(); ?>assets/admin/pages/datatables.init.js"></script>
+
+
 <!-- skycons -->
 <script src="<?php print base_url() ?>assets/admin/plugins/skycons/skycons.min.js"></script>
 <!-- skycons -->
 <script src="<?php print base_url() ?>assets/admin/plugins/peity/jquery.peity.min.js"></script>
 <!--Morris Chart-->
-<script src="<?php print base_url() ?>assets/admin/plugins/morris/morris.min.js"></script>
+
 <script src="<?php print base_url() ?>assets/admin/plugins/raphael/raphael-min.js"></script>
-<!-- dashboard -->
-<script src="<?php print base_url() ?>assets/admin/pages/dashboard.js"></script>
+
 <!-- App js -->
 <script src="<?php print base_url() ?>assets/admin/js/app.js"></script>
 

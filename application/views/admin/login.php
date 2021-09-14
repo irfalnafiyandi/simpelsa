@@ -19,7 +19,7 @@
 
 
 <body class="pb-0">
-
+<div id="result"></div>
 <!-- Loader -->
 <div id="preloader"><div id="status"><div class="spinner"></div></div></div>
 
@@ -41,17 +41,18 @@
 								<h4 class="text-muted text-center font-18"><b>APPELSA Sign In</b></h4>
 
 								<div class="p-2">
-									<form class="form-horizontal m-t-20" action="index.html">
+
+									<form class="form-horizontal m-t-20" action="<?php print base_url('loginadmin') ?>" id="form" method="post">
 
 										<div class="form-group row">
 											<div class="col-12">
-												<input class="form-control" type="text" required="" placeholder="Username">
+												<input class="form-control" type="text" required="" placeholder="Username" name="username">
 											</div>
 										</div>
 
 										<div class="form-group row">
 											<div class="col-12">
-												<input class="form-control" type="password" required="" placeholder="Password">
+												<input class="form-control" type="password" required="" placeholder="Password" name="password">
 											</div>
 										</div>
 
@@ -79,9 +80,9 @@
 
 <!-- jQuery  -->
 <script src="<?php print base_url() ?>assets/admin/js/jquery.min.js"></script>
-<script type="text/javascript" src="<?php print base_url(); ?>assets/js/jquery.form.js"></script>
-<script type="text/javascript" src="<?php print base_url(); ?>assets/js/jquery.validate.js"></script>
-<script type="text/javascript" src="<?php print base_url(); ?>assets/js/validate.js"></script>
+<script src="<?php print base_url() ?>assets/js/jquery.form.js"></script>
+<script src="<?php print base_url() ?>assets/js/jquery.validate.js"></script>
+<script src="<?php print base_url() ?>assets/js/validate.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/bootstrap.bundle.min.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/modernizr.min.js"></script>
 <script src="<?php print base_url() ?>assets/admin/js/detect.js"></script>

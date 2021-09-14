@@ -3055,3 +3055,45 @@ File: Responsive
   }
 }
 /*# sourceMappingURL=style.css.map */
+
+#result {
+	margin:0;
+	position:absolute;
+	border:0;
+	padding-top:5px;
+	padding-bottom:5px;
+	padding-right:5px;
+	position:fixed;
+	color:white;
+	background-color:#983232;
+	background-color:rgba(128,0,0,0.8);
+	width:100%;
+	display:none;
+	text-align:left;
+	z-index: 10000;
+	font-size: 14px;
+}
+
+#result ul {
+	margin-left:10px;
+	font-size:10pt;
+}
+
+#resultnopadding {
+	margin:0;
+	position:absolute;
+	border:0;
+	padding:5px;
+	position:fixed;
+	color:white;
+	background-color:rgba(128,0,0,0.8);
+	width:100%;
+	display:none;
+	text-align:left;
+}
+
+#resultnopadding ul {
+
+	margin-left:10px;
+	font-size:10pt;
+}

@@ -352,7 +352,7 @@ class Home extends CI_Controller {
 			}
 
 			$data = array(
-				'id_member' => $this->id,
+				'id_pelapor' => $this->id,
 				'id_admin' => '',
 				'tanggal_laporan' => date('Y-m-d H:i:s'),
 				'latitude' => $latitude,
