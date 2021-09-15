@@ -109,7 +109,7 @@ class Home extends CI_Controller {
 
 		$data['title'] = "Laporan Anda";
 		$data['session'] = $this->session;
-		$sql="SELECT * FROM laporan_sampah WHERE id_member='$this->id' ORDER BY tanggal_laporan ASC";
+		$sql="SELECT * FROM laporan_sampah WHERE id_pelapor='$this->id' ORDER BY tanggal_laporan ASC";
 		$data['query'] = $this->db->query($sql)->result();
 
 
