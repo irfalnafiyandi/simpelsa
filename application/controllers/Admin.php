@@ -123,6 +123,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Home";
+		$data['session'] = $this->session;
 
 
 
@@ -145,6 +146,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Change Password";
+		$data['session'] = $this->session;
 
 
 		#VIEW
@@ -222,6 +224,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Admin";
+		$data['session'] = $this->session;
 		$sql="SELECT * FROM admin  ORDER BY id_admin DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
@@ -243,6 +246,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Tambah Admin";
+		$data['session'] = $this->session;
 
 
 		#VIEW
@@ -471,6 +475,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Laporan Sampah";
+		$data['session'] = $this->session;
 		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
@@ -494,6 +499,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Verifikasi Laporan";
+		$data['session'] = $this->session;
 		$table= "laporan_sampah";
 
 
@@ -524,6 +530,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Detail Laporan";
+		$data['session'] = $this->session;
 		$table= "laporan_sampah";
 
 
@@ -606,6 +613,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Update Laporan";
+		$data['session'] = $this->session;
 		$table= "laporan_sampah";
 
 
@@ -711,6 +719,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Cetak Laporan";
+		$data['session'] = $this->session;
 
 
 		#VIEW
@@ -783,6 +792,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Pelapor";
+		$data['session'] = $this->session;
 		$sql="SELECT * FROM pelapor  ORDER BY id_pelapor DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
@@ -804,6 +814,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Edit Pelapor";
+		$data['session'] = $this->session;
 		$table= "pelapor";
 
 		$where = array(

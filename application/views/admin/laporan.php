@@ -47,18 +47,33 @@
 										<td width="5%">
 											<div class="btn-group btn-group-sm">
 												<?php
-												if($value->status_laporan=="b"){
-													?><a  href="<?php print base_url('laporanverifikasi/'.$value->id_laporan) ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Verifikasi Laporan" ><i class="mdi mdi-check"></i></a><?php
+												if($session->userdata('admin_level')=="administrator"){
+													if($value->status_laporan=="b"){
+														?><a  href="<?php print base_url('laporanverifikasi/'.$value->id_laporan) ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Verifikasi Laporan" ><i class="mdi mdi-check"></i></a><?php
 
-												}elseif ($value->status_laporan=="p"){
-													?><a  href="<?php print base_url('laporanupdatestatus/'.$value->id_laporan) ?>" class="btn btn-primary text-white" data-toggle="tooltip" title="Update Status Laporan" ><i class="mdi mdi-check"></i></a><?php
+													}elseif ($value->status_laporan=="p"){
+														?><a  href="<?php print base_url('laporanupdatestatus/'.$value->id_laporan) ?>" class="btn btn-primary text-white" data-toggle="tooltip" title="Update Status Laporan" ><i class="mdi mdi-check"></i></a>
+													<a data-toggle="tooltip" title="Hapus" href="<?php echo base_url('laporandelete/'.$value->id_laporan ); ?>" class="btn btn-danger text-white" data-placement="top" onclick="return confirm('Apakah anda yakin ingin menghapus laporan ini ')"><i class="mdi mdi-delete "></i></a><?php
+
+													}
+
+
+												}elseif($session->userdata('admin_level')=="petugas"){
+													if($value->status_laporan=="b"){
+														?><a  href="<?php print base_url('laporanverifikasi/'.$value->id_laporan) ?>" class="btn btn-success text-white" data-toggle="tooltip" title="Verifikasi Laporan" ><i class="mdi mdi-check"></i></a><?php
+
+													}elseif ($value->status_laporan=="p"){
+														?><a  href="<?php print base_url('laporanupdatestatus/'.$value->id_laporan) ?>" class="btn btn-primary text-white" data-toggle="tooltip" title="Update Status Laporan" ><i class="mdi mdi-check"></i></a><?php
+
+													}
 
 												}
+
 
 												?>
 
 
-												<a data-toggle="tooltip" title="Hapus" href="<?php echo base_url('laporandelete/'.$value->id_laporan ); ?>" class="btn btn-danger text-white" data-placement="top" onclick="return confirm('Apakah anda yakin ingin menghapus laporan ini ')"><i class="mdi mdi-delete "></i></a>
+
 												<a  href="<?php print base_url('laporandetail/'.$value->id_laporan) ?>" class="btn btn-info text-white" data-toggle="tooltip" title="Detail"><i class="mdi mdi-view-list"></i></a>
 
 
