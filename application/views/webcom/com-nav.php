@@ -38,7 +38,7 @@
 			}else{
 				?>
 				<li>
-					<a href="<?php print base_url('register') ?>">Register</a>
+					<a href="<?php print base_url('Home/register') ?>#register">Register</a>
 				</li>
 				<?php
 

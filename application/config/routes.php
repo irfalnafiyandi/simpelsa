@@ -53,7 +53,7 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
-$route['register'] = 'Home/laporan';
+
 $route['laporan'] = 'Home/laporan';
 $route['laporanlist'] = 'Home/laporanlist';
 $route['getlaporan'] = 'Home/laporanget';
