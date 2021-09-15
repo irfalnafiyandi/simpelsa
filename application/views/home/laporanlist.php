@@ -33,7 +33,7 @@
 				foreach ($query as $keys => $values){
 					$panelc="";
 					if($values->status_laporan=="p"){
-						$text= "Laporan Anda Akan Diverifikasi Oleh Administrator Kami";
+						$text= "Laporan Anda Telah Diverifikasi Oleh Administrator Kami Dan Akan Diproses Oleh Petugas";
 						$panelc = "panel-warning";
 					}elseif ($values->status_laporan=="y"){
 						$text= "Laporan Anda Telah Selesai DiProses Oleh Petugas Kami";
