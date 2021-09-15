@@ -22,7 +22,7 @@
 			<div class="col-6">
 				<div class="card m-b-30">
 					<div class="card-body">
-						<form class="" id="form" action="<?php print base_url('cetaklaporanstore') ?>" method="get" target="_blank">
+						<form class="" id="form2" action="<?php print base_url('cetaklaporanstore') ?>" method="get" target="_blank">
 							<div class="row">
 								<div class="col-md-6">
 									<div class="form-group">

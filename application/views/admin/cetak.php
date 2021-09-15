@@ -8,18 +8,14 @@ $tahun  = $this->uri->segment('3');
 	<title>Cetak laporan </title>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="<?php print base_url(); ?>assets/font-awesome/css/font-awesome.min.css">
-	<link rel="stylesheet" href="<?php print base_url(); ?>assets/style/css/AdminLTE.css">
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+
+	<link href="<?php print base_url() ?>assets/admin/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+
+	<script src="<?php print base_url() ?>assets/admin/js/jquery.min.js"></script>
+	<script src="<?php print base_url() ?>assets/admin/js/bootstrap.bundle.min.js"></script>
 </head>
 <body>
-<style type="text/css">
 
-
-
-</style>
 <div class="container tluar">
 	<div class="row tluar">
 		<div class="col-xs-12" >
@@ -31,16 +27,16 @@ $tahun  = $this->uri->segment('3');
 	</div>
 
 	<div class="table-responsive" style="margin-top: 10px;">
-		<table id="" class="table table-bordered table-striped table-hover border-table">
+		<table id="" class="table table-bordered" width="100%" border="1" style="border-collapse: collapse; width: 100%;">
 			<thead>
 			<tr>
 				<th width="3% " class="success border-table backgroundtable">No</th>
-				<th width="" class="success border-table backgroundtable text-left">Pelapor</th>
-				<th width="10%" class="success border-table backgroundtable">Email Pelapor</th>
-				<th width="10%" class="success border-table backgroundtable">Hp Pelaporan</th>
-				<th width="10%" class="success border-table backgroundtable">Tanggal Laporan</th>
-				<th width="10%" class="success border-table backgroundtable">Keterangan</th>
-				<th width="10%" class="success border-table backgroundtable">Statu</th>
+				<th width="10%">Pelapor</th>
+				<th width="10%" >Email Pelapor</th>
+				<th width="10%" >Hp Pelaporan</th>
+				<th width="10%" >Tanggal Laporan</th>
+
+				<th width="10%" >Status</th>
 
 
 
@@ -49,26 +45,39 @@ $tahun  = $this->uri->segment('3');
 			</thead>
 			<tbody>
 			<?php
-
-
-			$bulanangka = array("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11", "12");
-			$bulan = array("Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "November", "Desember");
-
-
-			$no = 1;
-
 			$namabulan = "";
 			$totalp = 0;
 			$keuntunganp = 0;
+			$no=1;
 			foreach ($query as $key => $value) {
 
 				?>
 				<tr>
+					
 					<td class="text-center border-table"><?php print $no; ?></td>
-					<td class="text-left border-table"><b><?php print TglIndo($value->tanggal_laporan); ?></b></td>
-					<td class="text-left border-table">
 
+					<td class="text-center "> <?php print $value->nama_pelapor ?> </td>
+					<td class="text-center "> <?php print $value->email_pelapor; ?> </td>
+					<td class="text-center "> <?php print $value->hp_pelapor; ?> </td>
+					<td class="text-center "> <?php print TglIndo($value->tanggal_laporan); ?> </td>
+
+					<td class="text-center "> <?php
+						if($value->status_laporan=="b"){
+							?><span class="badge badge-primary">Baru</span><?php
+
+						}elseif ($value->status_laporan=="p"){
+							?><span class="badge badge-warning">Proses</span><?php
+
+						}elseif ($value->status_laporan=="y"){
+							?><span class="badge badge-success">Selesai</span><?php
+
+						}elseif ($value->status_laporan=="n"){
+							?><span class="badge badge-danger">Palsu</span><?php
+
+						} ?>
 					</td>
+
+
 
 
 
@@ -79,11 +88,7 @@ $tahun  = $this->uri->segment('3');
 
 
 			?>
-			<tr>
-				<td class="text-center border-table" colspan="2" style="padding: 0px;"><h4><strong>Total</strong></h4></td>
-				<td class="text-right border-table text-bold" ><?php print "Rp".number_format($totalp, 0, ',', '.');  ?></td>
-				<td class="text-right border-table text-bold"> <?php print "Rp".number_format($keuntunganp, 0, ',', '.');  ?></td>
-			</tr>
+
 
 
 			</tbody>
@@ -93,14 +98,14 @@ $tahun  = $this->uri->segment('3');
 
 
 	</div>
-
+	<br><br><br><br><br><br>
 	<div class="row">
 		<div class="col-md-12">
 			<div class="pull-right">
 
 				Pekanbaru, <?php print date('d')."/".date("m")."/".date("Y"); ?>&nbsp;&nbsp;&nbsp;&nbsp;
 				<br><br><br><br><br><br>
-				<b><?php print $namasession; ?></b>
+				<b><?php print $namadmin; ?></b>
 			</div>
 		</div>
 	</div>

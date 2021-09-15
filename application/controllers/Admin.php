@@ -739,16 +739,20 @@ class Admin extends CI_Controller
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
+		foreach ($this->input->get() as $key => $value) {
+			$$key = $value;
+		}
 
 
 		$data['title'] = "Cetak Laporan";
+		$data['namadmin'] = $this->nama;
 
 
 
 		$mulai = $tahun.'-'.$bulan.'-01';
 		$sampai = $tahun.'-'.$bulan.'-31';
 
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where tanggal_laporan between $mulai and $sampai ORDER BY id_laporan DESC";
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor ORDER BY id_laporan DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
 
@@ -765,9 +769,6 @@ class Admin extends CI_Controller
 
 		$this->pdf->load_view('admin/cetak',$data);
 
-
-		#VIEW
-		#$this->load->view('com/com-head',$data);
 
 
 

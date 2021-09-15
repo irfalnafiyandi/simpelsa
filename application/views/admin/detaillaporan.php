@@ -52,7 +52,10 @@
 									</div>
 
 									<div class="form-group">
-										<label>Lokasi Sampah</label><br>
+										<label>Lokasi Sampah</label> <a
+												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
+											Disini Menetukan Rute</a><br>
+										<div id="gmaps-markers" class="gmaps"></div>
 
 									</div>
 
@@ -115,10 +118,76 @@
 </div> <!-- Page content Wrapper -->
 
 </div> <!-- content -->
-
+<script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
+<script src="<?php print base_url() ?>/assets/admin/plugins/gmaps/gmaps.min.js"></script>
 <script>
 	$(function () {
 		$('#result').hide();
 		validate('#result', '#form', '<?php echo base_url('laporansampah'); ?>');
+	});
+
+	var map;
+
+	$(document).ready(function () {
+		// Markers
+		map = new GMaps({
+			div: '#gmaps-markers',
+			lat: <?php print $detail->latitude ?>,
+			lng: <?php print $detail->longitude ?>
+		});
+		map.addMarker({
+			lat: <?php print $detail->latitude ?>,
+			lng: <?php print $detail->longitude ?>,
+			title: 'Lima',
+			details: {
+				database_id: 42,
+				author: 'HPNeo'
+			},
+			click: function (e) {
+				if (console.log)
+					console.log(e);
+				alert('You clicked in this marker');
+			}
+		});
+
+		// Overlays
+		map = new GMaps({
+			div: '#gmaps-overlay',
+			lat: -12.043333,
+			lng: -77.028333
+		});
+		map.drawOverlay({
+			lat: map.getCenter().lat(),
+			lng: map.getCenter().lng(),
+			content: '<div class="gmaps-overlay">Our Office!<div class="gmaps-overlay_arrow above"></div></div>',
+			verticalAlign: 'top',
+			horizontalAlign: 'center'
+		});
+
+		//panorama
+		map = GMaps.createPanorama({
+			el: '#panorama',
+			lat: 42.3455,
+			lng: -71.0983
+		});
+
+		//Map type
+		map = new GMaps({
+			div: '#gmaps-types',
+			lat: -12.043333,
+			lng: -77.028333,
+			mapTypeControlOptions: {
+				mapTypeIds: ["hybrid", "roadmap", "satellite", "terrain", "osm"]
+			}
+		});
+		map.addMapType("osm", {
+			getTileUrl: function (coord, zoom) {
+				return "https://a.tile.openstreetmap.org/" + zoom + "/" + coord.x + "/" + coord.y + ".png";
+			},
+			tileSize: new google.maps.Size(256, 256),
+			name: "OpenStreetMap",
+			maxZoom: 18
+		});
+		map.setMapTypeId("osm");
 	});
 </script>

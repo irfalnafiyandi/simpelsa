@@ -42,7 +42,7 @@
 <script src="<?php print base_url(); ?>assets/admin/plugins/datatables/responsive.bootstrap4.min.js"></script>
 <script src="<?php print base_url(); ?>assets/admin/pages/datatables.init.js"></script>
 
-<script src="<?php print base_url(); ?>assets/pages/lightbox.js"></script>
+
 <!-- skycons -->
 <script src="<?php print base_url() ?>assets/admin/plugins/skycons/skycons.min.js"></script>
 <!-- skycons -->

@@ -23,7 +23,7 @@
 	<link href="<?php print base_url(); ?>assets/admin/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 	<!-- Responsive datatable examples -->
 	<link href="<?php print base_url(); ?>assets/admin/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
-	<link href="<?php print base_url(); ?>assets/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
+	<link href="<?php print base_url(); ?>assets/admin/plugins/magnific-popup/magnific-popup.css" rel="stylesheet" type="text/css">
 	<script src="<?php print base_url() ?>assets/admin/js/jquery.min.js"></script>
 	<script src="<?php print base_url() ?>assets/js/jquery.form.js"></script>
 	<script src="<?php print base_url() ?>assets/js/jquery.validate.js"></script>
