@@ -31,7 +31,7 @@
 			<div class="row multi-columns-row">
 				<?php
 				foreach ($query as $keys => $values){
-					$panelc="";
+					$panelc=" ";
 					if($values->status_laporan=="p"){
 						$text= "Laporan Anda Telah Diverifikasi Oleh Administrator Kami Dan Akan Diproses Oleh Petugas";
 						$panelc = "panel-warning";
