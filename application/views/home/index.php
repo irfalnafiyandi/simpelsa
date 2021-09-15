@@ -72,9 +72,9 @@
 			<div class="row">
 
 				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-xs-6 col-sm-4">
 					<div class="count-number">
-						160
+						<?php print $semualaporan ?>
 					</div>
 					<div class="count-descr">
 						<i class="fa fa-briefcase"></i>
@@ -84,9 +84,9 @@
 				<!-- End Counter Item -->
 
 				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-xs-6 col-sm-4">
 					<div class="count-number">
-						150
+						<?php print $laporanselesai ?>
 					</div>
 					<div class="count-descr">
 						<i class="fa fa-heart"></i>
@@ -96,9 +96,9 @@
 				<!-- End Counter Item -->
 
 				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
+				<div class="col-xs-6 col-sm-4">
 					<div class="count-number">
-						10
+						<?php print $laporanproses ?>
 					</div>
 					<div class="count-descr">
 						<i class="fa fa-coffee"></i>
@@ -108,15 +108,7 @@
 				<!-- End Counter Item -->
 
 				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-3">
-					<div class="count-number">
-						0
-					</div>
-					<div class="count-descr">
-						<i class="fa fa-lightbulb-o"></i>
-						<span class="count-title">Laporan Palsu</span>
-					</div>
-				</div>
+
 				<!-- End Counter Item -->
 
 			</div>

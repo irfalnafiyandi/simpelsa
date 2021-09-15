@@ -54,6 +54,13 @@ class Home extends CI_Controller {
 
 		$data['title'] = "Home";
 		$data['session'] = $this->session;
+
+		$data['semualaporan'] = $this->Amodel->countdata("laporan_sampah", "");
+		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p'");
+		$data['laporanselesai'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='y'");
+
+
+		#$data['']
 		#VIEW
 		$this->load->view('webcom/com-head',$data);
 		$this->load->view('webcom/com-nav',$data);
