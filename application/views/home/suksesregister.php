@@ -27,54 +27,10 @@
 <!-- Page Wrap -->
 <div class="page" id="top">
 
-	<!-- Home Section -->
-	<section class="home-section bg-dark parallax-3" data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
-		<div class="js-height-full" id="large-header">
+	<section class="page-section bg-dark"  style="padding: 41px;0px;">
 
-			<!-- Canvas Animation -->
-			<canvas id="demo-canvas"></canvas>
-
-			<!-- Home Page Content -->
-			<div class="ah-content">
-				<div class="home-content">
-					<div class="home-text animate-init" data-anim-type="fade-in-up-big" data-anim-delay="100">
-						<div class="container">
-
-							<!-- Headings -->
-
-							<h1 class="hs-line-8  mb-30 mb-xs-10">
-								Hello <span class="serif">&</span>
-								Welcome
-							</h1>
-
-							<h2 class="hs-line-9 mb-40 mb-xs-20">
-								APLIKASI PELAPORAN SAMPAH
-							</h2>
-
-							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">DAFTAR</a>
-								<span class="hidden-xs">&nbsp;</span>
-								<a href="<?php print base_url('Home') ?>#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 hidden-xs">SIGN IN</a>
-							</div>
-
-							<!-- End Headings -->
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Home Page Content -->
-
-			<!-- Scroll Down -->
-			<div class="local-scroll">
-				<a href="#about" class="scroll-down"><i class="scroll-down-icon"></i><span>Scroll Down</span></a>
-			</div>
-			<!-- End Scroll Down -->
-
-		</div>
 	</section>
 	<!-- End Home Section -->
-
 
 	<!-- Some Facts Section -->
 	<section class="page-section padding-section " id="success" style="padding-top: 40px;padding-bottom: 40px;">
@@ -83,7 +39,12 @@
 
 			<div class="row">
 				<div class="col-sm-12 ">
-					<div class="alert success" role="alert"   >Berhasil Daftar kedalam Sistem, Silakan Verifikasi Email anda untuk melanjutkan Ketahap Berikutnya</div>
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="alert success mb-0" role="alert"   >Berhasil Daftar kedalam Sistem, Silakan Verifikasi Email anda untuk melanjutkan Ketahap Berikutnya</div>
+						</div>
+					</div>
+
 				</div>
 
 
@@ -109,9 +70,7 @@
 				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
 			</div>
 			<!-- End Copyright -->
-			<div class="footer-made">
-				Made with <span class="serif">love</span>.
-			</div>
+
 		</div>
 		<!-- End Footer Text -->
 	</div>

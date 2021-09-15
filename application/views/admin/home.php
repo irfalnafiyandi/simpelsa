@@ -15,18 +15,71 @@
 		</div>
 		<!-- end row -->
 		<div class="row">
-			<div class="col-12">
-				<div class="card m-b-30">
+			<div class="col-xl-3 col-md-6">
+				<div class="card mini-stat m-b-30">
+					<div class="p-3 bg-primary text-white">
+						<div class="mini-stat-icon">
+							<i class="mdi mdi-cube-outline float-right mb-0"></i>
+						</div>
+						<h6 class="text-uppercase mb-0">Jumlah Laporan</h6>
+					</div>
 					<div class="card-body">
+						<div class="mt-4 text-muted">
+							<h5 class="m-0"><?php print $semualaporan; ?></h5>
 
-
-
-
-
+						</div>
 					</div>
 				</div>
-			</div> <!-- end col -->
-		</div> <!-- end row -->
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card mini-stat m-b-30">
+					<div class="p-3 bg-primary text-white">
+						<div class="mini-stat-icon">
+							<i class="mdi mdi-account-network float-right mb-0"></i>
+						</div>
+						<h6 class="text-uppercase mb-0">Jumlah Laporan Baru</h6>
+					</div>
+					<div class="card-body">
+						<div class="mt-4 text-muted">
+							<h5 class="m-0"><?php print $laporanbaru; ?></h5>
+
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card mini-stat m-b-30">
+					<div class="p-3 bg-primary text-white">
+						<div class="mini-stat-icon">
+							<i class="mdi mdi-tag-text-outline float-right mb-0"></i>
+						</div>
+						<h6 class="text-uppercase mb-0">Jumlah Laporan Proses</h6>
+					</div>
+					<div class="card-body">
+						<div class="mt-4 text-muted">
+							<h5 class="m-0"><?php print $laporanproses; ?></h5>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-xl-3 col-md-6">
+				<div class="card mini-stat m-b-30">
+					<div class="p-3 bg-primary text-white">
+						<div class="mini-stat-icon">
+							<i class="mdi mdi-cart-outline float-right mb-0"></i>
+						</div>
+						<h6 class="text-uppercase mb-0">Jumlah Laporan Selesai</h6>
+					</div>
+					<div class="card-body">
+
+						<div class="mt-4 text-muted">
+							<h5 class="m-0"><?php print $laporanselesai; ?> </h5>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	</div><!-- container fluid -->
 
 </div> <!-- Page content Wrapper --> <!-- Page content Wrapper -->

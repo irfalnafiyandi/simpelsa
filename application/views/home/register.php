@@ -133,9 +133,7 @@
 				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
 			</div>
 			<!-- End Copyright -->
-			<div class="footer-made">
-				Made with <span class="serif">love</span>.
-			</div>
+
 		</div>
 		<!-- End Footer Text -->
 	</div>

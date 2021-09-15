@@ -22,7 +22,7 @@
 					<div class="card-body">
 						<div class="row mb-4">
 							<div class="col-md-12 float-right">
-								<a href="<?php print base_url('adminadd') ?>" class="btn btn-primary"><i class="mdi mdi-plus"></i>Tambah Admin</a>
+								<a href="<?php print base_url('adminadd') ?>" class="btn btn-primary"><i class="mdi mdi-plus"></i>Tambah User</a>
 							</div>
 						</div>
 

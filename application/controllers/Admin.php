@@ -125,6 +125,11 @@ class Admin extends CI_Controller
 		$data['title'] = "Home";
 		$data['session'] = $this->session;
 
+		$data['semualaporan'] = $this->Amodel->countdata("laporan_sampah", "");
+		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p'");
+		$data['laporanselesai'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='y'");
+		$data['laporanbaru'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='b'");
+
 
 
 		#VIEW
@@ -223,7 +228,7 @@ class Admin extends CI_Controller
 			header("location:" . base_url('adminlogout'));
 		}
 
-		$data['title'] = "Admin";
+		$data['title'] = "User";
 		$data['session'] = $this->session;
 		$sql="SELECT * FROM admin  ORDER BY id_admin DESC";
 		$data['query'] = $this->db->query($sql)->result();
@@ -245,7 +250,7 @@ class Admin extends CI_Controller
 			header("location:" . base_url('adminlogout'));
 		}
 
-		$data['title'] = "Tambah Admin";
+		$data['title'] = "Tambah User";
 		$data['session'] = $this->session;
 
 
@@ -342,7 +347,7 @@ class Admin extends CI_Controller
 			header("location:" . base_url('adminlogout'));
 		}
 
-		$data['title'] = "Edit Admin";
+		$data['title'] = "Edit User";
 		$table= "admin";
 
 		$where = array(
