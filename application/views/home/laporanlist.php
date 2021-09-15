@@ -33,19 +33,23 @@
 				foreach ($query as $keys => $values){
 					$panelc="";
 					if($values->status_laporan=="p"){
+						$text= "Laporan Anda Akan Diverifikasi Oleh Administrator Kami";
 						$panelc = "panel-warning";
 					}elseif ($values->status_laporan=="y"){
-						$panelc = "panel-warning";
+						$text= "Laporan Anda Telah Selesai DiProses Oleh Petugas Kami";
+						$panelc = "panel-success";
 					}elseif ($values->status_laporan=="b"){
-						$panelc = "panel-primary";
+						$text= "Laporan Anda Akan Diverifikasi Oleh Administrator Kami";
+						$panelc = "panel-info";
 					}else{
+						$text= "";
 						$panelc = "panel-danger";
 					}
 					?>
 					<div class="col-md-12">
 						<div class="panel <?php print $panelc; ?>">
 							<div class="panel-heading">
-								<a data-toggle="collapse" href="#collapse<?php print $values->id_laporan; ?>">Laporan Sedang Proses Dibuat Pada Tanggal <?php print TglIndo($values->tanggal_laporan); ?></a></div>
+								<a data-toggle="collapse" href="#collapse<?php print $values->id_laporan; ?>"><h4 class=" text-white"><?php print $text; ?> </h4></a></div>
 
 								<div id="collapse<?php print $values->id_laporan; ?>" class="panel-collapse collapse">
 									<div class="panel-body">
@@ -61,19 +65,33 @@
 													?>
 
 												</div>
+
+												<div class="text">
+													<h5 class="uppercase">Laporan Ini Dibuat</h5>
+													<?php
+													print TglIndo($values->tanggal_laporan);
+													?>
+												</div>
+
 											</div>
 										</div>
+										<hr/>
 
 										<?php
 										if($values->status_laporan=="y"){
 											?>
 											<div class="row">
-												<div class="col-md-12">
-													Laporan Telah DiverifikasiPada Tanggal <?php print TglIndo($values->foto_verifikasi); ?>
-												</div>
-												<div class="col-md-12">
+												<div class="col-md-4">
 													<img src="<?php print base_url().'assets/laporan/'.$values->foto_verifikasi; ?>" class="img-rounded" alt="Cinque Terre">
 												</div>
+												<div class="col-md-8">
+													<div class="text">
+														<h5 class="uppercase">Verifikasi Laporan</h5>
+														Laporan Telah Diverifikasi Pada Tanggal <?php print TglIndo($values->tanggal_verifikasi); ?>
+
+													</div>
+												</div>
+
 
 											</div>
 											<?php
