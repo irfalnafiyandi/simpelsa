@@ -291,9 +291,9 @@ class Home extends CI_Controller {
 			$this->load->library('email');
 
 			$this->email->set_mailtype("html");
-			$this->email->from($from_email, "D'Anugrah");
+			$this->email->from($from_email, "Appelsa");
 			$this->email->to($to_email);
-			$this->email->subject('Reminder | Pembayaran Jatuh Tempo');
+			$this->email->subject('Verfikasi Email');
 			$this->email->message($message);
 			$this->email->send();
 
