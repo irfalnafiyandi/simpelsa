@@ -21,11 +21,11 @@
 						<div class="mini-stat-icon">
 							<i class="mdi mdi-cube-outline float-right mb-0"></i>
 						</div>
-						<h6 class="text-uppercase mb-0">Jumlah Laporan</h6>
+						<h6 class="text-uppercase mb-0">Jumlah Pelapor</h6>
 					</div>
 					<div class="card-body">
 						<div class="mt-4 text-muted">
-							<h5 class="m-0"><?php print $semualaporan; ?></h5>
+							<h5 class="m-0"><?php print $pelapor; ?></h5>
 
 						</div>
 					</div>
@@ -37,11 +37,11 @@
 						<div class="mini-stat-icon">
 							<i class="mdi mdi-account-network float-right mb-0"></i>
 						</div>
-						<h6 class="text-uppercase mb-0">Jumlah Laporan Baru</h6>
+						<h6 class="text-uppercase mb-0">Jumlah Pelaporan</h6>
 					</div>
 					<div class="card-body">
 						<div class="mt-4 text-muted">
-							<h5 class="m-0"><?php print $laporanbaru; ?></h5>
+							<h5 class="m-0"><?php print $semualaporan; ?></h5>
 
 						</div>
 					</div>
@@ -62,22 +62,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-xl-3 col-md-6">
-				<div class="card mini-stat m-b-30">
-					<div class="p-3 bg-primary text-white">
-						<div class="mini-stat-icon">
-							<i class="mdi mdi-cart-outline float-right mb-0"></i>
-						</div>
-						<h6 class="text-uppercase mb-0">Jumlah Laporan Selesai</h6>
-					</div>
-					<div class="card-body">
 
-						<div class="mt-4 text-muted">
-							<h5 class="m-0"><?php print $laporanselesai; ?> </h5>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 
 	</div><!-- container fluid -->
