@@ -283,7 +283,7 @@ class Home extends CI_Controller {
 
 			$mail = new PHPMailer(true);
 
-			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+		/*	#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
 			$mail->Host 		= "ssl://smtp.gmail.com";
 			$mail->SMTPAuth   = true;
@@ -301,6 +301,36 @@ class Home extends CI_Controller {
 			$mail->Subject = $subject;
 			$mail->Body    = $message;
 			$mail->send();
+*/
+
+			$to = $email;
+			$mail->Subject = $subject;
+			$message = $message;
+
+
+			$email_from = "noreply@lapor.semutgadget.com";
+			$email_name = "Appelsa";
+			$subjectemail = $subject;
+			$emailisi = $message;
+
+			$email = $to;
+			$name = "Verifikasi Email ";
+
+			$mail->setFrom($email_from, $email_name);
+			$mail->FromName = $email_name;
+			$mail->addAddress($email, $name);
+			$mail->IsHTML(true);
+			$mail->Subject = "$subjectemail";
+			$mail->Body = $emailisi;
+
+			$mail->send();
+			$mail->ClearAddresses();
+
+
+
+
+
+
 			print "ok";
 
 
