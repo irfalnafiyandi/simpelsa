@@ -56,7 +56,7 @@ class Home extends CI_Controller {
 		$data['session'] = $this->session;
 
 		$data['semualaporan'] = $this->Amodel->countdata("laporan_sampah", "");
-		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p'");
+		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p' or status_laporan='b'");
 		$data['laporanselesai'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='y'");
 
 

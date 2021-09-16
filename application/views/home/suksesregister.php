@@ -4,7 +4,7 @@
 	<!-- Logo ( * your text or image into link tag *) -->
 	<div class="nbc-logo-wrap local-scroll">
 		<a href="#top" class="nbc-logo">
-			APPLESA
+			APPELSA
 		</a>
 	</div>
 
@@ -41,7 +41,7 @@
 				<div class="col-sm-12 ">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<div class="alert success mb-0" role="alert"   >Berhasil Daftar kedalam Sistem, Silakan Verifikasi Email anda untuk melanjutkan Ketahap Berikutnya</div>
+							<div class="alert success mb-0 font-weight-bold" role="alert"   ><h4>Pendaftaran akun pelapor sampah telah berhasil dilakukan. Silakan cek email anda untuk melakukan verifikasi akun.<a href="<?php print base_url('Home') ?>">Klik Disini Untuk Kembali Ke Halaman Depan</a></h4></div>
 						</div>
 					</div>
 
@@ -62,12 +62,12 @@
 
 <!-- Foter -->
 <footer class="small-section bg-dark footer">
-	<div class="container animate-init" data-anim-type="bounce-in-up" data-anim-delay="0">
+	<div class="container " data-anim-type="bounce-in-up" data-anim-delay="0">
 		<!-- Footer Text -->
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
+				<a href="#" target="_blank">&copy;  <span class="number">2021</span> APPELSA</a>
 			</div>
 			<!-- End Copyright -->
 

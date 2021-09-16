@@ -60,9 +60,9 @@
 			<div class="row">
 				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
 					<div class="section-title">
-						Register<span class="st-point">.</span>
+						Pendaftaran <span class="st-point">.</span>
 					</div>
-					<h2 class="section-heading">Setelah Melakukan Pendaftaran Harap untuk melakukan Verifikasi Email Anda</h2>
+					<h2 class="section-heading">Silakan isi form dibawah ini untuk mendaftar sebagai pelapor sampah</h2>
 					<div class="section-line mb-60 mb-xxs-30">
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 							<input type="password" name="passwordconf" id="passwordconf" class="form-control" placeholder="Confirmasi Password" maxlength="100">
 						</div>
 
-						<center><button class="btn btn-mod btn-border btn-large" type="submit">Register</button></center>
+						<center><button class="btn btn-mod btn-border btn-large" type="submit">Daftar</button></center>
 					</form>
 					<!-- End Form -->
 				</div>
@@ -125,12 +125,12 @@
 
 <!-- Foter -->
 <footer class="small-section bg-dark footer">
-	<div class="container animate-init" data-anim-type="bounce-in-up" data-anim-delay="0">
+	<div class="container  " data-anim-type="bounce-in-up" data-anim-delay="0">
 		<!-- Footer Text -->
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy; APPLESA <span class="number">2021</span></a>
+				<a href="#" target="_blank">&copy;  <span class="number">2021</span> APPELSA</a>
 			</div>
 			<!-- End Copyright -->
 

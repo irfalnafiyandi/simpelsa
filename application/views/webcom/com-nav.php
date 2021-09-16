@@ -4,7 +4,7 @@
 	<!-- Logo ( * your text or image into link tag *) -->
 	<div class="nbc-logo-wrap local-scroll">
 		<a href="#top" class="nbc-logo">
-			APPLESA
+			APPELSA
 		</a>
 	</div>
 
