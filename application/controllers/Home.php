@@ -263,8 +263,8 @@ class Home extends CI_Controller {
 				'emailcode_pelapor'=>$code,
 			);
 
-			#$id = $this->Amodel->save($data);
-			$id=1;
+			$id = $this->Amodel->save($data);
+
 
 			$to                 = $email;
 			$subject            = "Verifikasi Email";
@@ -288,7 +288,7 @@ class Home extends CI_Controller {
 			$to_email = $email;
 
 			//Load email library
-			$this->load->library('email');
+			/*$this->load->library('email');
 
 			$this->email->set_mailtype("html");
 			$this->email->from($from_email, "Appelsa");
@@ -298,13 +298,12 @@ class Home extends CI_Controller {
 			$this->email->send();
 
 
-			print "oke";
+			print "oke";*/
 
 
 
-			#$mail = new PHPMailer(true);
-
-		/*	#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+			$mail = new PHPMailer(true);
+			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
 			$mail->Host 		= "ssl://smtp.gmail.com";
 			$mail->SMTPAuth   = true;
@@ -322,7 +321,7 @@ class Home extends CI_Controller {
 			$mail->Subject = $subject;
 			$mail->Body    = $message;
 			$mail->send();
-*/
+
 
 			/*$to = $email;
 			$mail->Subject = $subject;
