@@ -190,7 +190,7 @@ class Home extends CI_Controller {
 			$passwordl = sha1($password . $this->config->item('CMS_SALT_STRING'));
 
 			if ($user->password_pelapor != $passwordl) {
-				$error = "Username atau Password tidak valid";
+				$error = "Username atau Password tidak valid2";
 			}
 		}
 

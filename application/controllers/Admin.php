@@ -482,7 +482,12 @@ class Admin extends CI_Controller
 
 		$data['title'] = "Laporan Sampah";
 		$data['session'] = $this->session;
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
+		if($this->admin_level=="administrator"){
+			$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
+		}else{
+			$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where status_laporan='p' ORDER BY id_laporan DESC";
+		}
+
 		$data['query'] = $this->db->query($sql)->result();
 
 
@@ -930,7 +935,7 @@ class Admin extends CI_Controller
 	public function tolaklaporan($id)
 	{
 		$now = time();
-		$table = "pelapor";
+		$table = "laporan_sampah";
 		$error = "";
 
 		if (empty($id)) {

@@ -12,7 +12,7 @@
 			<!-- Home Page Content -->
 			<div class="ah-content">
 				<div class="home-content">
-					<div class="home-text animate-init" data-anim-type="fade-in-up-big" data-anim-delay="100">
+					<div class="home-text animate-init" >
 						<div class="container">
 
 							<!-- Headings -->
