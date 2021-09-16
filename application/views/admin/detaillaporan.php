@@ -79,7 +79,7 @@
 					<div class="card m-b-30">
 						<div class="card-body">
 							<div class="row">
-								<div class="col-md-3">
+								<div class="col-md-6">
 									<input name="id" value="<?php print $detail->id_laporan ?>" type="hidden">
 									<div class="form-group">
 										<label>Tanggal Verifikasi</label><br>
