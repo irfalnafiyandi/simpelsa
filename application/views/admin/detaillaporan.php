@@ -27,100 +27,71 @@
 						</a>
 
 
-							<div class="row">
-								<div class="col-md-6">
-
-									<input name="id" value="<?php print $detail->id_laporan ?>" type="hidden">
-									<div class="form-group">
-										<label>Nama Pelapor</label><br>
-										<?php print $detail->nama_pelapor ?>
-									</div>
-									<hr/>
-
-									<div class="form-group">
-										<label>Email Pelapor</label><br>
-										<?php print $detail->email_pelapor ?>
-									</div>
-									<hr/>
-
-									<div class="form-group">
-										<label>No HP</label><br>
-										<?php print $detail->hp_pelapor ?>
-									</div>
-									<hr/>
-
-									<div class="form-group">
-										<label>Keterangan</label><br>
-										<?php print $detail->komentar; ?>
-									</div>
-									<hr/>
-									<div class="form-group">
-										<label>Lokasi Sampah</label> <a
-												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
-											Disini Menetukan Rute</a><br>
-										<div id="gmaps-markers" class="gmaps"></div>
-									</div>
-									<hr/>
-								</div>
-								<div class="col-md-6">
-									<img class="img-rounded img-responsive"
-										 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
-										 width="100%">
-								</div>
-								<?php
-								if($detail->status_laporan=="y"){
-									?>
-										<div class="col-md-4">
-											<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" class="img-rounded" alt="Cinque Terre">
-										</div>
-										<div class="col-md-8">
-											<div class="text">
-												<h5 class="uppercase">Verifikasi Laporan</h5>
-												Laporan Telah Diverifikasi Pada Tanggal <?php print TglIndo($detail->tanggal_verifikasi); ?>
-
-											</div>
-										</div>
-									<?php
-								}
-								?>
-
-							</div>
-
-
-
-
-
-					</div>
-
-
-				</div>
-				<?php
-
-				if($detail->status_laporan=="y"){
-					?>
-				<div class="card m-b-30">
-					<div class="card-body">
 						<div class="row">
 							<div class="col-md-6">
 
 								<input name="id" value="<?php print $detail->id_laporan ?>" type="hidden">
 								<div class="form-group">
-									<label>Tanggal Verifikasi</label><br>
-									<?php print TglIndo($detail->tanggal_verifikasi); ?>
+									<label>Nama Pelapor</label><br>
+									<?php print $detail->nama_pelapor ?>
 								</div>
+								<hr/>
 
+								<div class="form-group">
+									<label>Email Pelapor</label><br>
+									<?php print $detail->email_pelapor ?>
+								</div>
+								<hr/>
 
+								<div class="form-group">
+									<label>No HP</label><br>
+									<?php print $detail->hp_pelapor ?>
+								</div>
+								<hr/>
 
-
+								<div class="form-group">
+									<label>Keterangan</label><br>
+									<?php print $detail->komentar; ?>
+								</div>
+								<hr/>
+								<div class="form-group">
+									<label>Lokasi Sampah</label> <a
+											href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
+											target="_blank">Klik
+										Disini Menetukan Rute</a><br>
+									<div id="gmaps-markers" class="gmaps"></div>
+								</div>
+								<hr/>
 							</div>
 							<div class="col-md-6">
 								<img class="img-rounded img-responsive"
-									 src="<?php print base_url() . "assets/laporan/" . $detail->foto_verifikasi; ?>"
+									 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
 									 width="100%">
 							</div>
+
 						</div>
 					</div>
 				</div>
+				<?php
+
+				if ($detail->status_laporan == "y") {
+					?>
+					<div class="card m-b-30">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-6">
+									<input name="id" value="<?php print $detail->id_laporan ?>" type="hidden">
+									<div class="form-group">
+										<label>Tanggal Verifikasi</label><br>
+										<?php print TglIndo($detail->tanggal_verifikasi); ?>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<img class="img-rounded img-responsive" src="<?php print base_url() . "assets/laporan/" . $detail->foto_verifikasi; ?>" width="100%">
+								</div>
+							</div>
+						</div>
+					</div>
 					<?php
 
 				}
