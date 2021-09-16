@@ -72,7 +72,7 @@ $tahun  = $this->uri->segment('3');
 							?><span class="badge badge-success">Selesai</span><?php
 
 						}elseif ($value->status_laporan=="n"){
-							?><span class="badge badge-danger">Palsu</span><?php
+							?><span class="badge badge-danger">Ditolak</span><?php
 
 						} ?>
 					</td>

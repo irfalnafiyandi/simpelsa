@@ -34,7 +34,7 @@
 						<a href="<?php print base_url('pelaporlist') ?>" class=""><i class="mdi mdi-account"></i><span> Pelapor</span></a>
 					</li>
 					<li>
-						<a href="<?php print base_url('laporansampah') ?>" class=""><i class="mdi mdi-printer"></i><span> Cetak Laporan </span></a>
+						<a href="<?php print base_url('cetaklaporan') ?>" class=""><i class="mdi mdi-printer"></i><span> Cetak Laporan </span></a>
 					</li>
 
 
