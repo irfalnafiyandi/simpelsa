@@ -927,6 +927,35 @@ class Admin extends CI_Controller
 			print $error;
 		}
 	}
+	public function tolaklaporan($id)
+	{
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+
+		if (empty($id)) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
+		if (empty($error)) {
+
+			$where = array(
+				'id_laporan' => $id,
+			);
+			$data = array(
+
+				'status_laporan' => 'n',
+
+
+			);
+
+			$id = $this->Adminmodel->Update($table, $data, $where);
+
+			header("location:" . base_url("laporanlist"));
+
+		} else {
+			print $error;
+		}
+	}
 
 	public function logout()
 	{

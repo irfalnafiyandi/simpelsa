@@ -93,7 +93,7 @@
 
 								<div class="col-md-12">
 								<div class="form-group">
-
+<br>
 									<div>
 										<a href="<?php print base_url('laporansampah') ?>"
 										   class="btn btn-warning waves-effect m-l-5">
@@ -102,6 +102,10 @@
 										<button type="submit" class="btn btn-primary waves-effect waves-light">
 											Verifikasi Laporan
 										</button>
+										<a href="<?php print base_url('tolaklaporan/'.$detail->id_laporan) ?>"
+										   class="btn btn-danger waves-effect m-l-5">
+											Tolak Laporan
+										</a>
 
 
 
