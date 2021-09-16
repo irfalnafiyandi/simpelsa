@@ -77,7 +77,7 @@
 						<?php print $semualaporan ?>
 					</div>
 					<div class="count-descr">
-						<i class="fa fa-briefcase"></i>
+
 						<span class="count-title">Jumlah Laporan</span>
 					</div>
 				</div>
@@ -89,7 +89,7 @@
 						<?php print $laporanselesai ?>
 					</div>
 					<div class="count-descr">
-						<i class="fa fa-heart"></i>
+
 						<span class="count-title">Laporan Selesai</span>
 					</div>
 				</div>
@@ -101,7 +101,7 @@
 						<?php print $laporanproses ?>
 					</div>
 					<div class="count-descr">
-						<i class="fa fa-coffee"></i>
+
 						<span class="count-title">Laporan Proses</span>
 					</div>
 				</div>
@@ -271,7 +271,7 @@
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/jquery.magnific-popup.min.js"></script>
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/all.js"></script>
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/contact-form.js"></script>
-<script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/animations.min.js"></script>
+<!--<script type="text/javascript" src="<?php /*print base_url(); */?>assets/web/js/animations.min.js"></script>-->
 <!--[if lt IE 10]><script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/placeholder.js"></script><![endif]-->
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/TweenLite.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/EasePack.min.js"></script>
