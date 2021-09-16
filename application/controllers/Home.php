@@ -283,28 +283,12 @@ class Home extends CI_Controller {
 
 
 
-			$from_email = "applesaorg@gmail.com";
-			$to_email = $email;
-
-			//Load email library
-			/*$this->load->library('email');
-
-			$this->email->set_mailtype("html");
-			$this->email->from($from_email, "Appelsa");
-			$this->email->to($to_email);
-			$this->email->subject('Verfikasi Email');
-			$this->email->message($message);
-			$this->email->send();
-
-
-			print "oke";*/
-
-
 
 			$mail = new PHPMailer(true);
-			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-			$mail->isSMTP();
-			$mail->Host 		= "ssl://smtp.gmail.com";
+
+			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
+
+			$mail->Host       = 'smtp.googlemail.com';
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
 			$mail->Password   = '@admin123'; // ubah dengan password email Anda
@@ -313,37 +297,14 @@ class Home extends CI_Controller {
 
 			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
-			$mail->addReplyTo('appelsaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
+			$mail->addReplyTo('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 
 			// Isi Email
 			$mail->isHTML(true);
 			$mail->Subject = $subject;
 			$mail->Body    = $message;
-			$mail->send();
-
-
-			/*$to = $email;
-			$mail->Subject = $subject;
-			$message = $message;
-
-
-			$email_from = "noreply@lapor.semutgadget.com";
-			$email_name = "Appelsa";
-			$subjectemail = $subject;
-			$emailisi = $message;
-
-			$email = $to;
-			$name = "Verifikasi Email ";
-
-			$mail->setFrom($email_from, $email_name);
-			$mail->FromName = $email_name;
-			$mail->addAddress($email, $name);
-			$mail->IsHTML(true);
-			$mail->Subject = "$subjectemail";
-			$mail->Body = $emailisi;
 
 			$mail->send();
-			$mail->ClearAddresses();*/
 
 
 
