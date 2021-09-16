@@ -81,7 +81,7 @@ $route['adminupdate'] = 'Admin/adminupdate';
 
 
 $route['laporansampah'] = 'Admin/laporansampah';
-$route['laporandelete'] = 'Admin/laporandelete';
+$route['laporandelete/(:any)'] = 'Admin/laporandelete/$1';
 $route['laporandetail/(:any)'] = 'Admin/laporandetail/$1';
 $route['tolaklaporan/(:any)'] = 'Admin/tolaklaporan/$1';
 $route['laporanverifikasi/(:any)'] = 'Admin/laporanverifikasi/$1';
