@@ -723,6 +723,27 @@ class Admin extends CI_Controller
 
 		}
 	}
+	public function laporandelete($id)
+	{
+		$now = time();
+		$table = "laporan_sampah";
+		$error = "";
+
+		if (empty($id)) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
+		if (empty($error)) {
+
+			$where = array(
+				'id_laporan' => $id,
+			);
+			$this->Amodel->delete($table, $where);
+			header("location:" . base_url("laporansampah"));
+
+		} else {
+			print $error;
+		}
+	}
 
 	public function cetaklaporan(){
 		if(empty($this->id) OR empty($this->admin_username)){
