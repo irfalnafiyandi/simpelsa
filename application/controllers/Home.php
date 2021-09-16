@@ -282,7 +282,6 @@ class Home extends CI_Controller {
 			$message = str_replace('{LINK}',base_url('code/'.$id.'/'.$code),$message);
 
 
-			$this->load->library('email');
 
 			$from_email = "applesaorg@gmail.com";
 			$to_email = $email;
@@ -312,7 +311,7 @@ class Home extends CI_Controller {
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port       = 465;
 
-			$mail->setFrom('appelsaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
+			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
 			$mail->addReplyTo('appelsaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 
