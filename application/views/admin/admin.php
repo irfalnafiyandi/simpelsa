@@ -40,8 +40,6 @@
 								<th>Level</th>
 							</tr>
 							</thead>
-
-
 							<tbody>
 							<?php
 							if($query){

@@ -30,9 +30,5 @@
 </head>
 <body class="appear-animate">
 
-<!-- Page Loader -->
-<div class="page-loader">
-	<b class="spinner">Loading...</b>
-</div>
 <!-- End Page Loader -->
 
