@@ -67,16 +67,16 @@
 										 width="100%">
 								</div>
 								<?php
-								if($values->status_laporan=="y"){
+								if($detail->status_laporan=="y"){
 									?>
 
 										<div class="col-md-4">
-											<img src="<?php print base_url().'assets/laporan/'.$values->foto_verifikasi; ?>" class="img-rounded" alt="Cinque Terre">
+											<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" class="img-rounded" alt="Cinque Terre">
 										</div>
 										<div class="col-md-8">
 											<div class="text">
 												<h5 class="uppercase">Verifikasi Laporan</h5>
-												Laporan Telah Diverifikasi Pada Tanggal <?php print TglIndo($values->tanggal_verifikasi); ?>
+												Laporan Telah Diverifikasi Pada Tanggal <?php print TglIndo($detail->tanggal_verifikasi); ?>
 
 											</div>
 										</div>
