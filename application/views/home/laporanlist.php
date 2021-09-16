@@ -133,7 +133,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> APPELSA</a>
+				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 

@@ -41,9 +41,10 @@
 				<div class="col-sm-12 ">
 					<div class="panel panel-default">
 						<div class="panel-body">
-							<div class="alert success mb-0 font-weight-bold" role="alert"   ><h4>Pendaftaran akun pelapor sampah telah berhasil dilakukan. Silakan cek email anda untuk melakukan verifikasi akun.<a href="<?php print base_url('Home') ?>">Klik Disini Untuk Kembali Ke Halaman Depan</a></h4></div>
+							<div class="alert success mb-0 font-weight-bold" role="alert"   ><h4>Pendaftaran akun pelapor sampah telah berhasil dilakukan. Silakan cek email anda untuk melakukan verifikasi akun.</h4></div>
 						</div>
 					</div>
+					<a href="<?php print base_url('Home') ?>" class="btn btn-info">Klik Disini Untuk Kembali Ke Halaman Depan</a>
 
 				</div>
 
@@ -67,7 +68,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> APPELSA</a>
+				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 
