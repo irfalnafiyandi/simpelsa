@@ -263,7 +263,8 @@ class Home extends CI_Controller {
 				'emailcode_pelapor'=>$code,
 			);
 
-			$id = $this->Amodel->save($data);
+			#$id = $this->Amodel->save($data);
+			$id=1;
 
 			$to                 = $email;
 			$subject            = "Verifikasi Email";
@@ -281,7 +282,27 @@ class Home extends CI_Controller {
 			$message = str_replace('{LINK}',base_url('code/'.$id.'/'.$code),$message);
 
 
-			$mail = new PHPMailer(true);
+			$this->load->library('email');
+
+			$from_email = "applesaorg@gmail.com";
+			$to_email = $email;
+
+			//Load email library
+			$this->load->library('email');
+
+			$this->email->set_mailtype("html");
+			$this->email->from($from_email, "D'Anugrah");
+			$this->email->to($to_email);
+			$this->email->subject('Reminder | Pembayaran Jatuh Tempo');
+			$this->email->message($message);
+			$this->email->send();
+
+
+			print "oke";
+
+
+
+			#$mail = new PHPMailer(true);
 
 		/*	#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 			$mail->isSMTP();
@@ -303,7 +324,7 @@ class Home extends CI_Controller {
 			$mail->send();
 */
 
-			$to = $email;
+			/*$to = $email;
 			$mail->Subject = $subject;
 			$message = $message;
 
@@ -324,7 +345,7 @@ class Home extends CI_Controller {
 			$mail->Body = $emailisi;
 
 			$mail->send();
-			$mail->ClearAddresses();
+			$mail->ClearAddresses();*/
 
 
 
