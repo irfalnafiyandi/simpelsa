@@ -20,7 +20,7 @@
 				<a href="<?php print base_url('Home') ?>">Home</a>
 			</li>
 			<li>
-				<a href="<?php print base_url('Home') ?>">Tentang Kami</a>
+				<a href="<?php print base_url('about') ?>">Tentang Kami</a>
 			</li>
 			<?php
 			if($session->userdata('id')){
