@@ -303,7 +303,7 @@ class Home extends CI_Controller {
 
 			$mail = new PHPMailer(true);
 			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
-			$mail->isSMTP();
+			#$mail->isSMTP();
 			$mail->Host 		= "ssl://smtp.gmail.com";
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
