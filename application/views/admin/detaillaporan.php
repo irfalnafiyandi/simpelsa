@@ -35,31 +35,32 @@
 										<label>Nama Pelapor</label><br>
 										<?php print $detail->nama_pelapor ?>
 									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>Email Pelapor</label><br>
 										<?php print $detail->email_pelapor ?>
 									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>No HP</label><br>
 										<?php print $detail->hp_pelapor ?>
 									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>Keterangan</label><br>
 										<?php print $detail->komentar; ?>
 									</div>
-
+									<hr/>
 									<div class="form-group">
 										<label>Lokasi Sampah</label> <a
 												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
 											Disini Menetukan Rute</a><br>
 										<div id="gmaps-markers" class="gmaps"></div>
-
 									</div>
-
-
+									<hr/>
 								</div>
 								<div class="col-md-6">
 									<img class="img-rounded img-responsive"
@@ -69,7 +70,6 @@
 								<?php
 								if($detail->status_laporan=="y"){
 									?>
-
 										<div class="col-md-4">
 											<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" class="img-rounded" alt="Cinque Terre">
 										</div>
