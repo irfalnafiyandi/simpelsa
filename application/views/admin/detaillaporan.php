@@ -118,7 +118,7 @@
 </div> <!-- Page content Wrapper -->
 
 </div> <!-- content -->
-<script src="http://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
+<script src="https://maps.google.com/maps/api/js?key=AIzaSyCtSAR45TFgZjOs4nBFFZnII-6mMHLfSYI"></script>
 <script src="<?php print base_url() ?>/assets/admin/plugins/gmaps/gmaps.min.js"></script>
 <script>
 	$(function () {
