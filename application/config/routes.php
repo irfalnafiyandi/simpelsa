@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 
 $route['laporan'] = 'Home/laporan';
+$route['about'] = 'Home/about';
 $route['laporanlist'] = 'Home/laporanlist';
 $route['getlaporan'] = 'Home/laporanget';
 $route['login/proses'] = 'Home/loginprocess';

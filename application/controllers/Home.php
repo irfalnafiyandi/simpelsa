@@ -66,6 +66,28 @@ class Home extends CI_Controller {
 		$this->load->view('webcom/com-nav',$data);
 		$this->load->view('home/index',$data);
     }
+	public function about()
+	{
+
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+
+
+		$data['title'] = "Tentang Kami";
+		$data['session'] = $this->session;
+
+
+
+
+
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/about',$data);
+
+
+	}
 
 	public function register()
 	{
@@ -436,6 +458,8 @@ class Home extends CI_Controller {
 			print $error;
 		}
 	}
+
+
 	public function logout()
 	{
 		$this->session->sess_destroy(); // Hapus semua session

@@ -47,19 +47,14 @@
 								<label>Hp</label>
 								<input type="text" class="form-control" required placeholder="Nomor Hp" name="hp">
 							</div>
-
 							<div class="form-group">
 								<label class="">Level</label>
-
 									<select class="form-control" name="level" required>
 										<option value="">Pilih Level</option>
 										<option value="petugas">Petugas</option>
 										<option value="administrator">Administrator</option>
 									</select>
-
 							</div>
-
-
 							<div class="form-group">
 								<div>
 									<a href="<?php print base_url('adminlist') ?>" class="btn btn-warning waves-effect m-l-5">
