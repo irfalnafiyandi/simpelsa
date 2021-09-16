@@ -49,19 +49,18 @@
 							</div>
 
 
+
 							<div class="form-group">
 								<div>
-									<button type="submit" class="btn btn-primary waves-effect waves-light">
-										Submit
-									</button>
-									<button type="reset" class="btn btn-secondary waves-effect m-l-5">
-										Cancel
-									</button>
 									<a href="<?php print base_url('pelaporlist') ?>" class="btn btn-warning waves-effect m-l-5">
 										Kembali
 									</a>
+									<button type="submit" class="btn btn-primary waves-effect waves-light">
+										Simpan
+									</button>
 								</div>
 							</div>
+
 						</form>
 					</div>
 				</div>

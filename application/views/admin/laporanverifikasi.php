@@ -31,30 +31,19 @@
 										<label>Nama Pelapor</label><br>
 										<?php print $detail->nama_pelapor ?>
 									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>Email Pelapor</label><br>
 										<?php print $detail->email_pelapor ?>
 									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>No HP</label><br>
 										<?php print $detail->hp_pelapor ?>
 									</div>
-
-									<div class="form-group">
-										<label>Keterangan</label><br>
-
-										<div class="form-group">
-											<label>Lokasi Sampah</label> <a
-												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
-												Disini Menetukan Rute</a><br>
-											<div id="gmaps-markers" class="gmaps"></div>
-
-										</div>
-
-
-									</div>
+									<hr/>
 
 									<div class="form-group">
 										<label>Status Laporan</label><br>
@@ -73,6 +62,24 @@
 
 										} ?>
 									</div>
+									<hr/>
+
+									<div class="form-group">
+										<label>Keterangan</label><br>
+										<?php print $detail->komentar ?>
+									</div>
+									<hr/>
+
+									<div class="form-group">
+
+											<label>Lokasi Sampah</label> <a
+												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
+												Disini Menetukan Rute</a><br>
+											<div id="gmaps-markers" class="gmaps"></div>
+									</div>
+									<hr/>
+
+
 
 								</div>
 								<div class="col-md-6">
@@ -86,19 +93,22 @@
 
 								<div class="col-md-12">
 								<div class="form-group">
-									<div>
-										<button type="submit" class="btn btn-primary waves-effect waves-light">
-											Verifikasi Laporan
-										</button>
 
+									<div>
 										<a href="<?php print base_url('laporansampah') ?>"
 										   class="btn btn-warning waves-effect m-l-5">
 											Kembali
 										</a>
-									</div>
+										<button type="submit" class="btn btn-primary waves-effect waves-light">
+											Verifikasi Laporan
+										</button>
+
+
+
 								</div>
 								</div>
 						</form>
+
 
 
 					</div>

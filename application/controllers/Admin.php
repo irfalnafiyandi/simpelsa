@@ -348,6 +348,7 @@ class Admin extends CI_Controller
 		}
 
 		$data['title'] = "Edit User";
+		$data['session'] = $this->session;
 		$table= "admin";
 
 		$where = array(

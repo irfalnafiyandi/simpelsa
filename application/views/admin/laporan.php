@@ -29,6 +29,7 @@
 						<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 							<thead>
 							<tr>
+								<th width="5%">No</th>
 								<th></th>
 								<th>Pelapor</th>
 								<th>Tanggal Laporan</th>
@@ -41,9 +42,11 @@
 							<tbody>
 							<?php
 							if($query){
+								$no=1;
 								foreach ($query as $key => $value){
 									?>
 									<tr>
+										<td><?php print $no; ?></td>
 										<td width="5%">
 											<div class="btn-group btn-group-sm">
 												<?php
@@ -106,6 +109,7 @@
 									<?php
 
 
+									$no++;
 
 								}
 							}

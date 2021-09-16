@@ -31,6 +31,7 @@
 						<table id="datatable" class="table table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
 							<thead>
 							<tr>
+								<th>No</th>
 								<th></th>
 								<th>Nama</th>
 								<th>Username</th>
@@ -44,9 +45,11 @@
 							<tbody>
 							<?php
 							if($query){
+								$no=1;
 								foreach ($query as $key => $value){
 									?>
 									<tr>
+										<td width="5%"><?php print $no; ?></td>
 										<td width="5%">
 											<div class="btn-group btn-group-sm">
 												<a  href="<?php print base_url('adminedit/'.$value->id_admin) ?>" class="btn btn-primary text-white" data-toggle="tooltip" title="Edit"><i class="mdi mdi-pencil"></i></a>
@@ -65,6 +68,7 @@
 									<?php
 
 
+									$no++;
 
 								}
 							}
