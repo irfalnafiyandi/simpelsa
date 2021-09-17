@@ -117,7 +117,7 @@
 </div>
 <div class="body-masked">
 </div>
-<div id="map"></div>
+<div id="maps"></div>
 <!-- End Works Expander -->
 
 
@@ -162,7 +162,7 @@
 	// failed.", it means you probably did not give permission for the browser to
 	// locate you.
 	function initMap() {
-		var map = new google.maps.Map(document.getElementById('map'), {
+		var map = new google.maps.Map(document.getElementById('maps'), {
 			center: {
 				lat: -34.397
 				, lng: 150.644
