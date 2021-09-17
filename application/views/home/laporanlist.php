@@ -42,7 +42,7 @@
 						$text= "Laporan Anda Akan Diverifikasi Oleh Administrator Kami";
 						$panelc = "panel-info";
 					}else{
-						$text= "";
+						$text= "Laporan Anda Ditolak";
 						$panelc = "panel-danger";
 					}
 					?>
