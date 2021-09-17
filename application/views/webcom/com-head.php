@@ -31,7 +31,7 @@
 			defer
 	></script>
 	<style type="text/css">
-		#map{
+		#maps{
 			width: 100%;
 			height: 600px;
 			border: 0px;
