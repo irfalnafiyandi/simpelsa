@@ -968,10 +968,7 @@ class Admin extends CI_Controller
 				'id_laporan' => $id,
 			);
 			$data = array(
-
 				'status_laporan' => 'n',
-
-
 			);
 
 			$id = $this->Adminmodel->Update($table, $data, $where);

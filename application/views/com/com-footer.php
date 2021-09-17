@@ -1,5 +1,5 @@
 <footer class="footer">
-	© 2018 - 2020 <b>Appelsa</b>
+	© 2018 - 2020 <b>Aplikasi Pelaporan Sampah</b>
 </footer>
 
 </div>

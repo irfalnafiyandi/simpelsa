@@ -58,7 +58,7 @@
 											?><span class="badge badge-success">Selesai</span><?php
 
 										}elseif ($detail->status_laporan=="n"){
-											?><span class="badge badge-danger">Palsu</span><?php
+											?><span class="badge badge-danger">Ditolak</span><?php
 
 										} ?>
 									</div>
