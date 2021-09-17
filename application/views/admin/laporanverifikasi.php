@@ -66,7 +66,7 @@
 
 									<div class="form-group">
 										<label>Keterangan</label><br>
-										<?php print $detail->komentar ?>
+										<?php print $detail->keterangan ?>
 									</div>
 									<hr/>
 

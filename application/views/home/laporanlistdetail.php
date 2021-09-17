@@ -40,8 +40,8 @@
 					</div>
 					<hr/>
 					<div class="form-group">
-						<label><b>Komentar</b></label><br>
-						<?php print $detail->komentar ?>
+						<label><b>Keterangan Laporan</b></label><br>
+						<?php print $detail->keterangan ?>
 
 					</div>
 					<hr/>
@@ -71,7 +71,9 @@
 						<a href="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" data-fancybox="gallery" data-caption="Caption #2">
 							<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
 						</a><br/>
-						<label>Diverifikasi pada tanggal <?php TglIndo($detail->tanggal_verifikasi); ?></label>
+						<hr/>
+						<label>Diverifikasi pada tanggal </label><br>
+						<?php print  TglIndo($detail->tanggal_verifikasi); ?>
 
 
 						<?php

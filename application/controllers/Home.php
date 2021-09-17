@@ -425,7 +425,7 @@ class Home extends CI_Controller {
 				'tanggal_laporan' => date('Y-m-d H:i:s'),
 				'latitude' => $latitude,
 				'longitude' => $longitude,
-				'komentar' => $note,
+				'keterangan' => $note,
 				'foto' => $namefile,
 				'status_laporan' => 'b',
 				'tanggal_verifikasi' => '',
