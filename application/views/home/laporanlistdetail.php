@@ -50,7 +50,7 @@
 								href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
 								target="_blank">Klik
 							Disini Menetukan Rute</a><br>
-						<div id="map"></div>
+						<div id="maps"></div>
 
 
 
@@ -192,7 +192,7 @@
 			"<div style='width:300px;'><table class='table'><tr><td width='30'>Komentar</td><td width='10'>:</td><td><?php print $detail->komentar ?></td></tr></table></div>",
 		];
 
-		var map = new google.maps.Map(document.getElementById("map"), {
+		var map = new google.maps.Map(document.getElementById("maps"), {
 			zoom: 4,
 			center: new google.maps.LatLng(0, 0),
 
