@@ -58,6 +58,7 @@
 							<input type="hidden" name="latitude" id="Latitude">
 							<input type="hidden" name="longitude" id="Longitude">
 						</div>
+						<div class="preloadingbutton"></div>
 
 						<center><button class="btn btn-mod btn-border btn-large" type="submit">Buat Laporan</button></center>
 					</form>
