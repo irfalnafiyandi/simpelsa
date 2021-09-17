@@ -45,14 +45,46 @@
 
 					</div>
 					<hr/>
+					<div class="form-group">
+						<label>Lokasi Sampah</label> <a
+								href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
+								target="_blank">Klik
+							Disini Menetukan Rute</a><br>
+						<div id="map"></div>
+
+
+
+					</div>
+					<hr/>
 				</div>
 				<div class="col-md-6">
+					<label><b>Foto Laporan</b></label><br>
 					<a href="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
-						<img src="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" />
-					</a>
+						<img src="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
+					</a><br/>
+
+					<?php
+					if($detail->status_laporan=="y"){
+						?>
+						<label><b>Foto Verifkasi</b></label><br>
+						<a href="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
+							<img src="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
+						</a><br/>
+
+
+						<?php
+
+					}
+
+
+					?>
+
+
+
 
 				</div>
 			</div>
+
 
 
 
@@ -99,7 +131,7 @@
 </div>
 <div class="body-masked">
 </div>
-<div id="map"></div>
+
 <!-- End Works Expander -->
 
 
@@ -135,6 +167,67 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/EasePack.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/jquery.fancybox.min.js"></script>
+
+<script>
+	$(function () {
+		$('#result').hide();
+		validate('#result', '#form', '<?php echo base_url('laporansampah'); ?>');
+	});
+
+
+	function initMap() {
+		var cwc2011_venue_data = [
+			{
+				latlng: new google.maps.LatLng(<?php print $detail->latitude ?>, <?php print $detail->longitude ?>),
+			},
+
+
+		];
+
+		var cwc2011_venue_data_win = [
+			"<div style='width:300px;'><table class='table'><tr><td width='30'>Komentar</td><td width='10'>:</td><td><?php print $detail->komentar ?></td></tr></table></div>",
+		];
+
+		var map = new google.maps.Map(document.getElementById("map"), {
+			zoom: 4,
+			center: new google.maps.LatLng(0, 0),
+
+
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		markers = Array();
+		infoWindows = Array();
+
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			var marker  = new google.maps.Marker({
+				position: cwc2011_venue_data[i].latlng,
+				map: map,
+				infoWindowIndex : i
+			});
+
+			var infoWindow = new google.maps.InfoWindow({
+				content: cwc2011_venue_data_win[i]
+			});
+			google.maps.event.addListener(marker, 'click',
+				function(event)
+				{
+					infoWindows[this.infoWindowIndex].open(map, this);
+				}
+			);
+
+			infoWindows.push(infoWindow);
+			markers.push(marker);
+		}
+		var latlngbounds = new google.maps.LatLngBounds();
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			latlngbounds.extend(cwc2011_venue_data[i].latlng);
+		}
+		map.fitBounds(latlngbounds);
+	}
+
+
+</script>
+
 
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <!-- GOOGLE MAPS API -->

@@ -26,7 +26,23 @@
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/colors/blue.css">
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/jquery.fancybox.min.css">
 	<!-- <link rel="stylesheet" href="css/colors/blue-extra.css"> -->
-
+	<script
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT6oJ2CAc3oxUOAgRvmz0VQUUaSVf0awY&callback=initMap&libraries=&v=weekly"
+			defer
+	></script>
+	<style type="text/css">
+		#map{
+			width: 100%;
+			height: 600px;
+			border: 0px;
+			overflow: hidden;
+		}
+		a[href^="http://maps.google.com/maps"]{display:none !important}
+		a[href^="https://maps.google.com/maps"]{display:none !important}
+		.gmnoprint a, .gmnoprint span, .gm-style-cc {
+			display:none;
+		}
+	</style>
 
 </head>
 <body class="appear-animate">
