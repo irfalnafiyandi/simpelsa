@@ -434,7 +434,7 @@ class Home extends CI_Controller {
 			);
 
 			$this->Amodel->input($data, 'laporan_sampah');
-			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\">Laporan Berhasil ditambahkan.</div>");
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Laporan Berhasil ditambahkan.</b></div>");
 			print "ok";
 
 		} else {

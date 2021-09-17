@@ -83,12 +83,12 @@
 
 								</div>
 								<div class="col-md-6">
-									<div class="col-md-6">
+
 										<label>Foto Laporan</label><br>
 										<img class="img-rounded img-responsive"
 											 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
 											 width="100%">
-									</div>
+
 								</div>
 
 								<div class="col-md-12">

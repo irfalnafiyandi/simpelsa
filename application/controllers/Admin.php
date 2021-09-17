@@ -973,7 +973,7 @@ class Admin extends CI_Controller
 
 			$id = $this->Adminmodel->Update($table, $data, $where);
 
-			header("location:" . base_url("laporanlist"));
+			header("location:" . base_url("laporansampah"));
 
 		} else {
 			print $error;

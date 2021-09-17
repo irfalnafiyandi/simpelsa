@@ -46,10 +46,7 @@
 					</div>
 					<hr/>
 					<div class="form-group">
-						<label>Lokasi Sampah</label> <a
-								href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
-								target="_blank">Klik
-							Disini Menetukan Rute</a><br>
+						<label>Lokasi Sampah</label> <br>
 						<div id="map"></div>
 
 
@@ -189,7 +186,7 @@
 		];
 
 		var cwc2011_venue_data_win = [
-			"<div style='width:300px;'><table class='table'><tr><td width='30'>Komentar</td><td width='10'>:</td><td><?php print $detail->keterangan ?></td></tr></table></div>",
+			"",
 		];
 
 		var map = new google.maps.Map(document.getElementById("map"), {

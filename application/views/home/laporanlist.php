@@ -28,12 +28,13 @@
 
 			<div class="row">
 				<div class="col-md-12">
+					<div class="table-responsive">
 					<table class="table table-bordered">
 						<thead>
 						<tr>
 							<th width="5%">No</th>
-							<th width="5%"></th>
-							<th width="5%"></th>
+
+							<th ></th>
 							<th>Tanggal Pelaporan</th>
 							<th>Status</th>
 						</tr>
@@ -47,12 +48,7 @@
 							?>
 							<tr>
 								<td><?php print $no; ?></td>
-								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" target="_blank">Detail Laporan</a></td>
-								<td>
-
-									<a href="<?php print base_url().'assets/laporan/'.$values->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
-										<img src="<?php print base_url().'assets/laporan/'.$values->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50px;"/>
-									</a>
+								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" >Detail Laporan</a></td>
 
 
 								<td><?php print TglIndo($values->tanggal_laporan) ?></td>
@@ -83,6 +79,7 @@
 						</tbody>
 
 					</table>
+					</div>
 				</div>
 			</div>
 
