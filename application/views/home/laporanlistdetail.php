@@ -66,10 +66,12 @@
 					<?php
 					if($detail->status_laporan=="y"){
 						?>
+							<hr/>
 						<label><b>Foto Verifkasi</b></label><br>
 						<a href="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" data-fancybox="gallery" data-caption="Caption #2">
 							<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
 						</a><br/>
+						<label>Diverifikasi pada tanggal <?php TglIndo($detail->tanggal_verifikasi); ?></label>
 
 
 						<?php
