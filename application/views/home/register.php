@@ -90,7 +90,7 @@
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="tel" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+							<input type="tel" name="hp" id="hp" class="form-control number" placeholder="No Handphone Anda"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->
@@ -194,6 +194,15 @@
 	$(function() {
 		$('#result').hide();
 		validate('#result','#form','<?php echo base_url('Home/suksesregister#success'); ?>');
+	});
+	$('input.number').keyup(function (event) {
+		if (event.which >= 37 && event.which <= 40) return;
+		$(this).val(function (index, value) {
+			return value
+				.replace(/\D/g, "")
+
+				;
+		});
 	});
 </script>
 

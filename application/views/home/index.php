@@ -283,6 +283,7 @@
 		$('#result').hide();
 		validate('#result', '#form', '<?php echo base_url('Home/laporan#laporan'); ?>');
 	});
+
 </script>
 
 
