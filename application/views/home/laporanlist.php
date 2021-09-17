@@ -50,8 +50,8 @@
 								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" target="_blank">Detail Laporan</a></td>
 								<td>
 
-									<a href="<?php print base_url().'assets/laporan/'.$values->foto_verifikasi; ?>" data-fancybox="gallery" data-caption="Caption #2">
-										<img src="<?php print base_url().'assets/laporan/'.$values->foto_verifikasi; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50px;"/>
+									<a href="<?php print base_url().'assets/laporan/'.$values->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
+										<img src="<?php print base_url().'assets/laporan/'.$values->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50px;"/>
 									</a>
 
 
