@@ -79,7 +79,7 @@
 				</div>
 				<div class="col-sm-4 mb-40">
 					<!-- Form -->
-					<form method="post" action="<?php echo base_url('register/proses'); ?>" id="form" role="form" class="form">
+					<form method="post" action="<?php echo base_url('register/proses'); ?>" id="form" role="form" class="form" style="text-transform: none">
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
 							<input type="text" name="name" id="name" class="form-control" placeholder="Nama Pelapor" maxlength="100">
@@ -90,7 +90,7 @@
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="text" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda" maxlength="100">
+							<input type="tel" name="hp" id="hp" class="form-control" placeholder="No Handphone Anda"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->

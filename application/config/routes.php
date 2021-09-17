@@ -94,5 +94,5 @@ $route['cetaklaporanstore'] = 'Admin/cetaklaporanstore';
 
 $route['pelaporlist'] = 'Admin/pelapor';
 $route['pelaporlistedit/(:any)'] = 'Admin/pelaporedit/$1';
-$route['pelaporlistdelete/(:any)'] = 'Admin/pelaporedit/$1';
+$route['pelaporlistdelete/(:any)'] = 'Admin/pelapordelete/$1';
 $route['pelaporupdate'] = 'Admin/pelaporupdate';

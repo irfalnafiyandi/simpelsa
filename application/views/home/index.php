@@ -175,7 +175,7 @@
 						?>
 						<!-- Form -->
 						<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form"
-							  class="form">
+							  class="form"  style="text-transform: none">
 							<div class="mb-20 mb-md-10">
 								<!-- Email -->
 								<input type="email" name="email" id="email" class="form-control" placeholder="Email"
