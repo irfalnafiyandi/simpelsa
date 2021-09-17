@@ -24,6 +24,7 @@
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/magnific-popup.css">
 
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/colors/blue.css">
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/jquery.fancybox.min.css">
 	<!-- <link rel="stylesheet" href="css/colors/blue-extra.css"> -->
 
 

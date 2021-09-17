@@ -11,7 +11,7 @@
 
 				<h3 class="small-title white">
 
-					 Laporan Anda
+					Detail Laporan
 
 				</h3>
 
@@ -27,153 +27,36 @@
 		<div class="container relative">
 
 			<div class="row">
-				<div class="col-md-12">
-					<table class="table table-bordered">
-						<thead>
-						<tr>
-							<th width="5%">No</th>
-							<th width="5%"></th>
-							<th width="5%"></th>
-							<th>Tanggal Pelaporan</th>
-							<th>Status</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						$no=1;
-						foreach ($query as $keys => $values){
-							$panelc=" ";
+				<div class="col-md-12 pd-4">
+					<a href="<?php print base_url('laporanlist') ?>" class="btn btn-warning">Kembali</a>
+					<br><br>
+				</div>
 
-							?>
-							<tr>
-								<td><?php print $no; ?></td>
-								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" target="_blank">Detail Laporan</a></td>
-								<td>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label><b>Tanggal Laporan</b></label><br>
+						<?php print TglIndo($detail->tanggal_laporan) ?>
 
-									<a href="<?php print base_url().'assets/laporan/'.$values->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
-										<img src="<?php print base_url().'assets/laporan/'.$values->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50px;"/>
-									</a>
+					</div>
+					<hr/>
+					<div class="form-group">
+						<label><b>Komentar</b></label><br>
+						<?php print $detail->komentar ?>
 
+					</div>
+					<hr/>
+				</div>
+				<div class="col-md-6">
+					<a href="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
+						<img src="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" />
+					</a>
 
-								<td><?php print TglIndo($values->tanggal_laporan) ?></td>
-								<td>
-									<?php
-									if($values->status_laporan=="p"){
-										?><span class="label label-warning">Proses</span><?php
-									}elseif ($values->status_laporan=="y"){
-										?><span class="label label-success">Selesai</span><?php
-									}elseif ($values->status_laporan=="b"){
-										?><span class="label label-primary">Baru</span><?php
-									}else{
-										?><span class="label label-danger">Ditolak</span><?php
-									}
-
-									?>
-								</td>
-							</tr>
-
-							<?php
-						}
-
-
-						?>
-
-
-						</tbody>
-
-					</table>
 				</div>
 			</div>
 
 
-			<!-- Blog Posts Grid -->
-			<!--<div class="row multi-columns-row">
-				<?php
-/*				foreach ($query as $keys => $values){
-					$panelc=" ";
-					if($values->status_laporan=="p"){
-						$text= "Laporan Anda Telah Diverifikasi Oleh Administrator Kami Dan Akan Diproses Oleh Petugas";
-						$panelc = "panel-warning";
-					}elseif ($values->status_laporan=="y"){
-						$text= "Laporan Anda Telah Selesai DiProses Oleh Petugas Kami";
-						$panelc = "panel-success";
-					}elseif ($values->status_laporan=="b"){
-						$text= "Laporan Anda Akan Diverifikasi Oleh Administrator Kami";
-						$panelc = "panel-info";
-					}else{
-						$text= "Laporan Anda Ditolak";
-						$panelc = "panel-danger";
-					}
-					*/?>
-					<div class="col-md-12">
-						<div class="panel <?php /*print $panelc; */?>">
-							<div class="panel-heading">
-								<a data-toggle="collapse" href="#collapse<?php /*print $values->id_laporan; */?>"><h4 class=" text-white"><?php /*print $text; */?> </h4></a></div>
 
-								<div id="collapse<?php /*print $values->id_laporan; */?>" class="panel-collapse collapse">
-									<div class="panel-body">
-										<div class="row">
-											<div class="col-md-4">
-												<img src="<?php /*print base_url().'assets/laporan/'.$values->foto; */?>" class="img-rounded" alt="Cinque Terre">
-											</div>
-											<div class="col-md-8">
-												<div class="text">
-													<h5 class="uppercase">Keteragan</h5>
-													<?php
-/*													print $values->komentar;
-													*/?>
-
-												</div>
-
-												<div class="text">
-													<h5 class="uppercase">Laporan Ini Dibuat</h5>
-													<?php
-/*													print TglIndo($values->tanggal_laporan);
-													*/?>
-												</div>
-
-											</div>
-										</div>
-										<hr/>
-
-										<?php
-/*										if($values->status_laporan=="y"){
-											*/?>
-											<div class="row">
-												<div class="col-md-4">
-													<img src="<?php /*print base_url().'assets/laporan/'.$values->foto_verifikasi; */?>" class="img-rounded" alt="Cinque Terre">
-												</div>
-												<div class="col-md-8">
-													<div class="text">
-														<h5 class="uppercase">Verifikasi Laporan</h5>
-														Laporan Telah Diverifikasi Pada Tanggal <?php /*print TglIndo($values->tanggal_verifikasi); */?>
-
-													</div>
-												</div>
-
-
-											</div>
-											<?php
-/*
-										}
-
-
-										*/?>
-
-
-									</div>
-
-								</div>
-
-						</div>
-					</div>
-					<?php
-/*				}
-
-				*/?>
-
-
-			</div>-->
+			</div>
 			<!-- End Blog Posts Grid -->
 
 

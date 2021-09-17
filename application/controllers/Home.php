@@ -144,6 +144,35 @@ class Home extends CI_Controller {
 
 
 	}
+	public function laporanlistdetail($id)
+	{
+
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+
+
+		$data['title'] = "Laporan Anda";
+		$data['session'] = $this->session;
+
+		$where = array(
+			'id_laporan' => $id,
+
+		);
+
+		$data['detail'] = $this->Amodel->Detail_query('laporan_sampah', $where); // Panggil fungsi get yang ada di UserModel.php
+
+
+
+
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/laporanlistdetail',$data);
+
+
+	}
+
 	public function laporanget()
 	{
 		$id = "";
