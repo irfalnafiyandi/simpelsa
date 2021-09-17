@@ -6,7 +6,7 @@
 	<div class="left-side-logo d-block d-lg-none">
 		<div class="text-center">
 
-			
+
 		</div>
 	</div>
 
@@ -30,7 +30,7 @@
 						<a href="<?php print base_url('laporansampah') ?>" class=""><i class="mdi mdi-camera-front-variant"></i><span> Pelaporan Sampah </span></a>
 					</li>
 					<li>
-						<a href="<?php print base_url('pelaporlist') ?>" class=""><i class="mdi mdi-account"></i><span> Pelapor</span></a>
+						<a href="<?php print base_url('pelaporlist') ?>" class=""><i class="mdi mdi-account-multiple"></i><span> Pelapor</span></a>
 					</li>
 					<li>
 						<a href="<?php print base_url('cetaklaporan') ?>" class=""><i class="mdi mdi-printer"></i><span> Cetak Laporan </span></a>
@@ -53,7 +53,7 @@
 
 
 					<li>
-						<a href="<?php print base_url('adminlogout') ?>" class=""><i class="mdi mdi-logout"></i><span> Sign Out </span></a>
+						<a href="<?php print base_url('adminlogout') ?>" class=""><i class="mdi mdi-logout"></i><span> Log Out </span></a>
 					</li>
 
 					<?php
