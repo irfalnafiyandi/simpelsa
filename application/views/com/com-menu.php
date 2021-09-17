@@ -6,8 +6,7 @@
 	<div class="left-side-logo d-block d-lg-none">
 		<div class="text-center">
 
-			<a href="<?php print base_url('admin') ?>" class="logo"><img src="<?php print base_url() ?>assets/admin/images/logo-dark.png"
-												   height="20" alt="logo"></a>
+			
 		</div>
 	</div>
 
