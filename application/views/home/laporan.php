@@ -40,10 +40,9 @@
 				<div class="col-sm-6 col-md-4 col-lg-4">
 				</div>
 				<div class="col-sm-6 col-md-4 col-lg-4">
-					<div class="col-sm-12 ">
-						<div class="alert error" role="alert" id="result" style="display:none;"></div>
-						<?php echo $this->session->flashdata('pesan'); ?>
-					</div>
+
+					<div class="alert error" role="alert" id="result" style="display:none;"></div>
+					<?php echo $this->session->flashdata('pesan'); ?>
 					<!-- Form -->
 					<form method="post" action="<?php echo base_url('laporan/proses'); ?>" id="form" role="form" class="form">
 						<div class="mb-20 mb-md-10">
