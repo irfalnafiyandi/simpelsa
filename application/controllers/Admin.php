@@ -793,7 +793,7 @@ class Admin extends CI_Controller
 		$mulai = $tahun.'-'.$bulan.'-01';
 		$sampai = $tahun.'-'.$bulan.'-31';
 
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor ORDER BY id_laporan DESC";
+		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where tanggal_laporan BETWEEN '$mulai' AND '$sampai'  ORDER BY id_laporan DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
 

@@ -49,33 +49,50 @@ $tahun  = $this->uri->segment('3');
 			$totalp = 0;
 			$keuntunganp = 0;
 			$no=1;
-			foreach ($query as $key => $value) {
+			if($query){
+				foreach ($query as $key => $value) {
 
+					?>
+					<tr>
+
+						<td class="text-center border-table"><?php print $no; ?></td>
+
+						<td class="text-center "> <?php print $value->nama_pelapor ?> </td>
+						<td class="text-center "> <?php print $value->email_pelapor; ?> </td>
+						<td class="text-center "> <?php print $value->hp_pelapor; ?> </td>
+						<td class="text-center "> <?php print TglIndo($value->tanggal_laporan); ?> </td>
+
+						<td class="text-center "> <?php
+							if($value->status_laporan=="b"){
+								?><span class="badge badge-primary">Baru</span><?php
+
+							}elseif ($value->status_laporan=="p"){
+								?><span class="badge badge-warning">Proses</span><?php
+
+							}elseif ($value->status_laporan=="y"){
+								?><span class="badge badge-success">Selesai</span><?php
+
+							}elseif ($value->status_laporan=="n"){
+								?><span class="badge badge-danger">Ditolak</span><?php
+
+							} ?>
+						</td>
+
+
+
+
+
+					</tr>
+					<?php
+					$no++;
+				}
+			}else{
 				?>
 				<tr>
-					
-					<td class="text-center border-table"><?php print $no; ?></td>
 
-					<td class="text-center "> <?php print $value->nama_pelapor ?> </td>
-					<td class="text-center "> <?php print $value->email_pelapor; ?> </td>
-					<td class="text-center "> <?php print $value->hp_pelapor; ?> </td>
-					<td class="text-center "> <?php print TglIndo($value->tanggal_laporan); ?> </td>
+					<td colspan="6" class="text-center"><center><?php print "Data Tidak Ditemukan"; ?></center></td>
 
-					<td class="text-center "> <?php
-						if($value->status_laporan=="b"){
-							?><span class="badge badge-primary">Baru</span><?php
 
-						}elseif ($value->status_laporan=="p"){
-							?><span class="badge badge-warning">Proses</span><?php
-
-						}elseif ($value->status_laporan=="y"){
-							?><span class="badge badge-success">Selesai</span><?php
-
-						}elseif ($value->status_laporan=="n"){
-							?><span class="badge badge-danger">Ditolak</span><?php
-
-						} ?>
-					</td>
 
 
 
@@ -83,8 +100,9 @@ $tahun  = $this->uri->segment('3');
 
 				</tr>
 				<?php
-				$no++;
+
 			}
+
 
 
 			?>
