@@ -310,7 +310,7 @@ class Home extends CI_Controller {
 				'hp_pelapor' => $hp,
 				'password_pelapor' => $password,
 				'password_pelapor' => $password,
-				'statusemail_pelapor' => 'n',
+				'statusemail_pelapor' => 'y',
 				'emailcode_pelapor'=>$code,
 			);
 
