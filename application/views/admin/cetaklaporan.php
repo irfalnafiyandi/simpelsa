@@ -29,18 +29,18 @@
 										<label>Bulan</label>
 										<select class="form-control" name="bulan" required>
 											<option value="">Pilih Bulan</option>
-											<option value="1">1</option>
-											<option value="2">2</option>
-											<option value="3">3</option>
-											<option value="4">4</option>
-											<option value="5">5</option>
-											<option value="6">6</option>
-											<option value="7">7</option>
-											<option value="8">8</option>
-											<option value="9">9</option>
-											<option value="10">10</option>
-											<option value="11">11</option>
-											<option value="12">12</option>
+											<option value="1">Januari</option>
+											<option value="2">Februari</option>
+											<option value="3">Maret</option>
+											<option value="4">April</option>
+											<option value="5">Mei</option>
+											<option value="6">Juni</option>
+											<option value="7">Juli</option>
+											<option value="8">Agustus</option>
+											<option value="9">September</option>
+											<option value="10">Oktober</option>
+											<option value="11">November</option>
+											<option value="12">Desember</option>
 										</select>
 									</div>
 								</div>
@@ -49,9 +49,15 @@
 										<label>Tahun</label>
 										<select class="form-control" name="tahun" required>
 											<option value="">Pilih Tahun</option>
-											<option value="2020">2020</option>
-											<option value="2021">2021</option>
-											<option value="2022">2022</option>
+											<?php
+											foreach ($query as $key => $value){
+												$datetime = new DateTime($value->tanggal_laporan);
+												?><option value="<?php print $datetime->format('Y'); ?>"><?php print $datetime->format('Y'); ?></option><?php
+											}
+
+											?>
+
+
 
 										</select>
 									</div>

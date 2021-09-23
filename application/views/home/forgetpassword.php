@@ -1,154 +1,21 @@
 <!-- Page Wrap -->
 <div class="page" id="top">
 
-	<!-- Home Section -->
-	<section class="home-section bg-dark parallax-3"
-			 data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
-		<div class="js-height-full" id="large-header">
 
-			<!-- Canvas Animation -->
-			<canvas id="demo-canvas"></canvas>
-
-			<!-- Home Page Content -->
-			<div class="ah-content">
-				<div class="home-content">
-					<div class="home-text animate-init" >
-						<div class="container">
-
-							<!-- Headings -->
-
-							<h1 class="hs-line-8  mb-30 mb-xs-10">
-								Hello <span class="serif">&</span>
-								Welcome
-							</h1>
-
-							<h2 class="hs-line-9 mb-40 mb-xs-20">
-								APLIKASI PELAPORAN SAMPAH
-							</h2>
-
-
-							<div class="local-scroll">
-								<?php
-								if ($session->userdata('id')) {
-
-
-								} else {
-									?>
-									<a href="<?php print base_url('Home/register') ?>#register"
-									   class="btn btn-mod btn-w btn-large mb-xxs-10 ">Daftar</a>
-									<span class="hidden-xs">&nbsp;</span>
-									<a href="#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 ">Sign In</a>
-									<?php
-
-								}
-
-								?>
-
-							</div>
-
-							<!-- End Headings -->
-
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- End Home Page Content -->
-
-			<!-- Scroll Down -->
-			<div class="local-scroll">
-				<a href="#about" class="scroll-down"><i class="scroll-down-icon"></i><span>Scroll Down</span></a>
-			</div>
-			<!-- End Scroll Down -->
-
-		</div>
-	</section>
-	<!-- End Home Section -->
-
-	<!-- Some Facts Section -->
-	<section class="page-section" id="counts">
-		<div class="container relative">
-
-			<!-- Counters -->
-			<div class="row">
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-4">
-					<div class="count-number">
-						<?php print $semualaporan ?>
-					</div>
-					<div class="count-descr">
-
-						<span class="count-title">Jumlah Laporan</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-4">
-					<div class="count-number">
-						<?php print $laporanselesai ?>
-					</div>
-					<div class="count-descr">
-
-						<span class="count-title">Laporan Selesai</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-
-				<!-- Counter Item -->
-				<div class="col-xs-6 col-sm-4">
-					<div class="count-number">
-						<?php print $laporanproses ?>
-					</div>
-					<div class="count-descr">
-
-						<span class="count-title">Laporan Proses</span>
-					</div>
-				</div>
-				<!-- End Counter Item -->
-			</div>
-			<!-- End Counters -->
-
-		</div>
-	</section>
-	<!-- End Some Facts Section -->
 
 	<!-- Some Facts Section -->
 	<section class="page-section padding-section " id="signin" style="padding-top: 40px;padding-bottom: 40px;">
 		<div class="container relative">
 			<!-- Section Headings -->
-
-			<?php
-
-			if (empty($session->userdata('id'))) {
-				?>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-						<div class="section-title">
-							Sign In<span class="st-point">.</span>
-						</div>
-						<div class="section-line mb-60 mb-xxs-30">
-						</div>
+			<div class="row">
+				<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
+					<div class="section-title">
+						Masukan Email Anda<span class="st-point">.</span>
+					</div>
+					<div class="section-line mb-60 mb-xxs-30">
 					</div>
 				</div>
-				<?php
-
-			}else{
-				?>
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 col-lg-8 col-lg-offset-2">
-						<div class="section-title">
-							Laporkan jika anda menemukan  penumpukan sampah<span class="st-point">.</span>
-						</div>
-
-						<div class="section-line mb-60 mb-xxs-30">
-						</div>
-					</div>
-				</div>
-				<?php
-
-			}
-			?>
+			</div>
 
 
 			<!-- End Section Headings -->
@@ -164,42 +31,23 @@
 				<div class="col-sm-4 mb-40">
 				</div>
 				<div class="col-sm-4 mb-40">
-					<?php
-					if ($session->userdata('id')) {
-						?>
+
+
+					<form method="post" action="<?php echo base_url('forgetpassword/proses'); ?>" id="form" role="form"
+						  class="form"  style="text-transform: none">
+						<div class="mb-20 mb-md-10">
+							<!-- Email -->
+							<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+								   maxlength="100" required>
+						</div>
+
 						<center>
-							<a href="<?php print base_url('laporan') ?>" class="btn btn-mod btn-border btn-large" >Lapor Sampah</a>
+							<button class="btn btn-mod btn-border btn-large" type="submit">Proses</button>
 						</center>
-						<?php
-					} else {
-						?>
-						<!-- Form -->
-						<form method="post" action="<?php echo base_url('login/proses'); ?>" id="form" role="form"
-							  class="form"  style="text-transform: none">
-							<div class="mb-20 mb-md-10">
-								<!-- Email -->
-								<input type="email" name="email" id="email" class="form-control" placeholder="Email"
-									   maxlength="100" required>
-							</div>
-							<div class="mb-20 mb-md-10">
-								<!-- Password -->
-								<input type="password" name="password" id="password" class="form-control"
-									   placeholder="Password" maxlength="100" required>
-							</div>
-							<center>
-								<button class="btn btn-mod btn-border btn-large" type="submit">Sign In</button>
-							</center>
-							<div class="text-center " style="margin-top: 10px;"><a class="text-center" href="<?php print base_url('forgetpassword') ?>">Lupa Password ?</a></div>
-							<!-- Toggle -->
+						<!-- Toggle -->
 
 
-						</form>
-						<!-- End Form -->
-						<?php
-					}
-
-					?>
-
+					</form>
 
 				</div>
 				<div class="col-sm-4 mb-40">
@@ -284,7 +132,7 @@
 <script>
 	$(function () {
 		$('#result').hide();
-		validate('#result', '#form', '<?php echo base_url('Home/laporan#laporan'); ?>');
+		validate('#result', '#form', '<?php echo base_url('Home/forgetpasswordsukses'); ?>');
 	});
 
 </script>

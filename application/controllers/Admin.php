@@ -580,7 +580,7 @@ class Admin extends CI_Controller
 
 
 
-		if (empty($id)  ) {
+		if (empty($id OR empty($statuslap))  ) {
 			$error = "Wajib mengisi seluruh field yang ada";
 		}else{
 
@@ -611,6 +611,7 @@ class Admin extends CI_Controller
 			);
 			$data = array(
 				'status_laporan' => 'p',
+				'catatan_verifikasi' => $catatan,
 			);
 
 			$id = $this->Adminmodel->Update($table, $data, $where);
@@ -745,13 +746,19 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function cetaklaporan(){
+	public function cetaklaporan() {
 		if(empty($this->id) OR empty($this->admin_username)){
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Cetak Laporan";
 		$data['session'] = $this->session;
+
+		$sql="SELECT tanggal_laporan FROM laporan_sampah  GROUP BY YEAR (tanggal_laporan)";
+		$data['query'] = $this->db->query($sql)->result();
+
+
+
 
 
 		#VIEW
@@ -986,3 +993,4 @@ class Admin extends CI_Controller
 		header("location:" . base_url("Admin"));
 	}
 }
+

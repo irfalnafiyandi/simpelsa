@@ -48,16 +48,16 @@
 									<div class="form-group">
 										<label>Status Laporan</label><br>
 										<?php
-										if($detail->status_laporan=="b"){
+										if ($detail->status_laporan == "b") {
 											?><span class="badge badge-primary">Baru</span><?php
 
-										}elseif ($detail->status_laporan=="p"){
+										} elseif ($detail->status_laporan == "p") {
 											?><span class="badge badge-warning">Proses</span><?php
 
-										}elseif ($detail->status_laporan=="y"){
+										} elseif ($detail->status_laporan == "y") {
 											?><span class="badge badge-success">Selesai</span><?php
 
-										}elseif ($detail->status_laporan=="n"){
+										} elseif ($detail->status_laporan == "n") {
 											?><span class="badge badge-danger">Ditolak</span><?php
 
 										} ?>
@@ -72,47 +72,59 @@
 
 									<div class="form-group">
 
-											<label>Lokasi Sampah</label> <a
-												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll" target="_blank">Klik
-												Disini Menetukan Rute</a><br>
-											<div id="gmaps-markers" class="gmaps"></div>
+										<label>Lokasi Sampah</label> <a
+												href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
+												target="_blank">Klik
+											Disini Menetukan Rute</a><br>
+										<div id="gmaps-markers" class="gmaps"></div>
 									</div>
 									<hr/>
-
 
 
 								</div>
 								<div class="col-md-6">
 
-										<label>Foto Laporan</label><br>
-										<img class="img-rounded img-responsive"
-											 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
-											 width="100%">
+									<label>Foto Laporan</label><br>
+									<img class="img-rounded img-responsive"
+										 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
+										 width="100%">
 
+								</div>
+
+								<div class="col-md-6 mt-4">
+									<div class="form-group">
+										<label>Status Laporan</label><br>
+										<select name="statuslap" class="form-control" required="">
+											<option value="">Piih Status Laporan</option>
+											<option value="y">Proses</option>
+											<option value="n">Tolak</option>
+										</select>
+									</div>
+								</div>
+								<div class="col-md-6 mt-4">
+									<div class="form-group">
+										<label>Catatan</label><br>
+										<textarea name="catatan" class="form-control" rows="5"
+												  placeholder="Tambah Catatan "></textarea>
+									</div>
 								</div>
 
 								<div class="col-md-12">
-								<div class="form-group">
-<br>
-									<div>
-										<a href="<?php print base_url('laporansampah') ?>"
-										   class="btn btn-warning waves-effect m-l-5">
-											Kembali
-										</a>
-										<button type="submit" class="btn btn-primary waves-effect waves-light">
-											Verifikasi Laporan
-										</button>
-										<a href="<?php print base_url('tolaklaporan/'.$detail->id_laporan) ?>"
-										   class="btn btn-danger waves-effect m-l-5">
-											Tolak Laporan
-										</a>
+									<div class="form-group">
+										<br>
+										<div>
+											<a href="<?php print base_url('laporansampah') ?>"
+											   class="btn btn-warning waves-effect m-l-5">
+												Kembali
+											</a>
+											<button type="submit" class="btn btn-primary waves-effect waves-light">
+												Update Laporan
+											</button>
 
 
-
-								</div>
-								</div>
+										</div>
+									</div>
 						</form>
-
 
 
 					</div>
