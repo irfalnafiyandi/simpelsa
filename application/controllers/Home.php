@@ -245,6 +245,8 @@ class Home extends CI_Controller {
 			}
 		}
 
+
+
 		if (empty($error)) {
 			$now = time();
 
@@ -257,6 +259,7 @@ class Home extends CI_Controller {
 				'checkpoint' => 'web', // Buat session authenticated
 			);
 			$this->session->set_userdata($session); // Buat session sesuai $session
+
 			print "ok";
 		} else {
 			print $error;
@@ -342,7 +345,7 @@ class Home extends CI_Controller {
 			$mail->Host       = 'smtp.googlemail.com';
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
-			$mail->Password   = '@admin123'; // ubah dengan password email Anda
+			$mail->Password   = 'qht3uA2q5Xzz5FA'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port       = 465;
 
