@@ -44,6 +44,11 @@
 
 								</div>
 								<div class="col-md-6">
+									<label>Catatan </label><br>
+									<?php print $detail->catatan_verifikasi; ?><br>
+									<hr>
+
+									<label>Foto Laporan</label>
 									<img class="img-rounded img-responsive"
 										 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
 										 width="100%">

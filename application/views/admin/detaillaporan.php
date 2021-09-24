@@ -53,7 +53,45 @@
 									<label>Keterangan</label><br>
 									<?php print $detail->keterangan; ?>
 								</div>
+
+								<?php
+								if($detail->catatan_verifikasi){
+									?>
+									<div class="form-group">
+										<label>Catatan Verifikasi</label><br>
+										<?php print $detail->catatan_verifikasi ?>
+									</div>
+									<hr>
+									<?php
+
+								}
+
+								?>
+
 								<hr/>
+								<div class="form-group">
+									<label>Status Laporan</label><br>
+									<?php
+									if($detail->status_laporan=="b"){
+										?><span class="badge badge-primary">Baru</span><?php
+
+									}elseif ($detail->status_laporan=="p"){
+										?><span class="badge badge-warning">Proses</span><?php
+
+									}elseif ($detail->status_laporan=="y"){
+										?><span class="badge badge-success">Selesai</span><?php
+
+									}elseif ($detail->status_laporan=="n"){
+										?><span class="badge badge-danger">Ditolak</span><?php
+
+									}
+
+									?>
+								</div>
+								<hr/>
+
+
+
 								<div class="form-group">
 									<label>Lokasi Sampah</label> <a
 											href="https://www.google.com/maps?daddr=<?php print $detail->latitude ?>,<?php print $detail->longitude ?>&ll"
@@ -64,6 +102,7 @@
 								<hr/>
 							</div>
 							<div class="col-md-6">
+								<label>Foto laporan</label>
 								<img class="img-rounded img-responsive"
 									 src="<?php print base_url() . "assets/laporan/" . $detail->foto; ?>"
 									 width="100%">
@@ -87,6 +126,7 @@
 									</div>
 								</div>
 								<div class="col-md-6">
+									<label>Foto Verifikasi</label>
 									<img class="img-rounded img-responsive" src="<?php print base_url() . "assets/laporan/" . $detail->foto_verifikasi; ?>" width="100%">
 								</div>
 							</div>

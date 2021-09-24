@@ -65,6 +65,7 @@ $route['laporan/proses'] = 'Home/laporanproses';
 $route['logout'] = 'Home/logout';
 
 $route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
+$route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
 
 
 $route['admin'] = 'Admin';
