@@ -126,9 +126,15 @@ class Admin extends CI_Controller
 		$data['session'] = $this->session;
 
 		$data['pelapor'] = $this->Amodel->countdata("pelapor", "");
-		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p'");
 
-		$data['semualaporan'] = $this->Amodel->countdata("laporan_sampah", "");
+		$queryproses = "SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.status_laporan='p' ";
+
+
+
+		$data['semualaporan'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor ')->num_rows();
+		$data['laporanproses'] = $this->db->query($queryproses)->num_rows();
+
+
 
 
 

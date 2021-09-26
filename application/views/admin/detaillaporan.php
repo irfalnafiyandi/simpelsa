@@ -53,6 +53,7 @@
 									<label>Keterangan</label><br>
 									<?php print $detail->keterangan; ?>
 								</div>
+								<hr/>
 
 								<?php
 								if($detail->catatan_verifikasi){
@@ -68,7 +69,7 @@
 
 								?>
 
-								<hr/>
+
 								<div class="form-group">
 									<label>Status Laporan</label><br>
 									<?php

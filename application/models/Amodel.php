@@ -181,6 +181,8 @@ class Amodel extends CI_Model
 		return $kembali;
 	}
 
+
+
 	function countdata($table, $whereclause=NULL)
 	{
 

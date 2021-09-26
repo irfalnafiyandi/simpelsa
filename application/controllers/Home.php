@@ -54,10 +54,13 @@ class Home extends CI_Controller {
 
 		$data['title'] = "Home";
 		$data['session'] = $this->session;
+		$queryproses = "SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.status_laporan='p' ";
+		$queryselesai = "SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.status_laporan='y' ";
 
-		$data['semualaporan'] = $this->Amodel->countdata("laporan_sampah", "");
-		$data['laporanproses'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='p' or status_laporan='b'");
-		$data['laporanselesai'] = $this->Amodel->countdata("laporan_sampah", "status_laporan='y'");
+
+		$data['semualaporan'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor ')->num_rows();
+		$data['laporanproses'] = $this->db->query($queryproses)->num_rows();
+		$data['laporanselesai'] = $this->db->query($queryselesai)->num_rows();
 
 
 		#$data['']
@@ -685,6 +688,7 @@ class Home extends CI_Controller {
 				'checkpoint' => 'web', // Buat session authenticated
 			);
 			$this->session->set_userdata($session); // Buat session sesuai $session
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Akun Anda Berhasil Diverifikasi, Anda Sudah Dapat langsung melakukan pelaporan sampah.</b></div>");
 			header("location:" . base_url("Home/laporan"));
 
 		} else {
