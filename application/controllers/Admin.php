@@ -106,7 +106,7 @@ class Admin extends CI_Controller
 				'nama' => $user->admin_fullname, // Buat session authenticated
 				'hp' => $user->admin_nohp, // Buat session authenticated
 				'admin_level' => $user->admin_level, // Buat session authenticated
-				'checkpoint' => 'admin', // Buat session authenticated
+
 			);
 			$this->session->set_userdata($session); // Buat session sesuai $session
 			print "ok";

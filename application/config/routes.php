@@ -54,6 +54,10 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['forgetpassword'] = 'Home/forgetpassword';
+$route['forgetpassword/proses'] = 'Home/forgetpasswordproses';
+$route['forgetpassword/sukses'] = 'Home/forgetpasswordsukses';
+$route['password/(:any)/(:any)'] = 'Home/resetpassword/$1/$2';
+$route['resetpassword/proses'] = 'Home/resetpasswordproses';
 $route['laporan'] = 'Home/laporan';
 $route['about'] = 'Home/about';
 $route['laporanlist'] = 'Home/laporanlist';
@@ -64,7 +68,7 @@ $route['register/proses'] = 'Home/registerprocess';
 $route['laporan/proses'] = 'Home/laporanproses';
 $route['logout'] = 'Home/logout';
 
-$route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
+
 $route['code/(:any)/(:any)'] = 'Home/updatepelapor/$1/$2';
 
 
