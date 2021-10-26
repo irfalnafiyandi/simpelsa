@@ -377,7 +377,7 @@ class Home extends CI_Controller {
 			$mail->Host       = 'smtp.googlemail.com';
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
-			$mail->Password   = 'qht3uA2q5Xzz5FA'; // ubah dengan password email Anda
+			$mail->Password   = 'b5bGHPYc5k4c'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port       = 465;
 
