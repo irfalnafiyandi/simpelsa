@@ -376,21 +376,15 @@ class Home extends CI_Controller {
 
 			$mail->Host       = 'smtp.googlemail.com';
 			$mail->SMTPAuth   = true;
-			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
-			$mail->Password   = 'b5bGHPYc5k4c'; // ubah dengan password email Anda
+			$mail->Username   = 'pekanbarutekno@gmail.com'; // ubah dengan alamat email Anda
+			$mail->Password   = 'qht3uA2q5Xzz4Fe'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port       = 465;
-			$mail->SMTPOptions = array(
-				'ssl' => array(
-					'verify_peer' => false,
-					'verify_peer_name' => false,
-					'allow_self_signed' => true
-				)
-			);
 
-			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
+
+			$mail->setFrom('pekanbarutekno@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
-			$mail->addReplyTo('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
+			$mail->addReplyTo('pekanbarutekno@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 
 			// Isi Email
 			$mail->isHTML(true);
