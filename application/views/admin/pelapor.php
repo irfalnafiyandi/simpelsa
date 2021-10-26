@@ -36,6 +36,7 @@
 
 								<th>Email</th>
 								<th>No Hp</th>
+								<th>Alamat</th>
 
 							</tr>
 							</thead>
@@ -61,6 +62,7 @@
 										<td><?php print $value->nama_pelapor ?></td>
 										<td><?php print $value->email_pelapor ?></td>
 										<td><?php print $value->hp_pelapor ?></td>
+										<td><?php print $value->alamat_pelapor ?></td>
 
 									</tr>
 									<?php

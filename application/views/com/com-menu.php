@@ -21,6 +21,7 @@
 
 				<?php
 
+
 				if($session->userdata('admin_level')=="administrator"){
 					?>
 					<li>

@@ -36,6 +36,12 @@
 								<input type="text" class="form-control" required placeholder="Nomor Hp" name="hp" value="<?php print $detail->hp_pelapor ?>">
 							</div>
 
+							<div class="form-group">
+								<label>Alamat</label>
+								<textarea type="text" class="form-control" required placeholder="Alamat" name="alamat" ><?php print $detail->alamat_pelapor ?></textarea>
+							</div>
+
+
 
 							<small style="color: red"><i>*Kosongkan password jika tidak ingin mengubah password</i></small>
 

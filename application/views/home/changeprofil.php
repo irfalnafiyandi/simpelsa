@@ -55,6 +55,13 @@
 						<hr>
 						<div class="mb-20 mb-md-10">
 							<div class="form-group">
+								<label>Password Lama </label>
+								<input type="password" name="passwordold" id="passwordold" class="form-control"
+									   placeholder="Password" maxlength="100">
+							</div>
+						</div>
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
 								<label>Password Baru </label>
 								<input type="password" name="password" id="password" class="form-control"
 										placeholder="Password" maxlength="100">

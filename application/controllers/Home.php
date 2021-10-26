@@ -513,6 +513,10 @@ class Home extends CI_Controller {
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
+		$where = array(
+			'id_pelapor' => $this->id,
+		);
+		$getuser = $this->Amodel->Detail_query('pelapor', $where); // Panggil fungsi get yang ada di UserModel.php
 
 
 
@@ -523,6 +527,15 @@ class Home extends CI_Controller {
 			if ($password != $passwordconf) {
 				$error = "Konfirmasi password tidak valid atau tidak sama";
 			}
+
+			$passwordold = sha1($passwordold . $this->config->item('CMS_SALT_STRING'));
+			if($passwordold != $getuser->password_pelapor){
+				$error = "Password Tidak Valid";
+			}
+
+
+
+
 		}
 		if ($error) {
 			echo "<p><ul>";
@@ -539,6 +552,7 @@ class Home extends CI_Controller {
 			if($password){
 				$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
 				$data['password_pelapor'] =$password;
+				$this->session->sess_destroy(); // Hapus semua session
 			}
 			$this->Amodel->Update($table, $data, $where);
 			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Akun Anda Berhasil Diubah</b></div>");

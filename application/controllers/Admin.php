@@ -882,6 +882,7 @@ class Admin extends CI_Controller
 
 				'nama_pelapor' => $nama,
 				'hp_pelapor' => $hp,
+				'alamat_pelapor' => $alamat,
 
 			);
 			if ($password) {
