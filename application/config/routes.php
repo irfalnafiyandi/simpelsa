@@ -59,6 +59,7 @@ $route['forgetpassword/sukses'] = 'Home/forgetpasswordsukses';
 $route['password/(:any)/(:any)'] = 'Home/resetpassword/$1/$2';
 $route['resetpassword/proses'] = 'Home/resetpasswordproses';
 $route['laporan'] = 'Home/laporan';
+$route['dashboard'] = 'Home/dashboard';
 $route['about'] = 'Home/about';
 $route['laporanlist'] = 'Home/laporanlist';
 $route['laporanlistdetail/(:any)'] = 'Home/laporanlistdetail/$1';
@@ -66,6 +67,10 @@ $route['getlaporan'] = 'Home/laporanget';
 $route['login/proses'] = 'Home/loginprocess';
 $route['register/proses'] = 'Home/registerprocess';
 $route['laporan/proses'] = 'Home/laporanproses';
+$route['changeprofil'] = 'Home/changeprofil';
+$route['previewlaporan'] = 'Home/previewlaporan';
+$route['updateprofile'] = 'Home/updateprofile';
+$route['proseslaporan'] = 'Home/storelaporan';
 $route['logout'] = 'Home/logout';
 
 

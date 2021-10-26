@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class Admin extends CI_Controller
 {
@@ -43,23 +43,12 @@ class Admin extends CI_Controller
 		$this->admin_level = $this->session->userdata('admin_level');
 
 
-
-
-
 	}
 
-	public function Index(){
-
+	public function Index()
+	{
 		$data['title'] = "Login";
-
-
-		#$this->load->view('com/com-head',$data);
-
-
-		$this->load->view('admin/login',$data);
-
-
-
+		$this->load->view('admin/login', $data);
 	}
 
 	public function loginprocess()
@@ -67,14 +56,11 @@ class Admin extends CI_Controller
 		$now = time();
 		$table = "admin";
 		$error = "";
-
-
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
-		if (empty($username) OR empty($password)) {
+		if (empty($username) or empty($password)) {
 			$error = "Wajib mengisi seluruh field yang ada";
 		}
 
@@ -100,7 +86,7 @@ class Admin extends CI_Controller
 
 			$session = array(
 				'authenticated' => true, // Buat session authenticated dengan value true
-				'id' => $user->id_admin ,  // Buat session username
+				'id' => $user->id_admin,  // Buat session username
 				'admin_username' => $user->admin_username,  // Buat session username
 				'email' => $user->admin_email,  // Buat session username
 				'nama' => $user->admin_fullname, // Buat session authenticated
@@ -115,10 +101,11 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function Home(){
+	public function Home()
+	{
 
 
-		if(empty($this->id) OR empty($this->admin_username)){
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
@@ -130,29 +117,21 @@ class Admin extends CI_Controller
 		$queryproses = "SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.status_laporan='p' ";
 
 
-
 		$data['semualaporan'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor ')->num_rows();
 		$data['laporanproses'] = $this->db->query($queryproses)->num_rows();
 
-
-
-
-
-		#VIEW
-
-
-
-
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/home',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/home', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function adminchangepassword(){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function adminchangepassword()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
@@ -163,14 +142,15 @@ class Admin extends CI_Controller
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/adminchangepass',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/adminchangepass', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function adminchangepasswordstore()
 	{
 		$now = time();
@@ -178,16 +158,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($passwordold) OR empty($passwordnew) OR empty($passwordkonfnew)   ) {
+		if (empty($passwordold) or empty($passwordnew) or empty($passwordkonfnew)) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
+		} else {
 
 			$where = array(
 				'id_admin' => $this->id,
@@ -200,7 +178,7 @@ class Admin extends CI_Controller
 				$error = "Password Lama Tidak Valid";
 			}
 
-			if($passwordold){
+			if ($passwordold) {
 				if (strlen($passwordnew) < 8) {
 					$error = "Password minimal memiliki 8 karakter";
 				}
@@ -212,9 +190,8 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 			$where = array(
 				'id_admin' => $this->id,
@@ -229,30 +206,33 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function adminlist(){
-		if(empty($this->id) OR empty($this->admin_username)){
+	public function adminlist()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "User";
 		$data['session'] = $this->session;
-		$sql="SELECT * FROM admin  ORDER BY id_admin DESC";
+		$sql = "SELECT * FROM admin  ORDER BY id_admin DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/admin',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/admin', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function adminadd(){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function adminadd()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
@@ -263,14 +243,15 @@ class Admin extends CI_Controller
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/adminadd',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/adminadd', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function adminstore()
 	{
 		$now = time();
@@ -278,16 +259,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($nama) OR empty($username) OR empty($password) OR empty($passwordkonf) OR empty($email) OR empty($hp)  OR empty($level)  ) {
+		if (empty($nama) or empty($username) or empty($password) or empty($passwordkonf) or empty($email) or empty($hp) or empty($level)) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
+		} else {
 			$where = array(
 				'admin_username' => $username
 			);
@@ -329,12 +308,11 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 			$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
-			$code= random_string('alnum','32');
+			$code = random_string('alnum', '32');
 			$data = array(
 				'admin_username' => $username,
 				'admin_password' => $password,
@@ -348,14 +326,16 @@ class Admin extends CI_Controller
 
 		}
 	}
-	public function adminedit($id){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function adminedit($id)
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Edit User";
 		$data['session'] = $this->session;
-		$table= "admin";
+		$table = "admin";
 
 		$where = array(
 			'id_admin' => $id,
@@ -364,18 +344,18 @@ class Admin extends CI_Controller
 		$data['detail'] = $detail;
 
 
-
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/adminedit',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/adminedit', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function adminupdate()
 	{
 		$now = time();
@@ -383,16 +363,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($nama) OR empty($username) OR empty($email) OR empty($hp)  OR empty($level) OR empty($id)  ) {
+		if (empty($nama) or empty($username) or empty($email) or empty($hp) or empty($level) or empty($id)) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
+		} else {
 
 			$where = array(
 				'admin_username' => $username,
@@ -423,7 +401,7 @@ class Admin extends CI_Controller
 			if ($checkduplicatehp > 0) {
 				$error = "No Hp telah digunakan";
 			}
-			if($password){
+			if ($password) {
 				if (strlen($password) < 8) {
 					$error = "Password minimal memiliki 8 karakter";
 				}
@@ -434,12 +412,11 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 
-			$code= random_string('alnum','32');
+			$code = random_string('alnum', '32');
 			$where = array(
 				'id_admin' => $id,
 			);
@@ -459,6 +436,7 @@ class Admin extends CI_Controller
 
 		}
 	}
+
 	public function deleteadmin($id)
 	{
 		$now = time();
@@ -470,108 +448,100 @@ class Admin extends CI_Controller
 		}
 		if (empty($error)) {
 
-				$where = array(
-					'id_admin' => $id,
-				);
-				$this->Amodel->delete($table, $where);
-				header("location:" . base_url("adminlist"));
+			$where = array(
+				'id_admin' => $id,
+			);
+			$this->Amodel->delete($table, $where);
+			header("location:" . base_url("adminlist"));
 
 		} else {
 			print $error;
 		}
 	}
 
-	public function laporansampah(){
-		if(empty($this->id) OR empty($this->admin_username)){
+	public function laporansampah()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Laporan Sampah";
 		$data['session'] = $this->session;
-		if($this->admin_level=="administrator"){
-			$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
-		}else{
-			$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where status_laporan='p' ORDER BY id_laporan DESC";
+		if ($this->admin_level == "administrator") {
+			$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor  ORDER BY id_laporan DESC";
+		} else {
+			$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where status_laporan='p' ORDER BY id_laporan DESC";
 		}
 
 		$data['query'] = $this->db->query($sql)->result();
 
 
-
-
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/laporan',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/laporan', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function laporanverifikasi($id){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function laporanverifikasi($id)
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Verifikasi Laporan";
 		$data['session'] = $this->session;
-		$table= "laporan_sampah";
+		$table = "laporan_sampah";
 
 
-
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
 		$data['detail'] = $this->db->query($sql)->first_row();
-
-
-
-
-
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/laporanverifikasi',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/laporanverifikasi', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function laporandetail($id){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function laporandetail($id)
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Detail Laporan";
 		$data['session'] = $this->session;
-		$table= "laporan_sampah";
+		$table = "laporan_sampah";
 
 
-
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
 		$data['detail'] = $this->db->query($sql)->first_row();
-
-
-
-
-
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/detaillaporan',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/detaillaporan', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function laporanverifikasiupdate()
 	{
 		$now = time();
@@ -579,17 +549,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($id OR empty($statuslap))  ) {
+		if (empty($id or empty($statuslap))) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
-
+		} else {
 
 
 			$where = array(
@@ -606,9 +573,8 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 
 
@@ -625,37 +591,34 @@ class Admin extends CI_Controller
 
 		}
 	}
-	public function laporanupdatestatus($id){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function laporanupdatestatus($id)
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Update Laporan";
 		$data['session'] = $this->session;
-		$table= "laporan_sampah";
+		$table = "laporan_sampah";
 
 
-
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
+		$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where id_laporan='$id' ORDER BY id_laporan DESC";
 		$data['detail'] = $this->db->query($sql)->first_row();
-
-
-
-
-
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/updatestatuslaporan',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/updatestatuslaporan', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function laporanupdatestatusupdate()
 	{
 		$now = time();
@@ -663,17 +626,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($id)  ) {
+		if (empty($id)) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
-
+		} else {
 
 
 			$where = array(
@@ -690,12 +650,11 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 
-			if(isset($_FILES['file'])){
+			if (isset($_FILES['file'])) {
 				$this->load->library('upload');
 				$nmfile = "laporanupdate_" . time();
 				$config['upload_path'] = './assets/laporan/';
@@ -721,7 +680,7 @@ class Admin extends CI_Controller
 			);
 			$data = array(
 				'status_laporan' => 'y',
-				'tanggal_verifikasi'=>date('Y-m-d H:i:s'),
+				'tanggal_verifikasi' => date('Y-m-d H:i:s'),
 				'foto_verifikasi' => $namefile,
 			);
 
@@ -730,6 +689,7 @@ class Admin extends CI_Controller
 
 		}
 	}
+
 	public function laporandelete($id)
 	{
 		$now = time();
@@ -752,34 +712,34 @@ class Admin extends CI_Controller
 		}
 	}
 
-	public function cetaklaporan() {
-		if(empty($this->id) OR empty($this->admin_username)){
+	public function cetaklaporan()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Cetak Laporan";
 		$data['session'] = $this->session;
 
-		$sql="SELECT tanggal_laporan FROM laporan_sampah  GROUP BY YEAR (tanggal_laporan)";
+		$sql = "SELECT tanggal_laporan FROM laporan_sampah  GROUP BY YEAR (tanggal_laporan)";
 		$data['query'] = $this->db->query($sql)->result();
-
-
-
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/cetaklaporan',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/cetaklaporan', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function cetaklaporanstore(){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function cetaklaporanstore()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
@@ -787,7 +747,6 @@ class Admin extends CI_Controller
 		$now = time();
 		$table = "laporan_sampah";
 		$error = "";
-
 
 
 		foreach ($this->input->post() as $key => $value) {
@@ -802,16 +761,11 @@ class Admin extends CI_Controller
 		$data['namadmin'] = $this->nama;
 
 
+		$mulai = $tahun . '-' . $bulan . '-01';
+		$sampai = $tahun . '-' . $bulan . '-31';
 
-		$mulai = $tahun.'-'.$bulan.'-01';
-		$sampai = $tahun.'-'.$bulan.'-31';
-
-		$sql="SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where tanggal_laporan BETWEEN '$mulai' AND '$sampai'  ORDER BY id_laporan DESC";
+		$sql = "SELECT * FROM laporan_sampah inner join pelapor on laporan_sampah.id_pelapor = pelapor.id_pelapor where tanggal_laporan BETWEEN '$mulai' AND '$sampai'  ORDER BY id_laporan DESC";
 		$data['query'] = $this->db->query($sql)->result();
-
-
-
-
 
 
 		$this->load->library('pdf');
@@ -820,47 +774,45 @@ class Admin extends CI_Controller
 		$this->pdf->filename = "laporan.pdf";
 
 
-
-		$this->pdf->load_view('admin/cetak',$data);
-
-
-
+		$this->pdf->load_view('admin/cetak', $data);
 
 
 	}
 
 
-
-	public function pelapor(){
-		if(empty($this->id) OR empty($this->admin_username)){
+	public function pelapor()
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Pelapor";
 		$data['session'] = $this->session;
-		$sql="SELECT * FROM pelapor  ORDER BY id_pelapor DESC";
+		$sql = "SELECT * FROM pelapor  ORDER BY id_pelapor DESC";
 		$data['query'] = $this->db->query($sql)->result();
 
 
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/pelapor',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/pelapor', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
-	public function pelaporedit($id){
-		if(empty($this->id) OR empty($this->admin_username)){
+
+	public function pelaporedit($id)
+	{
+		if (empty($this->id) or empty($this->admin_username)) {
 			header("location:" . base_url('adminlogout'));
 		}
 
 		$data['title'] = "Edit Pelapor";
 		$data['session'] = $this->session;
-		$table= "pelapor";
+		$table = "pelapor";
 
 		$where = array(
 			'id_pelapor' => $id,
@@ -869,18 +821,18 @@ class Admin extends CI_Controller
 		$data['detail'] = $detail;
 
 
-
 		#VIEW
 		#$this->load->view('com/com-head',$data);
 
-		$this->load->view('com/com-head',$data);
-		$this->load->view('com/com-menu',$data);
-		$this->load->view('com/com-nav',$data);
-		$this->load->view('admin/pelaporedit',$data);
-		$this->load->view('com/com-footer',$data);
+		$this->load->view('com/com-head', $data);
+		$this->load->view('com/com-menu', $data);
+		$this->load->view('com/com-nav', $data);
+		$this->load->view('admin/pelaporedit', $data);
+		$this->load->view('com/com-footer', $data);
 
 
 	}
+
 	public function pelaporupdate()
 	{
 		$now = time();
@@ -888,17 +840,14 @@ class Admin extends CI_Controller
 		$error = "";
 
 
-
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
 
 
-
-		if (empty($nama)  OR empty($hp)   OR empty($id)  ) {
+		if (empty($nama) or empty($hp) or empty($id)) {
 			$error = "Wajib mengisi seluruh field yang ada";
-		}else{
-
+		} else {
 
 
 			$where = array(
@@ -910,7 +859,7 @@ class Admin extends CI_Controller
 			if ($checkduplicatehp > 0) {
 				$error = "No Hp telah digunakan";
 			}
-			if($password){
+			if ($password) {
 				if (strlen($password) < 8) {
 					$error = "Password minimal memiliki 8 karakter";
 				}
@@ -921,9 +870,8 @@ class Admin extends CI_Controller
 		}
 
 
-
 		if ($error) {
-			echo "<span class='pl-4'>".$error."</span>";
+			echo "<span class='pl-4'>" . $error . "</span>";
 		} else {
 
 
@@ -945,6 +893,7 @@ class Admin extends CI_Controller
 
 		}
 	}
+
 	public function pelapordelete($id)
 	{
 		$now = time();
@@ -966,6 +915,7 @@ class Admin extends CI_Controller
 			print $error;
 		}
 	}
+
 	public function tolaklaporan($id)
 	{
 		$now = time();

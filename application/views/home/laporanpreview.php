@@ -11,7 +11,7 @@
 
 				<h3 class="small-title white">
 
-					 Laporan Anda
+					<?php print $title; ?>
 
 				</h3>
 
@@ -25,69 +25,41 @@
 	<!-- Content Section -->
 	<section class="small-section">
 		<div class="container relative">
-
 			<div class="row">
-				<div class="col-md-12">
-					<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-						<tr>
-							<th width="5%">No</th>
-
-							<th width="5%"></th>
-							<th>Tanggal Pelaporan</th>
-							<th>Status</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						$no=1;
-						foreach ($query as $keys => $values){
-							$panelc=" ";
-
-							?>
-							<tr>
-								<td><?php print $no; ?></td>
-								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" >Detail Laporan</a></td>
-
-
-								<td><?php print TglIndo($values->tanggal_laporan) ?></td>
-								<td>
-									<?php
-									if($values->status_laporan=="p"){
-										?><span class="label label-warning">Proses</span><?php
-									}elseif ($values->status_laporan=="y"){
-										?><span class="label label-success">Selesai</span><?php
-									}elseif ($values->status_laporan=="b"){
-										?><span class="label label-primary">Baru</span><?php
-									}else{
-										?><span class="label label-danger">Ditolak</span><?php
-									}
-
-									?>
-								</td>
-							</tr>
-
-							<?php
-							$no++;
-						}
-
-
-						?>
-
-
-						</tbody>
-
-					</table>
+				<div class="col-md-6">
+					<div class="form-group">
+						<label><b>Tanggal Laporan</b></label><br>
+						<?php print TglIndo(date('Y-m-d')) ?>
 					</div>
+					<hr/>
+					<div class="form-group">
+						<label><b>Keterangan Laporan</b></label><br>
+						<?php print $session->deskripsi ?>
+					</div>
+					<hr/>
+					<div class="form-group">
+						<label>Lokasi Sampah</label> <br>
+						<div id="map"></div>
+					</div>
+					<hr/>
+				</div>
+				<div class="col-md-6">
+					<label><b>Foto Laporan</b></label><br>
+					<a href="<?php print base_url() . 'assets/laporan/' . $session->foto; ?>" data-fancybox="gallery"
+					   data-caption="Caption #2">
+						<img src="<?php print base_url() . 'assets/laporan/' . $session->foto; ?>" alt=""
+							 class="img-rounded" alt="Cinque Terre" width="50%"/>
+					</a><br/>
 				</div>
 			</div>
-
-
-
+			<center><a href="<?php print base_url('proseslaporan') ?>" class="btn btn-success btn-lg">Buat Laporan</a></center>
 		</div>
-	</section>
-	<!-- End Content Section -->
+		<!-- End Blog Posts Grid -->
+
+
+</div>
+</section>
+<!-- End Content Section -->
 
 
 </div>
@@ -100,7 +72,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
+				<a href="#" target="_blank">&copy; <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 
@@ -124,7 +96,7 @@
 </div>
 <div class="body-masked">
 </div>
-<div id="map"></div>
+
 <!-- End Works Expander -->
 
 
@@ -161,11 +133,69 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/jquery.fancybox.min.js"></script>
 
+<script>
+	$(function () {
+		$('#result').hide();
+		validate('#result', '#form', '<?php echo base_url('laporansampah'); ?>');
+	});
+
+
+	function initMap() {
+		var cwc2011_venue_data = [
+			{
+				latlng: new google.maps.LatLng(<?php print $session->latitude ?>, <?php print $session->longitude ?>),
+			},
+		];
+
+		var cwc2011_venue_data_win = [
+			"",
+		];
+
+		var map = new google.maps.Map(document.getElementById("map"), {
+			zoom: 4,
+			center: new google.maps.LatLng(0, 0),
+
+
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		markers = Array();
+		infoWindows = Array();
+
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			var marker = new google.maps.Marker({
+				position: cwc2011_venue_data[i].latlng,
+				map: map,
+				infoWindowIndex: i
+			});
+
+			var infoWindow = new google.maps.InfoWindow({
+				content: cwc2011_venue_data_win[i]
+			});
+			google.maps.event.addListener(marker, 'click',
+				function (event) {
+					infoWindows[this.infoWindowIndex].open(map, this);
+				}
+			);
+
+			infoWindows.push(infoWindow);
+			markers.push(marker);
+		}
+		var latlngbounds = new google.maps.LatLngBounds();
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			latlngbounds.extend(cwc2011_venue_data[i].latlng);
+		}
+		map.fitBounds(latlngbounds);
+	}
+
+
+</script>
+
+
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <!-- GOOGLE MAPS API -->
 <script>
 	function getData() {
-
+		s
 		var nolap = $("#nolap").val();
 		if (nolap === '') {
 			alert('Nomor Laporan Tidak boleh kosong');
@@ -183,8 +213,6 @@
 			});
 		}
 	}
-
-
 
 
 </script>

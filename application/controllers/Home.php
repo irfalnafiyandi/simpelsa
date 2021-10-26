@@ -42,15 +42,9 @@ class Home extends CI_Controller {
 		$this->checkpoint = $this->session->userdata('checkpoint');
 
 	}
-
-
 	public function index()
     {
 
-
-		/*if(!empty($this->nama) AND !empty($this->email)  AND !empty($this->checkpoint) ){
-			header("location:" . base_url("Home/laporan#laporan"));
-		}*/
 
 		$data['title'] = "Home";
 		$data['session'] = $this->session;
@@ -268,8 +262,6 @@ class Home extends CI_Controller {
 			print $error;
 		}
 	}
-
-
 	public function about()
 	{
 
@@ -292,7 +284,6 @@ class Home extends CI_Controller {
 
 
 	}
-
 	public function register()
 	{
 
@@ -351,6 +342,7 @@ class Home extends CI_Controller {
 				'email_pelapor' => $email,
 				'nama_pelapor' => $name,
 				'hp_pelapor' => $hp,
+				'alamat_pelapor' => $alamat,
 				'password_pelapor' => $password,
 				'password_pelapor' => $password,
 				'statusemail_pelapor' => 'y',
@@ -420,7 +412,6 @@ class Home extends CI_Controller {
 
 		}
 	}
-
 	public function laporan()
 	{
 
@@ -438,7 +429,6 @@ class Home extends CI_Controller {
 
 
 	}
-
 	public function laporanlist()
 	{
 
@@ -462,27 +452,30 @@ class Home extends CI_Controller {
 
 
 	}
+	public function dashboard()
+	{
+		$data['title'] = "Dashboard";
+		$data['session'] = $this->session;
+
+		$data['semualaporan'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.id_pelapor = '.$this->id)->num_rows();
+		$data['laporanproses'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.id_pelapor = '.$this->id.' AND (status_laporan="p" OR status_laporan="b")')->num_rows();
+		$data['laporanselesai'] = $this->db->query('SELECT l.id_laporan From laporan_sampah l  inner join pelapor p  on p.id_pelapor = l.id_pelapor where l.id_pelapor = '.$this->id.' AND status_laporan="y"')->num_rows();
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/dashboard',$data);
+	}
 	public function laporanlistdetail($id)
 	{
-
 		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
 			header("location:" . base_url("Home"));
 		}
-
-
 		$data['title'] = "Laporan Anda";
 		$data['session'] = $this->session;
-
 		$where = array(
 			'id_laporan' => $id,
-
 		);
-
 		$data['detail'] = $this->Amodel->Detail_query('laporan_sampah', $where); // Panggil fungsi get yang ada di UserModel.php
-
-
-
-
 		#VIEW
 		$this->load->view('webcom/com-head',$data);
 		$this->load->view('webcom/com-nav',$data);
@@ -490,7 +483,69 @@ class Home extends CI_Controller {
 
 
 	}
+	public function changeprofil()
+	{
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+		$data['title'] = "Ubah Profil";
+		$data['session'] = $this->session;
+		$where = array(
+			'id_pelapor' => $this->id,
+		);
+		$data['detail'] = $this->Amodel->Detail_query('pelapor', $where); // Panggil fungsi get yang ada di UserModel.php
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/changeprofil',$data);
 
+
+	}
+	public function updateprofile(){
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+		$password="";
+		$hp="";
+		$alamat="";
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+
+		if($password){
+			if (strlen($password) < 8) {
+				$error = "Password minimal memiliki 8 karakter";
+			}
+			if ($password != $passwordconf) {
+				$error = "Konfirmasi password tidak valid atau tidak sama";
+			}
+		}
+		if ($error) {
+			echo "<p><ul>";
+			echo nl2br($error);
+			print "</ul></p>";
+		} else {
+			$where = array(
+				'id_pelapor'=>$this->id,
+			);
+			$data = array(
+				'hp_pelapor' => $hp,
+				'alamat_pelapor' => $alamat,
+			);
+			if($password){
+				$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
+				$data['password_pelapor'] =$password;
+			}
+			$this->Amodel->Update($table, $data, $where);
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Akun Anda Berhasil Diubah</b></div>");
+			print "ok";
+		}
+
+	}
 	public function laporanget()
 	{
 		$id = "";
@@ -518,7 +573,6 @@ class Home extends CI_Controller {
 
 
 	}
-
 	public function suksesregister()
 	{
 		$data['title'] = "Sukses Register";
@@ -528,8 +582,6 @@ class Home extends CI_Controller {
 		$this->load->view('webcom/com-nav',$data);
 		$this->load->view('home/suksesregister',$data);
 	}
-
-
 	public function loginprocess()
 	{
 		$now = time();
@@ -552,7 +604,7 @@ class Home extends CI_Controller {
 		);
 
 		$user = $this->Amodel->Detail_query($table, $where); // Panggil fungsi get yang ada di UserModel.php
-	
+
 		if (empty($user->email_pelapor)) {
 			$error = "Username atau Password tidak valid";
 		} else {
@@ -583,8 +635,6 @@ class Home extends CI_Controller {
 			print $error;
 		}
 	}
-
-
 	public function laporanproses()
 	{
 		$now = time();
@@ -623,11 +673,22 @@ class Home extends CI_Controller {
 					if ($this->upload->do_upload('file')) {
 						$gbr = $this->upload->data();
 						$namefile = $gbr['file_name'];
+
+
 					}
 				}
 			}
 
-			$data = array(
+			$session = array(
+				'foto' => $namefile,  // Buat session username
+				'deskripsi' => $note,  // Buat session username
+				'latitude' => $latitude,
+				'longitude' => $longitude,
+
+			);
+			$this->session->set_userdata($session); // Buat session sesuai $session
+
+			/*$data = array(
 				'id_pelapor' => $this->id,
 				'tanggal_laporan' => date('Y-m-d H:i:s'),
 				'latitude' => $latitude,
@@ -637,29 +698,73 @@ class Home extends CI_Controller {
 				'status_laporan' => 'b',
 				'tanggal_verifikasi' => '',
 				'foto_verifikasi' => '',
-
 			);
-
-			$this->Amodel->input($data, 'laporan_sampah');
-			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Laporan Berhasil ditambahkan.</b></div>");
+			$this->Amodel->input($data, 'laporan_sampah');*/
+			#$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Laporan Berhasil ditambahkan.</b></div>");
 			print "ok";
 
 		} else {
 			print $error;
 		}
 	}
+	public function storelaporan()
+	{
+		$now = time();
+
+		$error = "";
+
+
+
+
+
+		$dirpic = '';
+		$imgfilename = '';
+
+
+
+		if (empty($error)) {
+			$namefile = '';
+			$data = array(
+				'id_pelapor' => $this->id,
+				'tanggal_laporan' => date('Y-m-d H:i:s'),
+				'latitude' => $this->session->latitude,
+				'longitude' => $this->session->longitude,
+				'keterangan' => $this->session->deskripsi,
+				'foto' => $this->session->foto,
+				'status_laporan' => 'b',
+				'tanggal_verifikasi' => '',
+				'foto_verifikasi' => '',
+			);
+			$this->Amodel->input($data, 'laporan_sampah');
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Laporan Berhasil ditambahkan.</b></div>");
+			header("location:".base_url('Home/laporan'));
+			print "ok";
+
+		} else {
+			print $error;
+		}
+	}
+	public function previewlaporan()
+	{
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+		$data['title'] = "Preview Laporan";
+		$data['session'] = $this->session;
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/laporanpreview',$data);
+	}
+
 	public function updatepelapor($id,$code)
 	{
 		$now = time();
 		$table = "pelapor";
 		$error = "";
-
-
-
 		if (empty($code)    ) {
 			$error = "Wajib mengisi seluruh field yang ada";
 		}
-
 		$where = array(
 			'id_pelapor' => $id,
 			'emailcode_pelapor'=>$code,
@@ -695,8 +800,6 @@ class Home extends CI_Controller {
 			print $error;
 		}
 	}
-
-
 	public function logout()
 	{
 		$this->session->sess_destroy(); // Hapus semua session

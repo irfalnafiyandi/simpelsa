@@ -10,8 +10,8 @@
 
 
 				<h3 class="small-title white">
+					<?php print  ucwords($title); ?>
 
-					 Laporan Anda
 
 				</h3>
 
@@ -25,60 +25,52 @@
 	<!-- Content Section -->
 	<section class="small-section">
 		<div class="container relative">
+			<div class="row">
+
+
+
+				<!-- Counter Item -->
+				<div class="col-xs-6 col-sm-4">
+					<div class="count-number">
+						<?php print $semualaporan ?>
+					</div>
+					<div class="count-descr">
+
+						<span class="count-title">Jumlah Laporan</span>
+					</div>
+				</div>
+				<!-- End Counter Item -->
+
+				<!-- Counter Item -->
+				<div class="col-xs-6 col-sm-4">
+					<div class="count-number">
+						<?php print $laporanselesai ?>
+					</div>
+					<div class="count-descr">
+
+						<span class="count-title">Laporan Selesai</span>
+					</div>
+				</div>
+				<!-- End Counter Item -->
+
+				<!-- Counter Item -->
+				<div class="col-xs-6 col-sm-4">
+					<div class="count-number">
+						<?php print $laporanproses ?>
+					</div>
+					<div class="count-descr">
+
+						<span class="count-title">Laporan Proses</span>
+					</div>
+				</div>
+				<!-- End Counter Item -->
+			</div>
 
 			<div class="row">
 				<div class="col-md-12">
 					<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-						<tr>
-							<th width="5%">No</th>
-
-							<th width="5%"></th>
-							<th>Tanggal Pelaporan</th>
-							<th>Status</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						$no=1;
-						foreach ($query as $keys => $values){
-							$panelc=" ";
-
-							?>
-							<tr>
-								<td><?php print $no; ?></td>
-								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" >Detail Laporan</a></td>
 
 
-								<td><?php print TglIndo($values->tanggal_laporan) ?></td>
-								<td>
-									<?php
-									if($values->status_laporan=="p"){
-										?><span class="label label-warning">Proses</span><?php
-									}elseif ($values->status_laporan=="y"){
-										?><span class="label label-success">Selesai</span><?php
-									}elseif ($values->status_laporan=="b"){
-										?><span class="label label-primary">Baru</span><?php
-									}else{
-										?><span class="label label-danger">Ditolak</span><?php
-									}
-
-									?>
-								</td>
-							</tr>
-
-							<?php
-							$no++;
-						}
-
-
-						?>
-
-
-						</tbody>
-
-					</table>
 					</div>
 				</div>
 			</div>

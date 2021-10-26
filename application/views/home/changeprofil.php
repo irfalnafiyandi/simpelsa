@@ -11,7 +11,7 @@
 
 				<h3 class="small-title white">
 
-					 Laporan Anda
+					Ubah Profile
 
 				</h3>
 
@@ -26,66 +26,67 @@
 	<section class="small-section">
 		<div class="container relative">
 
-			<div class="row">
-				<div class="col-md-12">
-					<div class="table-responsive">
-					<table class="table table-bordered">
-						<thead>
-						<tr>
-							<th width="5%">No</th>
-
-							<th width="5%"></th>
-							<th>Tanggal Pelaporan</th>
-							<th>Status</th>
-						</tr>
-						</thead>
-						<tbody>
-						<?php
-						$no=1;
-						foreach ($query as $keys => $values){
-							$panelc=" ";
-
-							?>
-							<tr>
-								<td><?php print $no; ?></td>
-								<td><a href="<?php print base_url('laporanlistdetail/'.$values->id_laporan) ?>" class="btn btn-info" >Detail Laporan</a></td>
-
-
-								<td><?php print TglIndo($values->tanggal_laporan) ?></td>
-								<td>
-									<?php
-									if($values->status_laporan=="p"){
-										?><span class="label label-warning">Proses</span><?php
-									}elseif ($values->status_laporan=="y"){
-										?><span class="label label-success">Selesai</span><?php
-									}elseif ($values->status_laporan=="b"){
-										?><span class="label label-primary">Baru</span><?php
-									}else{
-										?><span class="label label-danger">Ditolak</span><?php
-									}
-
-									?>
-								</td>
-							</tr>
-
-							<?php
-							$no++;
-						}
-
-
-						?>
-
-
-						</tbody>
-
-					</table>
-					</div>
+			<!-- Blog Posts Grid -->
+			<div class="row multi-columns-row">
+				<div class="col-sm-6 col-md-3 col-lg-3">
 				</div>
-			</div>
+				<div class="col-sm-6 col-md-6 col-lg-6">
 
+					<div class="alert error" role="alert" id="result" style="display:none;"></div>
+					<?php echo $this->session->flashdata('pesan'); ?>
+					<!-- Form -->
+					<form method="post" action="<?php echo base_url('updateprofile'); ?>" id="form" role="form" class="form"  style="text-transform: none; !important;">
+
+
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
+								<label>No Hp</label>
+								<input type="text" class="form-control" value="<?php print $detail->hp_pelapor  ?>" placeholder="No Hp Pelapor"  style="text-transform: none; !important;" name="hp">
+							</div>
+						</div>
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
+								<label>Alamat Pelapor</label>
+								<textarea  class="form-control" name="alamat" style="text-transform: none !important;"><?php print $detail->alamat_pelapor ?></textarea>
+							</div>
+						</div>
+						<hr>
+						<small>(Diisi jika ingin mengubah password kosongkan jika tidak ingin mengubah password)</small>
+						<hr>
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
+								<label>Password Baru </label>
+								<input type="password" name="password" id="password" class="form-control"
+										placeholder="Password" maxlength="100">
+							</div>
+						</div>
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
+								<label>Konfirmasi Password Baru</label>
+								<input type="password" name="passwordconf" id="passwordconf" class="form-control"
+									   placeholder="Konfirmasi Password" maxlength="100">
+							</div>
+						</div>
+
+
+						<center><button class="btn btn-mod btn-border btn-large" type="submit">Ubah</button></center>
+					</form>
+					<!-- End Form -->
+				</div>
+				<div class="col-sm-6 col-md-3 col-lg-3">
+				</div>
+
+
+
+
+			</div>
+			<!-- End Blog Posts Grid -->
 
 
 		</div>
+		<!-- End Blog Posts Grid -->
+
+
 	</section>
 	<!-- End Content Section -->
 
@@ -100,7 +101,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
+				<a href="#" target="_blank">&copy; <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 
@@ -124,7 +125,7 @@
 </div>
 <div class="body-masked">
 </div>
-<div id="map"></div>
+
 <!-- End Works Expander -->
 
 
@@ -161,33 +162,20 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/jquery.fancybox.min.js"></script>
 
-<!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
-<!-- GOOGLE MAPS API -->
 <script>
-	function getData() {
+	$(function () {
+		$('#result').hide();
+		validate('#result', '#form', '<?php echo base_url('changeprofil'); ?>');
+	});
 
-		var nolap = $("#nolap").val();
-		if (nolap === '') {
-			alert('Nomor Laporan Tidak boleh kosong');
-		} else {
-			$.ajax({
-				url: "<?php echo base_url('getlaporan'); ?>",
-				data: "nolap=" + nolap,
-				cache: false,
-				beforeSubmit: function () {
-					$('.spinner').show();
-				},
-				success: function (msg) {
-					$("#odata").html(msg);
-				}
-			});
-		}
-	}
 
 
 
 
 </script>
+
+
+
 
 </body>
 </html>

@@ -16,20 +16,25 @@
 	<!-- Menu Links -->
 	<nav class="nbc-menu-wrap">
 		<ul class="nbc-menu-links local-scroll">
-			<li>
-				<a href="<?php print base_url('Home') ?>">Home</a>
-			</li>
-			<li>
-				<a href="<?php print base_url('about') ?>">Tentang Kami</a>
-			</li>
+
+
 			<?php
 			if($session->userdata('id')){
 				?>
+				<li>
+					<a href="<?php print base_url('dashboard') ?>">Dashboard</a>
+				</li>
 				<li>
 					<a href="<?php print base_url('laporan') ?>">Buat Laporan</a>
 				</li>
 				<li>
 					<a href="<?php print base_url('laporanlist') ?>">Laporan Anda</a>
+				</li>
+				<li>
+					<a href="<?php print base_url('changeprofil') ?>">Ubah Profil</a>
+				</li>
+				<li>
+					<a href="<?php print base_url('about') ?>">Tentang Kami</a>
 				</li>
 				<li>
 					<a href="<?php print base_url('logout') ?>">Keluar</a>
@@ -38,7 +43,13 @@
 			}else{
 				?>
 				<li>
+					<a href="<?php print base_url('Home') ?>">Home</a>
+				</li>
+				<li>
 					<a href="<?php print base_url('Home/register') ?>#register">Register</a>
+				</li>
+				<li>
+					<a href="<?php print base_url('about') ?>">Tentang Kami</a>
 				</li>
 				<?php
 
@@ -46,6 +57,8 @@
 
 
 			?>
+
+
 
 		</ul>
 	</nav>

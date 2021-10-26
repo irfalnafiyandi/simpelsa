@@ -208,7 +208,7 @@
 <script>
 	$(function() {
 		$('#result').hide();
-		validate('#result','#form','<?php echo base_url('Home/laporan'); ?>');
+		validate('#result','#form','<?php echo base_url('Home/previewlaporan'); ?>');
 	});
 
 

@@ -1,15 +1,11 @@
-
-
 <!-- Page Wrap -->
 <div class="page" id="top">
-
 	<!-- Home Section -->
-	<section class="home-section bg-dark parallax-3" data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
+	<section class="home-section bg-dark parallax-3"
+			 data-background="<?php print base_url() ?>assets/web/images/full-width-images/section-bg-20.jpg" id="home">
 		<div class="js-height-full" id="large-header">
-
 			<!-- Canvas Animation -->
 			<canvas id="demo-canvas"></canvas>
-
 			<!-- Home Page Content -->
 			<div class="ah-content">
 				<div class="home-content">
@@ -28,9 +24,11 @@
 							</h2>
 
 							<div class="local-scroll">
-								<a href="<?php print base_url('Home/register') ?>#register" class="btn btn-mod btn-w btn-large mb-xxs-10 ">DAFTAR</a>
+								<a href="<?php print base_url('Home/register') ?>#register"
+								   class="btn btn-mod btn-w btn-large mb-xxs-10 ">DAFTAR</a>
 								<span class="hidden-xs">&nbsp;</span>
-								<a href="<?php print base_url('Home') ?>#signin" class="btn btn-mod btn-w btn-large mb-xxs-10 ">SIGN IN</a>
+								<a href="<?php print base_url('Home') ?>#signin"
+								   class="btn btn-mod btn-w btn-large mb-xxs-10 ">SIGN IN</a>
 							</div>
 
 							<!-- End Headings -->
@@ -50,7 +48,6 @@
 		</div>
 	</section>
 	<!-- End Home Section -->
-
 
 
 	<!-- Some Facts Section -->
@@ -79,29 +76,42 @@
 				</div>
 				<div class="col-sm-4 mb-40">
 					<!-- Form -->
-					<form method="post" action="<?php echo base_url('register/proses'); ?>" id="form" role="form" class="form" style="text-transform: none">
+					<form method="post" action="<?php echo base_url('register/proses'); ?>" id="form" role="form"
+						  class="form" style="text-transform: none">
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="text" name="name" id="name" class="form-control" placeholder="Nama Pelapor" maxlength="100">
+							<input type="text" name="name" id="name" class="form-control" placeholder="Nama Pelapor"
+								   maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="email" name="email" id="email" class="form-control" placeholder="Email" maxlength="100">
+							<input type="email" name="email" id="email" class="form-control" placeholder="Email"
+								   maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Email -->
-							<input type="tel" name="hp" id="hp" class="form-control number" placeholder="No Handphone Anda"  pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+							<input type="tel" name="hp" id="hp" class="form-control number"
+								   placeholder="No Handphone Anda" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}">
+						</div>
+						<div class="mb-20 mb-md-10">
+							<!-- Email -->
+							<textarea name="alamat" id="alamat" class="form-control " style="text-transform: none !important;"
+								   placeholder="alamat Anda" ></textarea>
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->
-							<input type="password" name="password" id="password" class="form-control" placeholder="Password" maxlength="100">
+							<input type="password" name="password" id="password" class="form-control"
+								   placeholder="Password" maxlength="100">
 						</div>
 						<div class="mb-20 mb-md-10">
 							<!-- Password -->
-							<input type="password" name="passwordconf" id="passwordconf" class="form-control" placeholder="Confirmasi Password" maxlength="100">
+							<input type="password" name="passwordconf" id="passwordconf" class="form-control"
+								   placeholder="Konfirmasi Password" maxlength="100">
 						</div>
 
-						<center><button class="btn btn-mod btn-border btn-large" type="submit">Daftar</button></center>
+						<center>
+							<button class="btn btn-mod btn-border btn-large" type="submit">Daftar</button>
+						</center>
 					</form>
 					<!-- End Form -->
 				</div>
@@ -116,9 +126,6 @@
 	<!-- End Some Facts Section -->
 
 
-
-
-
 </div>
 <!-- End Page Wrap -->
 
@@ -130,7 +137,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
+				<a href="#" target="_blank">&copy; <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 
@@ -191,9 +198,9 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/demo-1.js"></script>
 
 <script>
-	$(function() {
+	$(function () {
 		$('#result').hide();
-		validate('#result','#form','<?php echo base_url('Home/suksesregister#success'); ?>');
+		validate('#result', '#form', '<?php echo base_url('Home/suksesregister#success'); ?>');
 	});
 	$('input.number').keyup(function (event) {
 		if (event.which >= 37 && event.which <= 40) return;
