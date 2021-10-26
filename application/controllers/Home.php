@@ -379,7 +379,7 @@ class Home extends CI_Controller {
 			$mail->Username   = 'pekanbarutekno@gmail.com'; // ubah dengan alamat email Anda
 			$mail->Password   = 'qht3uA2q5Xzz4Fe'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
-			$mail->Port       = 465;
+			$mail->Port       = 587;
 
 
 			$mail->setFrom('pekanbarutekno@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
