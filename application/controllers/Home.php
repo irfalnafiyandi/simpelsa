@@ -380,6 +380,13 @@ class Home extends CI_Controller {
 			$mail->Password   = 'b5bGHPYc5k4c'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
 			$mail->Port       = 465;
+			$mail->SMTPOptions = array(
+				'ssl' => array(
+					'verify_peer' => false,
+					'verify_peer_name' => false,
+					'allow_self_signed' => true
+				)
+			);
 
 			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
@@ -389,6 +396,8 @@ class Home extends CI_Controller {
 			$mail->isHTML(true);
 			$mail->Subject = $subject;
 			$mail->Body    = $message;
+
+
 
 			$mail->send();
 
