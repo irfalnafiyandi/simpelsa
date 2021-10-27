@@ -375,7 +375,7 @@ class Home extends CI_Controller {
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
 			$mail->Password   = 'H87aGupC5TmEubA'; // ubah dengan password email Anda
 			$mail->SMTPSecure = 'ssl';
-			$mail->Port       = 587;
+			$mail->Port       = 465;
 
 			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
