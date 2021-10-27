@@ -36,9 +36,7 @@
 				<li>
 					<a href="<?php print base_url('changepassword') ?>">Ubah Password</a>
 				</li>
-				<li>
-					<a href="<?php print base_url('about') ?>">Tentang Kami</a>
-				</li>
+
 				<li>
 					<a href="<?php print base_url('logout') ?>">Keluar</a>
 				</li>

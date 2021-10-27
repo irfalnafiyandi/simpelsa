@@ -11,8 +11,7 @@
 
 				<h3 class="small-title white">
 
-					Ubah Profile
-
+					<?php print $title; ?>
 				</h3>
 
 			</div>

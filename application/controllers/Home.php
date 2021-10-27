@@ -550,7 +550,7 @@ class Home extends CI_Controller {
 		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
 			header("location:" . base_url("Home"));
 		}
-		$data['title'] = "Ubah Profil";
+		$data['title'] = "Ubah Password";
 		$data['session'] = $this->session;
 		$where = array(
 			'id_pelapor' => $this->id,
@@ -696,7 +696,6 @@ class Home extends CI_Controller {
 
 		if (empty($error)) {
 			$now = time();
-
 			$session = array(
 				'authenticated' => true, // Buat session authenticated dengan value true
 				'id' => $user->id_pelapor ,  // Buat session username
