@@ -367,7 +367,7 @@ class Home extends CI_Controller {
 
 
 			$mail = new PHPMailer(true);
-			#$mail->isSMTP();
+			$mail->isSMTP();
 			#$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
 			$mail->Host       = 'smtp.googlemail.com';
