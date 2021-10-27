@@ -371,12 +371,16 @@ class Home extends CI_Controller {
 			$mail->isSMTP();
 			$mail->SMTPDebug = SMTP::DEBUG_SERVER;
 
-			$mail->Host       = 'smtp.googlemail.com';
 			$mail->SMTPAuth   = true;
 			$mail->Username   = 'applesaorg@gmail.com'; // ubah dengan alamat email Anda
 			$mail->Password   = 'H87aGupC5TmEubA'; // ubah dengan password email Anda
-			$mail->SMTPSecure = 'ssl';
-			$mail->Port       = 465;
+			$mail->SMTPSecure = 'tls';
+			$mail->Host = 'smtp.gmail.com';
+			$mail->Port = '587';
+
+
+
+
 
 			$mail->setFrom('applesaorg@gmail.com', 'APPELSA'); // ubah dengan alamat email Anda
 			$mail->addAddress($to);
