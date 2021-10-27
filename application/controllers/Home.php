@@ -349,7 +349,8 @@ class Home extends CI_Controller {
 				'emailcode_pelapor'=>$code,
 			);
 
-			$id = $this->Amodel->save($data);
+			#$id = $this->Amodel->save($data);
+			$id=248;
 
 
 			$to                 = $email;
