@@ -479,6 +479,7 @@ class Home extends CI_Controller {
 
 
 	}
+
 	public function changeprofil()
 	{
 		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
@@ -509,6 +510,10 @@ class Home extends CI_Controller {
 		foreach ($this->input->post() as $key => $value) {
 			$$key = $value;
 		}
+
+		if(empty($nama)){
+			$error ="Wajib Mengisi Field yangada";
+		}
 		$where = array(
 			'id_pelapor' => $this->id,
 		);
@@ -516,7 +521,66 @@ class Home extends CI_Controller {
 
 
 
-		if($password){
+		if ($error) {
+			echo "<p><ul>";
+			echo nl2br($error);
+			print "</ul></p>";
+		} else {
+			$where = array(
+				'id_pelapor'=>$this->id,
+			);
+			$data = array(
+				'nama_pelapor' => $nama,
+				'hp_pelapor' => $hp,
+				'alamat_pelapor' => $alamat,
+			);
+			$this->Amodel->Update($table, $data, $where);
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Akun Anda Berhasil Diubah</b></div>");
+			print "ok";
+		}
+
+	}
+	public function changepassword()
+	{
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+		$data['title'] = "Ubah Profil";
+		$data['session'] = $this->session;
+		$where = array(
+			'id_pelapor' => $this->id,
+		);
+		$data['detail'] = $this->Amodel->Detail_query('pelapor', $where); // Panggil fungsi get yang ada di UserModel.php
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/changepassword',$data);
+
+
+	}
+	public function updatepassword(){
+		$now = time();
+		$table = "pelapor";
+		$error = "";
+		$password="";
+		$hp="";
+		$alamat="";
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+		$where = array(
+			'id_pelapor' => $this->id,
+		);
+		$getuser = $this->Amodel->Detail_query('pelapor', $where); // Panggil fungsi get yang ada di UserModel.php
+
+		if (empty($passwordold) OR empty($password) OR empty($passwordconf)    ) {
+			$error = "Wajib mengisi seluruh field yang ada";
+		}
+
+
+
 			if (strlen($password) < 8) {
 				$error = "Password minimal memiliki 8 karakter";
 			}
@@ -532,30 +596,28 @@ class Home extends CI_Controller {
 
 
 
-		}
+
 		if ($error) {
 			echo "<p><ul>";
 			echo nl2br($error);
 			print "</ul></p>";
 		} else {
+			$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
 			$where = array(
 				'id_pelapor'=>$this->id,
 			);
 			$data = array(
-				'hp_pelapor' => $hp,
-				'alamat_pelapor' => $alamat,
+				'password_pelapor' => $password,
 			);
-			if($password){
-				$password = sha1($password . $this->config->item('CMS_SALT_STRING'));
-				$data['password_pelapor'] =$password;
-				$this->session->sess_destroy(); // Hapus semua session
-			}
+
 			$this->Amodel->Update($table, $data, $where);
-			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Akun Anda Berhasil Diubah</b></div>");
+			$this->session->sess_destroy(); // Hapus semua session
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Password Berhasil Diubah</b></div>");
 			print "ok";
 		}
 
 	}
+
 	public function laporanget()
 	{
 		$id = "";
@@ -621,7 +683,7 @@ class Home extends CI_Controller {
 			$passwordl = sha1($password . $this->config->item('CMS_SALT_STRING'));
 
 			if ($user->password_pelapor != $passwordl) {
-				$error = "Username atau Password tidak valid2";
+				$error = "Username atau Password tidak valid";
 			}
 		}
 

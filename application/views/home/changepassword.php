@@ -35,27 +35,31 @@
 					<div class="alert error" role="alert" id="result" style="display:none;"></div>
 					<?php echo $this->session->flashdata('pesan'); ?>
 					<!-- Form -->
-					<form method="post" action="<?php echo base_url('updateprofile'); ?>" id="form" role="form" class="form"  style="text-transform: none; !important;">
-						<div class="mb-20 mb-md-10">
-							<div class="form-group">
-								<label>Nama</label>
-								<input type="text" class="form-control" value="<?php print $detail->nama_pelapor  ?>" placeholder="Nama Pelapor"  style="text-transform: none; !important;" name="nama">
-							</div>
-						</div>
+					<form method="post" action="<?php echo base_url('updatepassword'); ?>" id="form" role="form" class="form"  style="text-transform: none; !important;">
+
+
 
 						<div class="mb-20 mb-md-10">
 							<div class="form-group">
-								<label>No Hp</label>
-								<input type="text" class="form-control" value="<?php print $detail->hp_pelapor  ?>" placeholder="No Hp Pelapor"  style="text-transform: none; !important;" name="hp">
+								<label>Password Lama </label>
+								<input type="password" name="passwordold" id="passwordold" class="form-control"
+									   placeholder="Password" maxlength="100">
 							</div>
 						</div>
 						<div class="mb-20 mb-md-10">
 							<div class="form-group">
-								<label>Alamat Pelapor</label>
-								<textarea  class="form-control" name="alamat" style="text-transform: none !important;"><?php print $detail->alamat_pelapor ?></textarea>
+								<label>Password Baru </label>
+								<input type="password" name="password" id="password" class="form-control"
+										placeholder="Password" maxlength="100">
 							</div>
 						</div>
-
+						<div class="mb-20 mb-md-10">
+							<div class="form-group">
+								<label>Konfirmasi Password Baru</label>
+								<input type="password" name="passwordconf" id="passwordconf" class="form-control"
+									   placeholder="Konfirmasi Password" maxlength="100">
+							</div>
+						</div>
 
 
 						<center><button class="btn btn-mod btn-border btn-large" type="submit">Ubah</button></center>
@@ -154,7 +158,7 @@
 <script>
 	$(function () {
 		$('#result').hide();
-		validate('#result', '#form', '<?php echo base_url('changeprofil'); ?>');
+		validate('#result', '#form', '<?php echo base_url('home'); ?>');
 	});
 
 

@@ -68,8 +68,10 @@ $route['login/proses'] = 'Home/loginprocess';
 $route['register/proses'] = 'Home/registerprocess';
 $route['laporan/proses'] = 'Home/laporanproses';
 $route['changeprofil'] = 'Home/changeprofil';
+$route['changepassword'] = 'Home/changepassword';
 $route['previewlaporan'] = 'Home/previewlaporan';
 $route['updateprofile'] = 'Home/updateprofile';
+$route['updatepassword'] = 'Home/updatepassword';
 $route['proseslaporan'] = 'Home/storelaporan';
 $route['logout'] = 'Home/logout';
 
