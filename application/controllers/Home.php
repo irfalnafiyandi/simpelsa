@@ -477,6 +477,7 @@ class Home extends CI_Controller {
 			'id_laporan' => $id,
 		);
 		$data['detail'] = $this->Amodel->Detail_query('laporan_sampah', $where); // Panggil fungsi get yang ada di UserModel.php
+
 		#VIEW
 		$this->load->view('webcom/com-head',$data);
 		$this->load->view('webcom/com-nav',$data);
@@ -484,7 +485,64 @@ class Home extends CI_Controller {
 
 
 	}
+	public function laporanulasan($id)
+	{
+		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
+			header("location:" . base_url("Home"));
+		}
+		$data['title'] = "Tambahkan Ulasan Anda";
+		$data['session'] = $this->session;
+		$where = array(
+			'id_laporan' => $id,
+		);
+		$data['detail'] = $this->Amodel->Detail_query('laporan_sampah', $where); // Panggil fungsi get yang ada di UserModel.php
+		#VIEW
+		$this->load->view('webcom/com-head',$data);
+		$this->load->view('webcom/com-nav',$data);
+		$this->load->view('home/laporanulasan',$data);
 
+
+	}
+	public function storeulasan()
+	{
+		$now = time();
+		$table = "laporan_sampah";
+		$error = "";
+		$password="";
+		$hp="";
+		$alamat="";
+
+
+		foreach ($this->input->post() as $key => $value) {
+			$$key = $value;
+		}
+
+
+
+		if(empty($bintang) OR empty($ulasan) OR empty($id)){
+			$error ="Wajib Mengisi Field yang ada";
+		}
+
+
+
+		if ($error) {
+			echo "<p><ul>";
+			echo nl2br($error);
+			print "</ul></p>";
+		} else {
+			$where = array(
+				'id_laporan'=>$id,
+			);
+			$data = array(
+				'bintang_laporan' => $bintang,
+				'ulasan_laporan' => $ulasan,
+			);
+			$this->Amodel->Update($table, $data, $where);
+			$this->session->set_flashdata("pesan", "<div class=\"alert success\" id=\"alert\"><b>Ulasan Berhasil ditambahkan</b></div>");
+			print "ok";
+		}
+
+	}
 	public function changeprofil()
 	{
 		if(empty($this->nama) AND empty($this->email)  AND empty($this->checkpoint) ){
@@ -622,7 +680,6 @@ class Home extends CI_Controller {
 		}
 
 	}
-
 	public function laporanget()
 	{
 		$id = "";
@@ -832,7 +889,6 @@ class Home extends CI_Controller {
 		$this->load->view('webcom/com-nav',$data);
 		$this->load->view('home/laporanpreview',$data);
 	}
-
 	public function updatepelapor($id,$code)
 	{
 		$now = time();
@@ -881,9 +937,6 @@ class Home extends CI_Controller {
 		$this->session->sess_destroy(); // Hapus semua session
 		header("location:" . base_url("Home"));
 	}
-
-
-
 }
 
 

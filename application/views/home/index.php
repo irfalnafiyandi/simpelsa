@@ -284,7 +284,7 @@
 <script>
 	$(function () {
 		$('#result').hide();
-		validate('#result', '#form', '<?php echo base_url('Home/laporan#laporan'); ?>');
+		validate('#result', '#form', '<?php echo base_url('Home/dashboard'); ?>');
 	});
 
 </script>

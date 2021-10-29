@@ -63,6 +63,8 @@ $route['dashboard'] = 'Home/dashboard';
 $route['about'] = 'Home/about';
 $route['laporanlist'] = 'Home/laporanlist';
 $route['laporanlistdetail/(:any)'] = 'Home/laporanlistdetail/$1';
+$route['laporanulasan/(:any)'] = 'Home/laporanulasan/$1';
+$route['laporan/storeulasan'] = 'Home/storeulasan';
 $route['getlaporan'] = 'Home/laporanget';
 $route['login/proses'] = 'Home/loginprocess';
 $route['register/proses'] = 'Home/registerprocess';
@@ -96,6 +98,7 @@ $route['adminupdate'] = 'Admin/adminupdate';
 $route['laporansampah'] = 'Admin/laporansampah';
 $route['laporandelete/(:any)'] = 'Admin/laporandelete/$1';
 $route['laporandetail/(:any)'] = 'Admin/laporandetail/$1';
+
 $route['tolaklaporan/(:any)'] = 'Admin/tolaklaporan/$1';
 $route['laporanverifikasi/(:any)'] = 'Admin/laporanverifikasi/$1';
 $route['laporanverifikasiupdate'] = 'Admin/laporanverifikasiupdate';

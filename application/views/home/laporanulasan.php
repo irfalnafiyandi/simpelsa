@@ -1,4 +1,6 @@
 <!-- Page Wrap -->
+
+
 <div class="page" id="top">
 
 
@@ -11,7 +13,7 @@
 
 				<h3 class="small-title white">
 
-					Laporan Anda
+					<?php print $title; ?>
 
 				</h3>
 
@@ -27,89 +29,35 @@
 		<div class="container relative">
 
 			<div class="row">
-				<div class="col-md-12">
-					<div class="table-responsive">
-						<table class="table table-bordered">
-							<thead>
-							<tr>
-								<th width="5%">No</th>
-
-								<th width="25%"></th>
-								<th>Tanggal Pelaporan</th>
-								<th>Status</th>
+				<div class="col-md-12 pd-4">
+					<a href="<?php print base_url('laporanlist') ?>" class="btn btn-warning">Kembali</a>
+					<br><br>
+				</div>
+				<div class="alert error" role="alert" id="result" style="display:none;"></div>
 
 
-							</tr>
-							</thead>
-							<tbody>
-							<?php
-							$no = 1;
-							foreach ($query as $keys => $values) {
-							$panelc = " ";
+				<form method="post" action="<?php echo base_url('laporan/storeulasan'); ?>" id="form" role="form" class="form">
+					<input name="id" type="hidden" value="<?php print $detail->id_laporan; ?>">
+				<div class="col-md-6">
+					<label for="input-4" class="control-label">Rate This</label>
+					<input id="input-4" name="bintang" class="rating rating-loading" data-show-clear="false" data-show-caption="true">
 
-							?>
-							<tr>
-								<td><?php print $no; ?></td>
-								<td>
-									<div class="btn-group">
-										<a href="<?php print base_url('laporanlistdetail/' . $values->id_laporan) ?>"
-										   class="btn btn-info">Detail Laporan</a>
-										<?php
 
-										if ($values->status_laporan == "y") {
-											if (empty($values->ulasan_laporan)) {
-												?><a
-												href="<?php print base_url('laporanulasan/' . $values->id_laporan) ?>"
-												class="btn btn-success">Berikan Ulasan</a>
-												<?php
-
-											}
-
-										}
-										?>
-								</td>
-
+					<div class="form-group">
+						<label><b>Ulasan</b></label><br>
+						<textarea class="form-control" name="ulasan" placeholder="Masukan Ulasan Anda" rows="7" style="text-transform: none !important;"></textarea>
 
 					</div>
 
 
-					<td><?php print TglIndo($values->tanggal_laporan) ?></td>
-					<td>
-						<?php
-						if ($values->status_laporan == "p") {
-							?><span class="label label-warning">Proses</span><?php
-						} elseif ($values->status_laporan == "y") {
-							?><span class="label label-success">Selesai</span><?php
-						} elseif ($values->status_laporan == "b") {
-							?><span class="label label-primary">Baru</span><?php
-						} else {
-							?><span class="label label-danger">Ditolak</span><?php
-						}
-
-						if($values->ulasan_laporan){
-							?>&nbsp;<span class="label label-warning">Sudah Diulas</span><?php
-
-						}
-
-						?>
-					</td>
-
-					</tr>
-
-					<?php
-					$no++;
-					}
-
-
-					?>
-
-
-					</tbody>
-
-					</table>
+					<center><button class="btn btn-mod btn-border btn-large" type="submit">Simpan</button></center>
 				</div>
+				</form>
 			</div>
+
+
 		</div>
+		<!-- End Blog Posts Grid -->
 
 
 </div>
@@ -151,7 +99,7 @@
 </div>
 <div class="body-masked">
 </div>
-<div id="map"></div>
+
 <!-- End Works Expander -->
 
 
@@ -182,16 +130,77 @@
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/all.js"></script>
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/contact-form.js"></script>
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/animations.min.js"></script>
-<!--[if lt IE 10]><script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/placeholder.js"></script><![endif]-->
+
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/TweenLite.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/EasePack.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/jquery.fancybox.min.js"></script>
+
 <script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/star-rating.min.js"></script>
+
+<script>
+	$(function () {
+		$('#result').hide();
+		validate('#result', '#form', '<?php echo base_url('laporanlist'); ?>');
+	});
+
+
+	function initMap() {
+		var cwc2011_venue_data = [
+			{
+				latlng: new google.maps.LatLng(<?php print $detail->latitude ?>, <?php print $detail->longitude ?>),
+			},
+
+
+		];
+
+		var cwc2011_venue_data_win = [
+			"",
+		];
+
+		var map = new google.maps.Map(document.getElementById("map"), {
+			zoom: 4,
+			center: new google.maps.LatLng(0, 0),
+
+
+			mapTypeId: google.maps.MapTypeId.ROADMAP
+		});
+		markers = Array();
+		infoWindows = Array();
+
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			var marker = new google.maps.Marker({
+				position: cwc2011_venue_data[i].latlng,
+				map: map,
+				infoWindowIndex: i
+			});
+
+			var infoWindow = new google.maps.InfoWindow({
+				content: cwc2011_venue_data_win[i]
+			});
+			google.maps.event.addListener(marker, 'click',
+				function (event) {
+					infoWindows[this.infoWindowIndex].open(map, this);
+				}
+			);
+
+			infoWindows.push(infoWindow);
+			markers.push(marker);
+		}
+		var latlngbounds = new google.maps.LatLngBounds();
+		for (var i = 0; i < cwc2011_venue_data.length; i++) {
+			latlngbounds.extend(cwc2011_venue_data[i].latlng);
+		}
+		map.fitBounds(latlngbounds);
+	}
+
+
+</script>
+
+
 <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
 <!-- GOOGLE MAPS API -->
 <script>
-
 	function getData() {
 
 		var nolap = $("#nolap").val();

@@ -25,6 +25,16 @@
 
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/colors/blue.css">
 	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/jquery.fancybox.min.css">
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/star-rating.min.css">
+
+
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/css/star-rating.min.css">
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/themes/krajee-fa/theme.css" media="all" type="text/css"/>
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/themes/krajee-svg/theme.css" media="all" type="text/css"/>
+	<link rel="stylesheet" href="<?php print base_url(); ?>assets/web/themes/krajee-uni/theme.css" media="all" type="text/css"/>
+
+
+
 	<!-- <link rel="stylesheet" href="css/colors/blue-extra.css"> -->
 	<script
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAT6oJ2CAc3oxUOAgRvmz0VQUUaSVf0awY&callback=initMap&libraries=&v=weekly"

@@ -45,10 +45,29 @@
 
 					</div>
 					<hr/>
+					<?php
+					if ($detail->ulasan_laporan) {
+						?>
+						<div class="form-group">
+							<label><b>Rating</b></label><br>
+							<input id="input-3" name="input-3" value="4" class="rating-loading">
+						</div>
+						<hr/>
+						<div class="form-group">
+							<label><b>Ulasan</b></label><br>
+							<?php print $detail->ulasan_laporan ?>
+
+						</div>
+						<hr/>
+
+						<?php
+					}
+
+					?>
+
 					<div class="form-group">
 						<label>Lokasi Sampah</label> <br>
 						<div id="map"></div>
-
 
 
 					</div>
@@ -56,17 +75,21 @@
 				</div>
 				<div class="col-md-6">
 					<label><b>Foto Laporan</b></label><br>
-					<a href="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" data-fancybox="gallery" data-caption="Caption #2">
-						<img src="<?php print base_url().'assets/laporan/'.$detail->foto; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
+					<a href="<?php print base_url() . 'assets/laporan/' . $detail->foto; ?>" data-fancybox="gallery"
+					   data-caption="Caption #2">
+						<img src="<?php print base_url() . 'assets/laporan/' . $detail->foto; ?>" alt=""
+							 class="img-rounded" alt="Cinque Terre" width="50%"/>
 					</a><br/>
 
 					<?php
-					if($detail->status_laporan=="y"){
+					if ($detail->status_laporan == "y") {
 						?>
-							<hr/>
+						<hr/>
 						<label><b>Foto Verifkasi</b></label><br>
-						<a href="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" data-fancybox="gallery" data-caption="Caption #2">
-							<img src="<?php print base_url().'assets/laporan/'.$detail->foto_verifikasi; ?>" alt="" class="img-rounded" alt="Cinque Terre" width="50%"/>
+						<a href="<?php print base_url() . 'assets/laporan/' . $detail->foto_verifikasi; ?>"
+						   data-fancybox="gallery" data-caption="Caption #2">
+							<img src="<?php print base_url() . 'assets/laporan/' . $detail->foto_verifikasi; ?>" alt=""
+								 class="img-rounded" alt="Cinque Terre" width="50%"/>
 						</a><br/>
 						<hr/>
 						<label>Diverifikasi pada tanggal </label><br>
@@ -81,21 +104,17 @@
 					?>
 
 
-
-
 				</div>
 			</div>
 
 
-
-
-			</div>
-			<!-- End Blog Posts Grid -->
-
-
 		</div>
-	</section>
-	<!-- End Content Section -->
+		<!-- End Blog Posts Grid -->
+
+
+</div>
+</section>
+<!-- End Content Section -->
 
 
 </div>
@@ -108,7 +127,7 @@
 		<div class="footer-text">
 			<!-- Copyright -->
 			<div class="footer-copy">
-				<a href="#" target="_blank">&copy;  <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
+				<a href="#" target="_blank">&copy; <span class="number">2021</span> Aplikasi Pelaporan Sampah</a>
 			</div>
 			<!-- End Copyright -->
 
@@ -168,8 +187,12 @@
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/EasePack.min.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/animated-headers/rAF.js"></script>
 <script src="<?php print base_url(); ?>assets/web/js/jquery.fancybox.min.js"></script>
+<script type="text/javascript" src="<?php print base_url(); ?>assets/web/js/star-rating.min.js"></script>
 
 <script>
+	$(document).ready(function () {
+		$('#input-3').rating({displayOnly: true, step: 0.5});
+	});
 	$(function () {
 		$('#result').hide();
 		validate('#result', '#form', '<?php echo base_url('laporansampah'); ?>');
@@ -200,18 +223,17 @@
 		infoWindows = Array();
 
 		for (var i = 0; i < cwc2011_venue_data.length; i++) {
-			var marker  = new google.maps.Marker({
+			var marker = new google.maps.Marker({
 				position: cwc2011_venue_data[i].latlng,
 				map: map,
-				infoWindowIndex : i
+				infoWindowIndex: i
 			});
 
 			var infoWindow = new google.maps.InfoWindow({
 				content: cwc2011_venue_data_win[i]
 			});
 			google.maps.event.addListener(marker, 'click',
-				function(event)
-				{
+				function (event) {
 					infoWindows[this.infoWindowIndex].open(map, this);
 				}
 			);
@@ -252,8 +274,6 @@
 			});
 		}
 	}
-
-
 
 
 </script>
